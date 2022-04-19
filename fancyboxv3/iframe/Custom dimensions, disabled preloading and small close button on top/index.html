@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - fancybox v3.5 - Iframe</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css'>
+<link rel='stylesheet' href='https://codepen.io/fancyapps/pen/Kxdwjj.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>fancybox v3.5 - Iframe</h2>
+
+<p>Customization of iframed page - custom dimensions, disabled preloading and small close button on top of the content</p>
+
+<hr class="my-5" />
+
+<div class="row mb-4">
+  <div class="card-deck col-9">
+
+    <div class="card">
+      <div class="card-body">
+        <p>
+          Using <code>.fancybox()</code> method
+        </p>
+        <p class="mb-0">
+          <a data-fancybox data-type="iframe" href="https://codepen.io/about/" class="btn btn-primary fancybox">
+            Click me
+          </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <p>
+          Using <code>data</code> attributes
+        </p>
+        <p class="mb-0">
+          <a data-fancybox data-type="iframe" href="https://codepen.io/about/" class="btn btn-primary" data-small-btn="true" data-iframe='{"preload":false}'>
+            Click me
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

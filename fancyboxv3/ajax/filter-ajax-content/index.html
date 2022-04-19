@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - fancybox v3.5 - Filter ajax content</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css'>
+<link rel='stylesheet' href='https://codepen.io/fancyapps/pen/Kxdwjj.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>fancybox v3.5 - Filter ajax content</h2>
+
+<p>This example demonstrates two ways to filter the content</p>
+
+<hr class="my-5" />
+
+<p>Set valid jQuery selector - </p>
+
+<p>
+  <a data-fancybox data-type="ajax" data-src="https://codepen.io/fancyapps/pen/wgavbY.html" data-filter="#two" href="javascript:;">#1 Using "data-filter" attribute</a>
+
+  <br />
+
+  <a data-fancybox data-type="ajax" data-src="https://codepen.io/fancyapps/pen/wgavbY.html #two" href="javascript:;">#2 Appending to "data-src" attribute</a>
+
+
+  <br />
+  <br />
+
+  Actual content:
+</p>
+<iframe src="https://codepen.io/fancyapps/pen/wgavbY.html"></iframe>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js'></script>
+</body>
+</html>

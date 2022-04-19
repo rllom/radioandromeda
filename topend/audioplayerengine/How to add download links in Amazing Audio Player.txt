@@ -1,0 +1,17 @@
+How to add download links in Amazing Audio Player
+Posted on July 28, 2014
+This tutorial will guide you how to add download links in Amazing Audio Player, so your visitor can directly download the mp3 files from the audio player.
+
+This tutorial is for Amazing Audio Player Version 2.6 and above.
+
+Step1 - Create Audio Player in Amazing Audio Player
+If it's your first time to use Amazing Audio Player, please view https://amazingaudioplayer.com/quick-start-guide/ for a quick start.
+
+In this tutorial, we are going to use the skin DarkBox and add download links to the playlist.
+
+Step 2 - Customise the Player skin and add download links
+In Amazing Audio Player, step 2, Skins dialog, Tracklist tab, change the value of tracklistitemformat: to the following text:
+
+%ID%. %TITLE% <span style='position:absolute;top:0;right:0;'><a href='%AUDIOURL%' onclick='event.stopPropagation();' download='%TITLE%.mp3' target='_blank'>Download</a></span>
+
+In the above code, %ID%, %TITLE% and %AUDIOURL% are predefined macro variables. They will be replaced by each audio id, title and audio URL dynamically.

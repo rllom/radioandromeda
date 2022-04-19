@@ -1,0 +1,39 @@
+<link href="https://fonts.googleapis.com/css?family=Cute+Font|Share+Tech&display=swap" rel="stylesheet">
+<style>
+  body {
+  margin: 0;
+  background-color: #141414; 
+  font-family: 'Share Tech', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://c11.radioboss.fm/w/nowplaying.js?u=18&wid=19343"></script>
+
+<script type="text/javascript">
+setInterval(getjson1, 5000);
+function getjson1(){
+	$.ajax({
+		url: 'https://c11.radioboss.fm/w/nowplayinginfo?u=18',
+		dataType: 'json',
+		success: function(data) {
+			$('#titulo1').html(data.autodj_title);
+// 			console.log(data.icestats.source.title);
+		}
+	});            
+}
+</script>
+
+<center>
+
+<img src="https://rllom.000webhostapp.com/images/Live-1.gif" width="16" height="16" >
+
+<class style="display: box;margin-bottom: 10px;" id="titulo1">
+
+La Tremenda Corte 
+
+</center>
+
+

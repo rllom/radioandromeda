@@ -1,0 +1,103 @@
+<html>
+
+<head>
+
+<title>No.1 Billboard Year End Hot since 1970 till ...</title>
+
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<meta http-equiv="Content-Language" content="es">
+<META NAME="title" CONTENT="(((((( El Mundo Virtual de RJOM )))))) - wwww.mvrjom.tk">
+<META Name="description" CONTENT="Solo No.1 del Año segun Billboard, desde 1970 hasta el Presente">
+<META Name="keywords" CONTENT="No.1, Billboard, Canción del Año, ">
+<meta http-equiv="Reply-to" content="rllom@yahoo.es">
+<META HTTP-EQUIV="pragma" content="no-cache">
+<META Name="revisit" CONTENT="1 day">
+<META Name="robots" CONTENT="all">
+
+<SCRIPT language=JavaScript> 
+function blockError(){return true;}
+window.onerror = blockError;
+</SCRIPT>
+
+
+<!-- Start Branding Off -->
+<style>
+img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+    display: none;
+}
+</style>
+<!-- End Branding Off -->
+
+<style>
+A:link  {color:ffcc00;text-decoration: none}
+A { text-decoration:none;  background-color:Transparent; color:#0055FF; }
+A:visited { color:ffcc00;text-decoration: none}
+a:hover {COLOR: ffffff}
+img { border-style:none}
+body {color: #ffff;
+font-size: 13pt;
+font-family: Verdana;}
+</style>
+
+</head>
+
+<body bgcolor=000000 style="MARGIN: 0px 0px 0px 0px" text=809990>
+
+
+<script type="text/javascript">
+<!-- Begin
+copyright=new Date();
+update=copyright.getFullYear();
+document.write("Al "+ update +"");
+//  End -->
+</script>
+
+
+<span id="clock1">[clock1]</span>
+
+<script language="JavaScript">
+  StartCountDown("clock1","01/01/2021 00:00 AM -0601")  
+function StartCountDown(myDiv,myTargetDate)
+  {
+    var dthen	= new Date(myTargetDate);
+    var dnow	= new Date();
+    ddiff		= new Date(dthen-dnow);
+    gsecs		= Math.floor(ddiff.valueOf()/1000);
+    CountBack(myDiv,gsecs);
+  }
+  
+  function Calcage(secs, num1, num2)
+  {
+    s = ((Math.floor(secs/num1))%num2).toString();
+    if (s.length < 2) 
+    {	
+      s = "0" + s;
+    }
+    return (s);
+  }
+  
+  function CountBack(myDiv, secs)
+  {
+    var DisplayStr;
+    var DisplayFormat = "le faltan:   %%D%% d&iacute;as %%H%% horas %%M%% minutos %%S%% segundos para que finalice, pendiente haber quien gana..."; 
+    DisplayStr = DisplayFormat.replace(/%%D%%/g,	Calcage(secs,86400,100000));
+    DisplayStr = DisplayStr.replace(/%%H%%/g,		Calcage(secs,3600,24));
+    DisplayStr = DisplayStr.replace(/%%M%%/g,		Calcage(secs,60,60));
+    DisplayStr = DisplayStr.replace(/%%S%%/g,		Calcage(secs,1,60));
+    if(secs > 0)
+    {	
+      document.getElementById(myDiv).innerHTML = DisplayStr; 
+      setTimeout("CountBack('" + myDiv + "'," + (secs-1) + ");", 990); 
+    }
+    else
+    {
+      document.getElementById(myDiv).innerHTML = "¡por fin se acabo el año, pronto podras descargar la rola!";
+    }
+  }
+</script>
+
+
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,21 @@
+<h1 data-shoutcast-value="servertitle"></h1>
+
+<audio style="width:384px;" controls="true"><source src="http://bb35.sonixcast.com:20008/stream;" type="audio/mp3">Your browser does not support the audio element.</audio>
+
+<br>
+
+Sonando Ahora: <span data-shoutcast-value="songtitle"></span>
+
+<p><b>Previamente han Sonado:</b>
+
+<ul id="played" style="list-style-type:circle"></ul></p>
+
+<p><b>Oyentes (Actuales/Maximo): </b> 
+<span data-shoutcast-value="currentlisteners"></span> /
+<span data-shoutcast-value="maxlisteners"></span></p>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.shoutcast.easy.min.js?host=bb35.sonixcast.com&port=20008&interval=5000"></script>
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - fancybox v3.5 - Scrollable content</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css'>
+<link rel='stylesheet' href='https://codepen.io/fancyapps/pen/Kxdwjj.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h2>fancybox v3.5 - Scrollable content</h2>
+
+<p>
+  Additional wrapping element is needed to keep the close button in place.<br />
+
+  This example also demonstrates how to disable touch events using <code>data-touch="false"</code> attribute.
+</p>
+
+<hr class="my-5" />
+
+<p>
+  <a data-fancybox data-touch="false" href="#modal" class="btn btn-primary">Open demo</a>
+</p>
+
+<div id="modal">
+  <div class="content-header">
+    <button class="btn" onclick="javascript:$('#more').toggle();;">Toggle content</button>
+  </div>
+  <div class="content-scroll">
+    <p>
+      Cras at massa a tortor laoreet ullamcorper ac vitae felis. In ut sodales felis. Nam ante diam, porttitor ac sapien eu, hendrerit finibus mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+    </p>
+    <div id="more">
+      <p>
+        Ut auctor, justo et convallis viverra, risus augue egestas orci, vel pellentesque elit orci vel nisi. Duis in vehicula ligula, et finibus velit. Ut eu urna varius ligula tincidunt maximus. Fusce tincidunt tortor ac risus placerat laoreet. Cras feugiat, nibh ut vulputate mollis, diam lectus hendrerit mauris, euismod elementum velit diam sit amet nisl. Curabitur auctor ex felis, quis interdum ligula euismod non. Cras dignissim commodo nibh, a feugiat purus scelerisque at. 
+      </p>
+      <p>
+        Quisque commodo elementum quam, id faucibus dui euismod in. Nam dapibus, libero ut feugiat commodo, velit velit ultricies tortor, auctor eleifend lorem tellus in urna. Phasellus nunc metus, facilisis eget malesuada cursus, tempus vitae nisl. Maecenas condimentum turpis libero, quis varius orci lacinia non. Donec vel massa elementum, molestie tortor vel, laoreet justo. Suspendisse potenti. Maecenas et luctus libero.
+      </p>
+      <p>
+        Proin tincidunt vestibulum velit, a congue odio porta interdum. Nunc congue congue enim vel vestibulum. Fusce ac diam at sem rhoncus tristique. Nullam imperdiet rhoncus mi et feugiat. Praesent tempus convallis mattis. Mauris sit amet ante non dui ullamcorper pretium eget quis lacus. Duis id velit est. Fusce a convallis purus. Nullam non orci risus. Vivamus sed vulputate eros. Sed non bibendum turpis. Sed gravida lorem sem, et hendrerit erat cursus nec. Proin feugiat purus ut varius suscipit. Aenean lobortis sem eget lacinia eleifend. Morbi vulputate sodales lobortis.
+      </p>
+      <p>
+        Nunc vitae est orci. Vivamus dignissim ex eu turpis dignissim, nec finibus dui faucibus. Vestibulum sed orci id elit tincidunt elementum. Aliquam imperdiet dictum tellus, sed iaculis sem ornare sed. Quisque blandit malesuada efficitur. Nulla molestie ultrices ornare. Nulla placerat enim eu pulvinar hendrerit. Pellentesque a consectetur erat. Pellentesque quis enim ut magna tincidunt egestas vel suscipit mauris. Donec porttitor venenatis finibus. Proin sit amet fermentum magna. Quisque lorem nibh, viverra quis libero quis, semper pulvinar sapien.
+      </p>
+      <p>
+        Donec ac sapien vitae turpis malesuada tempor vel ut nulla. Aliquam vehicula facilisis blandit. Suspendisse bibendum erat vel erat sollicitudin, ut imperdiet felis pretium. Nunc convallis, mi a condimentum pretium, nunc purus varius elit, ac tincidunt sapien elit non sem. Praesent id ipsum at mi aliquam accumsan. Fusce dapibus in leo id finibus. Curabitur hendrerit nisl vitae mauris suscipit, vel ultricies mauris dapibus.
+      </p>
+      <p>
+        Nullam in justo nisi. Maecenas tempor lacinia hendrerit. In hac habitasse platea dictumst. Donec lacus sapien, tincidunt in tellus a, vulputate porttitor est. Fusce ac felis eget ligula ullamcorper venenatis. Cras semper, ante sed tempus luctus, elit augue vehicula turpis, eget lobortis dui magna ac eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin metus ut velit lacinia dignissim. Donec dictum sed justo et finibus. Aliquam pharetra dictum iaculis. Nulla facilisi. Curabitur ullamcorper non dui eu eleifend.
+      </p>
+      <p>
+        Maecenas ex turpis, mollis non mauris sit amet, tempus aliquet ex. Vivamus et ultrices tellus. Maecenas tempus diam turpis, vitae consequat nunc pharetra a. Donec porta ex a tellus vehicula placerat. Nullam id pulvinar est. Nulla luctus pretium ligula sit amet porta. Pellentesque fermentum tempor elit, tempus porta sapien cursus et. Sed tortor ligula, ullamcorper eu tortor nec, pulvinar porttitor urna. Quisque eu neque rhoncus, blandit ante sit amet, sodales diam. Mauris interdum dictum massa, in euismod sem venenatis id. Nunc consectetur risus non diam ornare, eu pulvinar augue eleifend. Fusce nec tempor augue, eu ultrices nunc. Etiam nec purus augue. Maecenas elementum, neque viverra sollicitudin rutrum, urna metus malesuada libero, quis eleifend lacus tortor ac turpis. Donec vel felis velit.
+      </p>
+      <p>
+        Vestibulum cursus vitae diam vel ultricies. Donec scelerisque lacinia sodales. Sed facilisis massa in sem auctor, in iaculis velit egestas. Cras commodo risus a metus tristique, a cursus mi dapibus. Phasellus volutpat erat tincidunt augue sollicitudin efficitur. Quisque in ultrices neque, at aliquam turpis. Quisque tincidunt elementum sodales. Nulla auctor efficitur magna, ut semper leo ultricies vel. Aliquam ac odio eu orci elementum bibendum id ut tellus. Sed sed maximus enim, eu mollis elit. Nullam convallis gravida nisi, dignissim posuere nulla ultrices non. Fusce elementum finibus arcu, ac tempor sem facilisis eu. Curabitur semper faucibus maximus.
+      </p>
+      <p>
+        Praesent neque metus, pharetra vitae dolor et, ultricies vehicula massa. Praesent efficitur libero vitae facilisis dignissim. Fusce eleifend volutpat dolor at hendrerit. Proin at euismod lorem. Maecenas eget posuere orci. Donec convallis nisl arcu, in tristique purus consectetur ut. Ut laoreet sed neque sed volutpat. Ut semper tortor et ipsum volutpat porta. Fusce consectetur urna nulla, quis dapibus erat condimentum ut. Praesent a lacinia ante, non congue massa. Morbi congue tortor turpis, vel lacinia erat aliquam nec. Fusce pellentesque odio non volutpat blandit. Nulla in turpis nisl.
+      </p>
+      <p>
+        Proin fringilla rhoncus risus, nec consectetur nunc interdum at. Mauris posuere turpis quam, ut fringilla arcu molestie vulputate. Cras accumsan maximus tortor tristique condimentum. Fusce leo ex, tempus vel ante sed, varius tristique mi. Cras lobortis erat id nisi tempor, non auctor lectus commodo. Quisque id nisi pulvinar, lobortis nulla eu, mollis massa. Nunc fringilla faucibus placerat. Duis eu euismod lorem. In nec ultrices magna, sit amet tincidunt magna. Cras sollicitudin felis tortor, quis iaculis ligula mollis in. Suspendisse tincidunt vel lorem et tincidunt. Etiam tristique dolor sit amet metus consequat ullamcorper. Duis rutrum arcu et dolor commodo, vel scelerisque justo pulvinar.
+      </p>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js'></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+#modal {
+  display: none;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 0 40px 0;
+  text-align: justify;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+#modal .fancybox-close-small {
+  top: 15px;
+}
+
+#modal .content-header {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+}
+
+#modal .content-scroll {
+  max-height: calc(100vh - 200px);
+  overflow: auto;
+  padding: 40px 20px 0 20px;
+}

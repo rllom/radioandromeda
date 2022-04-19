@@ -1,0 +1,9 @@
+.content {
+  max-width: 500px;
+  padding: 30px;
+}
+
+iframe {
+  width: 80%;
+  height: 250px;
+}

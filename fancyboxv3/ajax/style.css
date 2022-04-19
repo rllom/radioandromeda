@@ -1,0 +1,31 @@
+/* Custom modal content styling */
+
+.modal-container {
+  max-width: 500px;
+  padding: 0;
+  margin: 20px 0;
+  border-radius: .3em;
+  box-shadow: 0 0.1em 0.4em rgba(0,0,0,.3);
+}
+
+.modal-title {
+  font-weight: 700;
+  padding: 1.5em;
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.modal-body {
+  max-height: calc(100vh - 230px);
+  min-height: 50px;
+  padding: 0 1.5em 1.5em 1.5em;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 1.5em;
+  text-align: right;
+}
+
+p:first-child {
+  margin-top: 0;
+}

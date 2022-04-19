@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+
+<head>
+  
+<meta charset="UTF-8">
+  
+<title>CodePen - fancybox v3.5 - Basics</title>
+  
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css'>
+
+<link rel='stylesheet' href='https://codepen.io/fancyapps/pen/Kxdwjj.css'>
+
+
+</head>
+
+<body>
+
+<!-- partial:index.partial.html -->
+
+<h2>fancybox v3.5 - Using trigger element</h2>
+
+
+<p>
+  
+Sometimes you might need to start fancybox from different element - simply use 
+<code>data-fancybox-trigger</code> attribute with the value of fancybox group name.
+  This allows to avoid content duplication in the gallery. For example, start fancybox when clicking on featured image. 
+<br />
+  
+Optionally, use <code>data-fancybox-index</code> attribute to specify <a href="javascript:;" data-fancybox-trigger="preview" data-fancybox-index="3">index of starting element</a>.
+
+</p>
+
+
+<hr class="my-5" />
+
+
+<p class="imglist" style="max-width: 520px;">
+  
+<a data-fancybox-trigger="preview" href="javascript:;">
+    
+<img src="https://source.unsplash.com/LuK-MuZ-yf0/510x340" />
+</a>
+
+  
+<a href="https://source.unsplash.com/LuK-MuZ-yf0/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+    
+<img src="https://source.unsplash.com/LuK-MuZ-yf0/120x80" /></a>
+
+  
+<a href="https://source.unsplash.com/Oaqk7qqNh_c/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+    
+<img src="https://source.unsplash.com/Oaqk7qqNh_c/120x80" />
+</a>
+  
+  
+<a href="https://source.unsplash.com/X9GHkHbJIaU/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+    
+<img src="https://source.unsplash.com/X9GHkHbJIaU/120x80" /></a>
+  
+  
+<a href="https://source.unsplash.com/9c_djeQTDyY/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+    
+<img src="https://source.unsplash.com/9c_djeQTDyY/120x80" />
+</a>
+
+</a>
+
+<!-- partial -->
+  
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+<script src='https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js'></script>
+<script  src="./3 using_trigger_element_script.js"></script>
+
+</body>
+</html>
