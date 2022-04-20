@@ -40,9 +40,9 @@ function ws_book(p,n,b){var f=jQuery;var m=f(this);var i=f(".ws_list",b);var k=f
 //***********************************************
 jQuery("#wowslider-container1").wowSlider({effect:"brick",prev:"",next:"",duration:20*100,delay:50*100,width:500,height:369,autoPlay:true,autoPlayVideo:false,playPause:false,stopOnHover:true,loop:false,bullets:1,caption:false,captionEffect:"parallax",controls:true,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:[
 
-{src:"./1970.jpg",title:"1970 a 1979",href:"https://rllom.000webhostapp.com/no.1/1970.htm",target:"_top"},
-{src:"./1980.jpg",title:"1980 a 1989",href:"https://rllom.000webhostapp.com/no.1/1980.htm",target:"_top"},
-{src:"./1990.jpg",title:"1990 a 1999",href:"https://rllom.000webhostapp.com/no.1/1990.htm",target:"_top"},
-{src:"./2000.jpg",title:"2000 a 2009",href:"https://rllom.000webhostapp.com/no.1/2000.htm",target:"_top"},
-{src:"./2010.jpg",title:"2010 a 2019",href:"https://rllom.000webhostapp.com/no.1/2010.htm",target:"_top"},
-{src:"./2020.jpg",title:"2020 a 2029",href:"https://rllom.000webhostapp.com/no.1/2020.htm",target:"_top"}]});
+{src:"./1970.jpg",title:"1970 a 1979",href:"https://rllom.github.io/radioandromeda/no.1/1970.htm",target:"_top"},
+{src:"./1980.jpg",title:"1980 a 1989",href:"https://rllom.github.io/radioandromeda/no.1/1980.htm",target:"_top"},
+{src:"./1990.jpg",title:"1990 a 1999",href:"https://rllom.github.io/radioandromeda/no.1/1990.htm",target:"_top"},
+{src:"./2000.jpg",title:"2000 a 2009",href:"https://rllom.github.io/radioandromeda/no.1/2000.htm",target:"_top"},
+{src:"./2010.jpg",title:"2010 a 2019",href:"https://rllom.github.io/radioandromeda/no.1/2010.htm",target:"_top"},
+{src:"./2020.jpg",title:"2020 a 2029",href:"https://rllom.github.io/radioandromeda/no.1/2020.htm",target:"_top"}]});

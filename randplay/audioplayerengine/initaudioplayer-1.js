@@ -39,7 +39,7 @@ jQuery("#amazingaudioplayer-1").amazingaudioplayer({
 	volumeimage:"volume-24-24-2.png",        
 	playpauseimagewidth:90,        
 	loopimageheight:24,        
-	tracklistitemformat:"%ID%. %TITLE% <span style='position:absolute;top:0;right:0;'><a href='%AUDIOURL%' onclick='event.stopPropagation();' download='%TITLE%.mp3' target='_blank'><img width='16px' height='16px' src='https://rllom.000webhostapp.com/images/down.gif' title='Descargar'></a></span>",        
+	tracklistitemformat:"%ID%. %TITLE% <span style='position:absolute;top:0;right:0;'><a href='%AUDIOURL%' onclick='event.stopPropagation();' download='%TITLE%.mp3' target='_blank'><img width='16px' height='16px' src='https://rllom.github.io/radioandromeda/images/down.gif' title='Descargar'></a></span>",        
 	showloop:true,        
 	titleinbarwidthmode:"fixed",        
 	playpauseimageheight:90,        
