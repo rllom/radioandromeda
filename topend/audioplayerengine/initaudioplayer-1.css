@@ -37,7 +37,7 @@
 	display: block;
 	position: relative;
 	overflow: hidden;
-	padding: 12px;
+	padding: 18px;
 	height: 62px;
 }
 
@@ -305,5 +305,5 @@
 
 #amazingaudioplayer-1 .amazingaudioplayer-tracklist-clear {
 	clear: both;
-}
-
+}
+
