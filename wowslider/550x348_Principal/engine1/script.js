@@ -78,8 +78,38 @@ function ws_stack(d,a,b){var e=jQuery;var g=e(this);var c=e("li",b);var f=e("<di
 // Obfuscated by Javascript Obfuscator
 // http://javascript-source.com
 //***********************************************
-jQuery("#wowslider-container1").wowSlider({effect:"cube_over,tv,brick,cube,rotate,fly,stack",prev:"",next:"",duration:20*100,delay:49*100,width:550,height:348,autoPlay:true,autoPlayVideo:false,playPause:true,stopOnHover:true,loop:false,bullets:0,caption:true,captionEffect:"traces",controls:true,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:[{src:"./blogspot.jpg",title:"",target:"_self"},{src:"./blogspot7.jpg",title:"Solo Las No.1 de Los Beatles",href:"https://rllom.github.io/radioandromeda/topend/thebeatles.html",target:"_top"},{src:"./blogspot12.jpg",title:"Solo Las No.1 de Mariah Carey",href:"https://rllom.github.io/radioandromeda/topend/mariahcarey.html",target:"_top"},{src:"./blogspot16.jpg",title:"Solo Las No.1 de Elvis Presley",href:"https://rllom.github.io/radioandromeda/topend/elvis.html",target:"_top"},{src:"./blogspot15.jpg",title:"Solo Las No.1 de Rihanna",href:"https://rllom.github.io/radioandromeda/topend/rihanna.html",target:"_top"},{src:"./blogspot5.jpg",title:"Solo Las No.1 de Michael Jackson",href:"https://rllom.github.io/radioandromeda/topend/mjackson.html",target:"_top"},{src:"./blogspot13.jpg",title:"Las 10 Mejores del 2016",href:"https://rllom.github.io/radioandromeda/topend/top2016.html",target:"_top"},
-{src:"./blogspot8.jpg",title:"Las 10 Mejores del 2017",href:"https://rllom.github.io/radioandromeda/topend/top2017.html",target:"_top"},
-{src:"./blogspot14.jpg",title:"Las 10 Mejores del 2018",href:"https://rllom.github.io/radioandromeda/topend/top2018.html",target:"_top"},
-{src:"./blogspot18.jpg",title:"Las 10 Mejores del 2019",href:"https://rllom.github.io/radioandromeda/topend/top2019.html",target:"_top"},
-{src:"./blogspot17.jpg",title:"Air Supply: The One That You Love",href:"https://rllom.github.io/radioandromeda/topend/mjackson.html",target:"_top"},{src:"./blogspot3.jpg",title:""},{src:"./blogspot2.jpg",title:""},{src:"./blogspot3b.jpg",title:""},{src:"./blogspot4.jpg",title:""},{src:"./blogspot13.jpg",title:"Las 10 Mejores del 2016",target:"_top"},{src:"./blogspot8.jpg",title:"Las 10 Mejores del 2017"},{src:"./blogspot14.jpg",title:"Las 10 Mejores del 2018"},{src:"./blogspot9.jpg",title:"",href:"http://wowslider.net"},{src:"./blogspot1.jpg",title:"Combinación Perfecta Pasado y Presente"}]});
+jQuery("#wowslider-container1").wowSlider({effect:"cube_over,tv,brick,cube,rotate,fly,stack",prev:"",next:"",duration:20*100,delay:49*100,width:550,height:348,autoPlay:true,autoPlayVideo:false,playPause:true,stopOnHover:true,loop:false,bullets:0,caption:true,captionEffect:"traces",controls:true,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:[
+{src:"./01_ainicio.jpg",title:"",target:"_self"},
+
+{src:"./01_thebeatles.jpg",title:"Solo Las No.1 de Los Beatles",href:"https://rllom.github.io/radioandromeda/topend/thebeatles.html",target:"_top"},
+{src:"./02_mariahc.jpg",title:"Solo Las No.1 de Mariah Carey",href:"https://rllom.github.io/radioandromeda/topend/mariahcarey.html",target:"_top"},
+{src:"./03_elvis.jpg",title:"Solo Las No.1 de Elvis Presley",href:"https://rllom.github.io/radioandromeda/topend/elvis.html",target:"_top"},
+{src:"./04_rihanna.jpg",title:"Solo Las No.1 de Rihanna",href:"https://rllom.github.io/radioandromeda/topend/rihanna.html",target:"_top"},
+{src:"./05_michaelj.jpg",title:"Solo Las No.1 de Michael Jackson",href:"https://rllom.github.io/radioandromeda/topend/mjackson.html",target:"_top"},
+{src:"./06_madonna.jpg",title:"Solo Las No.1 de Madonna",href:"https://rllom.github.io/radioandromeda/topend/madonna.html",target:"_top"},
+{src:"./07_supreme.jpg",title:"Solo Las No.1 de The Supreme",href:"https://rllom.github.io/radioandromeda/topend/thesupreme.html",target:"_top"},
+{src:"./08_whitney.jpg",title:"Solo Las No.1 de Whitney Houston",href:"https://rllom.github.io/radioandromeda/topend/witneyhouston.html",target:"_top"},
+
+{src:"./leyenda_airsupply.jpg",title:"Air Supply: The One That You Love",href:"https://rllom.github.io/radioandromeda/topend/airsupply.html",target:"_top"},
+{src:"./leyenda_cranberries.jpg",title:"The Cranberries",href:"https://rllom.github.io/radioandromeda/topend/thecranberries.html",target:"_top"},
+{src:"./leyenda_roxette.jpg",title:"Roxette",href:"https://rllom.github.io/radioandromeda/topend/roxette.html",target:"_top"},
+{src:"./leyenda_tracy.jpg",title:"Tracy Chapman",href:"https://rllom.github.io/radioandromeda/topend/tracy.html",target:"_top"},
+
+{src:"./top2016.jpg",title:"Las 10 Mejores del 2016",href:"https://rllom.github.io/radioandromeda/topend/top2016.html",target:"_top"},
+{src:"./top2017.jpg",title:"Las 10 Mejores del 2017",href:"https://rllom.github.io/radioandromeda/topend/top2017.html",target:"_top"},
+{src:"./top2018.jpg",title:"Las 10 Mejores del 2018",href:"https://rllom.github.io/radioandromeda/topend/top2018.html",target:"_top"},
+{src:"./top2019.jpg",title:"Las 10 Mejores del 2019",href:"https://rllom.github.io/radioandromeda/topend/top2019.html",target:"_top"},
+{src:"./top2020.jpg",title:"Las 10 Mejores del 2020",href:"https://rllom.github.io/radioandromeda/topend/top2020.html",target:"_top"},
+{src:"./top2021.jpg",title:"Las 10 Mejores del 2021",href:"https://rllom.github.io/radioandromeda/topend/top2021.html",target:"_top"},
+
+{src:"./z1.jpg",title:""},
+{src:"./z2.jpg",title:""},
+{src:"./z3.jpg",title:""},
+{src:"./z4.jpg",title:""},
+{src:"./z5.jpg",title:""},
+{src:"./z100.jpg",title:"Combinación Perfecta Pasado y Presente"}
+
+]});
+
+
+

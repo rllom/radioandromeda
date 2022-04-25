@@ -13,7 +13,7 @@
 #amazingaudioplayer-1 .amazingaudioplayer-image {
 	display: block;
 	position: relative;
-	float: center;
+	float: left;
 	margin:14px;
 	overflow: hidden;
 	-webkit-box-shadow: 0 8px 6px -6px black;
