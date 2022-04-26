@@ -78,7 +78,7 @@ function ws_stack(d,a,b){var e=jQuery;var g=e(this);var c=e("li",b);var f=e("<di
 // Obfuscated by Javascript Obfuscator
 // http://javascript-source.com
 //***********************************************
-jQuery("#wowslider-container1").wowSlider({effect:"cube_over,tv,brick,cube,rotate,fly,stack",prev:"",next:"",duration:20*100,delay:49*100,width:550,height:348,autoPlay:true,autoPlayVideo:false,playPause:true,stopOnHover:true,loop:false,bullets:0,caption:true,captionEffect:"traces",controls:true,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:[
+jQuery("#wowslider-container1").wowSlider({effect:"tv,cube,rotate,fly,stack",prev:"",next:"",duration:20*100,delay:49*100,width:550,height:348,autoPlay:true,autoPlayVideo:false,playPause:true,stopOnHover:true,loop:false,bullets:0,caption:true,captionEffect:"traces",controls:true,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:[
 {src:"./01_ainicio.jpg",title:"",target:"_self"},
 
 {src:"./01_thebeatles.jpg",title:"Solo Las No.1 de Los Beatles",href:"https://rllom.github.io/radioandromeda/topend/thebeatles.html",target:"_top"},
