@@ -1,0 +1,87 @@
+<html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Www.RadioAndromeda.Tk</title>
+
+<link href="https://fonts.googleapis.com/css?family=Cute+Font|Share+Tech&display=swap" rel="stylesheet">
+<style>
+  body {
+  background: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: 'Share Tech', sans-serif;
+  font-size: 16px;
+  color:#FFFFFF;
+}
+a:link  {color:#4A8F9F;text-decoration: none;
+}
+a {text-decoration:none;  background-color:Transparent; color:#0055FF;
+}
+a:visited { color:#4A8F9F;text-decoration: none;
+}
+a:hover {color: #ffffff;
+}
+</style>
+
+</head>
+<body>
+
+
+<center>
+ <!-- RadioBOSS Cloud Artwork Widget (Start) -->
+<img id='rbcloud_cover15531' src='https://c11.radioboss.fm/w/artwork/71.png' width='100%' height='auto' alt='cover art' style='border-radius: 0px 0px 0px 0px; box-shadow: 0px 0px 0px 0px #000000;'>
+
+<script src='https://c11.radioboss.fm/w/cover.js?u=71&amp;wid=15531'></script>
+<!-- RadioBOSS Cloud Artwork Widget (End) -->
+
+<!-- BEGIN IFRAME LUNA PLAYER --> 
+<iframe width="100%" height="80" src="smallplayer.html" frameborder="0" scrolling="no" allow="autoplay;"></iframe> 
+<!-- END IFRAME LUNA PLAYER  -->  
+  
+<p>
+
+<!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
+<div id='rbcloud_nowplaying16384'></div>
+
+<div>Próximo Tema: <span id='rbcloud_nexttrack16384'>...</span></div>
+<script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
+<!-- RadioBOSS Cloud NowPlaying Widget (End) -->
+<a  href="http://radioandromeda.tk" target="_blank">Sitio Web</a> | 
+<a   href="https://www.facebook.com/radioandromeda2" target="_blank">Facebook</a> | 
+<a href="javascript:location.reload()">Reiniciar</a>  | 
+<a id="set-window-state-minimized" style="color: green; cursor: hand;">Minimizar</a> |
+<a onclick="return closeWindow();"   style="color: red; cursor: hand;">Cerrar Apps</a> 
+
+<script type="text/javascript">
+        function closeWindow() {
+  
+            // Open the new window 
+            // with the URL replacing the
+            // current page using the
+            // _self value
+            let new_window =
+                open(location, '_self');
+  
+            // Close this window
+            dhc.app.close();
+  
+            return false;
+        }
+</script>
+
+<script>
+ document.getElementById('set-window-state-minimized').addEventListener('click', function () {
+     dhc.window.setState({state: 'minimized'}).then(() => {
+       return false;   
+     });     
+   });         
+</script>
+
+</center>
+
+</body>
+</html>
