@@ -1,3 +1,4 @@
+<style>
 /* Created with Easy Button & Menu Maker */
 
 #mbmcpebul_wrapper {
@@ -226,12 +227,12 @@
 #mbmcpebul_table ul {
   position: absolute;
   top:-99999px;
-  z-index: 4000;
+  z-index: 40000;
 }
 
 #mbmcpebul_table ul ul {
   position: absolute;
-  z-index: 5000;
+  z-index: 50000;
 }
 
 #mbmcpebul_table .submenu_arrow {
@@ -260,11 +261,7 @@
 }
 
 
-
 /* Burger menu CSS */
-
-
-
 #mbmcpebul_table_burger {
   margin: 0px;
   margin-bottom: -0px;
@@ -376,7 +373,7 @@
   background: #CC6701;
   font-size: 0;
   border-radius: 0;
-  z-index: 5000;
+  z-index: 50000;
 }
 
 #mbmcpebul_table_burger ul li a {
@@ -416,7 +413,6 @@
   display: block;
 }
 
-
 #mbmcpebul_table_burger ul {
   box-shadow: 0 2px 5px -1px #333333;
 }
@@ -454,8 +450,6 @@
 }
 
 
-
-
 #mbmcpebul_table_burger ul ul {
   position: static;
   z-index: auto;
@@ -473,7 +467,7 @@
   top: 0 !important;
   left: 0 !important;
   min-width: 300px;  
-  z-index: 4000;
+  z-index: 40000;
 }
 
 #mbmcpebul_table_burger ul li > a {
@@ -534,14 +528,14 @@
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(-100%); }
 }#mbmcpebul_table div.arrow { 
-  background-image: url(ebab_mbmcp_d.png); 
+  background-image: url(https://rllom.github.io/radioandromeda/menublog/ebab_mbmcp_d.png); 
   background-repeat: no-repeat; 
   background-position: right center; 
   height: 100%; 
 } 
 
 #mbmcpebul_table ul li a.with_arrow, #mbmcpebul_table_burger ul li a div.with_arrow { 
-  background-image: url(ebab_mbmcp_c.png); 
+  background-image: url(https://rllom.github.io/radioandromeda/menublog/ebab_mbmcp_c.png); 
   background-repeat: no-repeat; 
   background-position: right center; 
   padding-right: 19px; 
@@ -566,4 +560,4 @@
 #mbmcpebul_table li a.button_1, #mbmcpebul_table li div a.button_1 { 
   padding-right: 7px; 
 } 
-
+</style>
