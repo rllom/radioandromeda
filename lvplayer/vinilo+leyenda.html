@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="utf-8" />
+   <title>Radio Andromeda</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Shantell Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allura">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
+
+<style> 
+body {
+  A:link  {color:#ffcc00;text-decoration: none}
+  A { text-decoration:none;  background-color:Transparent; color:#0055FF;}
+  A:visited { color:#ffcc00;text-decoration: none}
+  a:hover {COLOR: #ffffff}
+  
+  overflow: hidden; /* Hide scrollbars */
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  height: 83vh;
+  background-color: #000000;
+  background-image: url("");
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed;
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+img {
+  border-radius: 10px;
+}
+.img-special:hover {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  box-shadow: 0px 0px 10px 10px #0CD7C3;
+  -webkit-box-shadow: 0px 0px 10px 10px #0CD7C3;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+}
+.overlay {
+  position: absolute;
+  top: -35px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  /* background-color: rgba(0, 0, 0, 0.5); */  /* Fondo semitransparente */
+  display: none; /* Inicialmente oculta */
+  justify-content: center;
+  align-items: center;
+  font: bold 0.6em dotum, "Michroma", arial; text-align: center; color:#000000;
+}
+.overlay.active {
+  display: flex; /* Mostrar la capa cuando esté activa */
+}
+
+.reloj {
+width: 300px; 
+height: 20px; 
+padding: 0px 0px; 
+border: 0px solid black; 
+font: bold 1.8em dotum, "Michroma", arial; text-align: center; color:#ffffff;
+letter-spacing: 1px;
+}  
+</style>
+
+<script>
+// Estilos CSS para la animación de rotación
+var style = document.createElement('style');
+style.innerHTML = `
+.vinyl {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  animation: rotation 7s linear infinite;
+  border-radius: 50%;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+`;
+document.head.appendChild(style);
+</script>
+
+</head>
+	
+<body>
+
+
+<DIV style='display:scroll; position:fixed; top:40px; left:20px; width:50%; height:82%; margin-right:auto;'>
+<!-- BEGIN EMBED LUNA PLAYER --> 
+
+<iframe name='rockola' id='foot' width='100%' height='100%' src="rockola.html" frameborder="0" scrolling="no" allow="autoplay"></iframe> 
+
+<!-- END EMBED LUNA PLAYER -->
+</div> 
+
+
+<DIV style='display:scroll; display:scroll; position:fixed; bottom:60px; left:20%; font: bold 0.8em dotum, "Michroma", arial; text-align: center; color:#000000;'>
+<a href="rockola.html" target="rockola">ROCKOLA</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="vinilo+luna.html" target="_top">LUNAPLAYER</a>
+
+</DIV>
+ 
+	
+<DIV id='floting' style='position:fixed; top:5px; width:43%; right:68px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
+'>
+<center>
+<!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
+<span id='rbcloud_nowplaying16384'></span>
+<script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
+<!-- RadioBOSS Cloud NowPlaying Widget (End) -->
+</center>
+<br>
+<div class="overlay" id="overlay">
+<DIV style="position:fixed; top:15px; width:16%; right:-1px; margin-left:0; margin-right:50; z-index: 1">
+<img id="null" src="https://rllom.github.io/andromeda/homepage/arm7.png" width=100% height="auto" style='opacity: 0.8; border-radius: 0px; box-shadow: 0px 0px 0px 0px #000000;'/></a>
+
+</div> 
+</div>
+
+    <audio id="audio" src="https://c11.radioboss.fm:18071/stream" preload="none"></audio>
+    <img id="rbcloud_cover15531" src="https://c11.radioboss.fm/w/artwork/71.png" width="100%" height="auto" alt="Imagen de reproducción" style="cursor: pointer;">
+    <script src='https://c11.radioboss.fm/w/cover.js?u=71&amp;wid=15531'></script>
+
+
+<script>
+var audio = document.getElementById("audio");
+var imagen = document.getElementById("rbcloud_cover15531");
+var overlay = document.getElementById("overlay");
+var sound = false;
+
+imagen.addEventListener("click", function() {
+  if (!sound) {
+    audio.play();
+    imagen.src = "https://c11.radioboss.fm/w/artwork/71.png"; // Cambia la imagen a una imagen de pausa
+    imagen.setAttribute("id", "rbcloud_cover15531");
+    imagen.setAttribute("width", "100%");
+    imagen.setAttribute("height", "auto");
+  
+    imagen.classList.add("rotate"); // Agrega la clase 'rotate' para la animación de rotación
+    overlay.classList.add("active"); // Mostrar la capa oculta
+    sound = true;
+  } else {
+    audio.pause();
+    audio.src = audio.src;
+    imagen.src = "https://c11.radioboss.fm/w/artwork/71.png"; // Cambia la imagen a una imagen de reproducción
+    imagen.setAttribute("id", "imagen-reproduccion"); // Agrega el id "imagen-reproduccion" a la imagen
+    imagen.setAttribute("id", "rbcloud_cover15531");
+    imagen.setAttribute("width", "100%");
+    imagen.setAttribute("height", "auto");
+    imagen.classList.remove("rotate"); // Quita la clase 'rotate' para detener la animación de rotación
+    overlay.classList.remove("active"); // Ocultar la capa oculta
+    sound = false;
+  }
+});
+
+function updateImage() {
+  const image = document.getElementById('rbcloud_cover15531');
+  const timestamp = new Date().getTime();
+  image.src = `https://c11.radioboss.fm/w/artwork/71.png?${timestamp}`;
+}
+setInterval(updateImage, 10000);
+
+// Estilos CSS para la animación de rotación
+var style = document.createElement('style');
+style.innerHTML = `
+.rotate {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  animation: rotation 7s linear infinite;
+  border-radius: 50%;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+`;
+document.head.appendChild(style);
+</script>
+
+
+<div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:scroll; position:fixed; top:1px; right:40%;'>
+<!-- Acá mostraremos el reloj --> 
+</div>
+
+<script>
+function cargarReloj(){
+    // Haciendo uso del objeto Date() obtenemos la hora, minuto y segundo 
+    var fechahora = new Date();
+    var hora = fechahora.getHours(); 
+    var minuto = fechahora.getMinutes(); 
+    var segundo = fechahora.getSeconds(); 
+    // Variable meridiano con el valor 'AM' 
+    var meridiano = "am";
+    // Si la hora es igual a 0, declaramos la hora con el valor 12 
+    if(hora == 0){
+        hora = 12;
+    }
+    // Si la hora es mayor a 12, restamos la hora - 12 y mostramos la variable meridiano con el valor 'PM' 
+    if(hora > 12) {
+        hora = hora - 12;
+        // Variable meridiano con el valor 'PM' 
+        meridiano = "pm";
+     }
+    // Formateamos los ceros '0' del reloj 
+    hora = (hora < 10) ? "0" + hora : hora;
+    minuto = (minuto < 10) ? "0" + minuto : minuto;
+    segundo = (segundo < 10) ? "0" + segundo : segundo;
+    // Enviamos la hora a la vista HTML 
+    var tiempo = hora + ":" + minuto + ":" + segundo + " " + meridiano;    
+    document.getElementById("relojnumerico").innerText = tiempo;
+    document.getElementById("relojnumerico").textContent = tiempo;
+    // Cargamos el reloj a los 500 milisegundos 
+    setTimeout(cargarReloj, 500);
+ }
+// Ejecutamos la función 'CargarReloj' 
+cargarReloj();
+</script>
+
+
+</body>
+</html>
