@@ -15,7 +15,7 @@ body {
   A { text-decoration:none;  background-color:Transparent; color:#0055FF;}
   A:visited { color:#00C0FF; text-decoration: none}
   a:hover {COLOR: #ffffff}
-  
+   
   overflow: hidden; /* Hide scrollbars */
   margin: 0;
   padding: 0;
@@ -61,14 +61,8 @@ img {
   display: flex; /* Mostrar la capa cuando esté activa */
 }
 
-.reloj {
-width: 100%; 
-height: 20px; 
-padding: 0px 0px; 
-border: 0px solid black; 
-font: bold 1.3em dotum, "Michroma", arial; text-align: center; color:#00C0FF;
-letter-spacing: 1px;
-}  
+
+
 </style>
 
 <script>
@@ -99,8 +93,9 @@ document.head.appendChild(style);
 <body>
 
 
-<DIV style='display:inline-block; position:fixed; top:35px; left:30px; width:50%; height:85%; margin-right:auto;'>
+<DIV style='display:inline-block; position:fixed; top:35px; left:10px; width:50%; height:85%; margin-right:auto; border:2px solid greenyellow;' >
 <!-- BEGIN EMBED LUNA PLAYER --> 
+
 
 <iframe name='rockola' id='foot' width='100%' height='100%' src="rockola.html" frameborder="0" scrolling="no" allow="autoplay"></iframe> 
 
@@ -108,15 +103,15 @@ document.head.appendChild(style);
 </div> 
 
 
-<DIV style='display:inline-block; position:fixed; bottom:35px; font: bold 0.8em dotum, "Michroma", arial; text-align: center; width:50%; left:0px;'>
+<DIV style='display:inline-block; position:fixed; top:7px; font: bold 0.8em dotum, "Michroma", arial; text-align: center; width:50%; left:0px;'>
 <a href="rockola.html" target="rockola">ROCKOLA</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="vinilo+luna.html" target="_top">LUNAPLAYER</a>
 
 </DIV>
  
-<DIV id='floting' style='position:fixed; top:5px; width:42%; right:40px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
-'>
+<DIV id='floting' style='display:inline-block; position:fixed; top:5px;  width:38%; height:88%; right:40px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
+border:2px solid greenyellow;' >
 <center>
 <!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
 <span id='rbcloud_nowplaying16384'></span>
@@ -126,7 +121,7 @@ document.head.appendChild(style);
 <br>
 
 <div class="overlay" id="overlay">
-<DIV style="position:fixed; top:50px; width:16%; right:-7px;  z-index: 1">
+<DIV style="position:fixed; top:50px; width:14%; right:-7px;  z-index: 1">
 <img id="null" src="https://rllom.github.io/andromeda/homepage/arm7.png" width=95% height="auto" style='opacity: 0.6; border-radius: 0px; box-shadow: 0px 0px 0px 0px #000000;'/></a>
 </div> 
 
@@ -195,45 +190,6 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
-</script>
-
-
-<div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:inline-block; position:fixed; top:4px; left:30px; width:50%;'>
-<!-- Acá mostraremos el reloj --> 
-</div>
-
-<script>
-function cargarReloj(){
-    // Haciendo uso del objeto Date() obtenemos la hora, minuto y segundo 
-    var fechahora = new Date();
-    var hora = fechahora.getHours(); 
-    var minuto = fechahora.getMinutes(); 
-    var segundo = fechahora.getSeconds(); 
-    // Variable meridiano con el valor 'AM' 
-    var meridiano = "am";
-    // Si la hora es igual a 0, declaramos la hora con el valor 12 
-    if(hora == 0){
-        hora = 12;
-    }
-    // Si la hora es mayor a 12, restamos la hora - 12 y mostramos la variable meridiano con el valor 'PM' 
-    if(hora > 12) {
-        hora = hora - 12;
-        // Variable meridiano con el valor 'PM' 
-        meridiano = "pm";
-     }
-    // Formateamos los ceros '0' del reloj 
-    hora = (hora < 10) ? "0" + hora : hora;
-    minuto = (minuto < 10) ? "0" + minuto : minuto;
-    segundo = (segundo < 10) ? "0" + segundo : segundo;
-    // Enviamos la hora a la vista HTML 
-    var tiempo = hora + ":" + minuto + ":" + segundo + " " + meridiano;    
-    document.getElementById("relojnumerico").innerText = tiempo;
-    document.getElementById("relojnumerico").textContent = tiempo;
-    // Cargamos el reloj a los 500 milisegundos 
-    setTimeout(cargarReloj, 500);
- }
-// Ejecutamos la función 'CargarReloj' 
-cargarReloj();
 </script>
 
 
