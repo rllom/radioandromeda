@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allura">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
 
+<script src="https://rllom.github.io/andromeda/htmlcompilerlplayer/js/jquery-3.2.1.min.js"></script>
+
 <style> 
 body {
   A:link  {color:#00C0FF; text-decoration: none}
@@ -60,9 +62,6 @@ img {
 .overlay.active {
   display: flex; /* Mostrar la capa cuando esté activa */
 }
-
-
-
 </style>
 
 <script>
@@ -93,25 +92,8 @@ document.head.appendChild(style);
 <body>
 
 
-<DIV style='display:inline-block; position:fixed; top:35px; left:10px; width:50%; height:85%; margin-right:auto; border:2px solid greenyellow;' >
-<!-- BEGIN EMBED LUNA PLAYER --> 
-
-
-<iframe name='rockola' id='foot' width='100%' height='100%' src="rockola.html" frameborder="0" scrolling="no" allow="autoplay"></iframe> 
-
-<!-- END EMBED LUNA PLAYER -->
-</div> 
-
-
-<DIV style='display:inline-block; position:fixed; top:7px; font: bold 0.8em dotum, "Michroma", arial; text-align: center; width:50%; left:0px;'>
-<a href="rockola.html" target="rockola">ROCKOLA</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="vinilo+luna.html" target="_top">LUNAPLAYER</a>
-
-</DIV>
- 
-<DIV id='floting' style='display:inline-block; position:fixed; top:5px;  width:38%; height:88%; right:40px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
-border:2px solid greenyellow;' >
+<DIV id='floting' style='display:inline-block; position:fixed; top:5px;  width:38%; height:88%; left:40px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
+border:0px solid greenyellow;' >
 <center>
 <!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
 <span id='rbcloud_nowplaying16384'></span>
@@ -121,7 +103,7 @@ border:2px solid greenyellow;' >
 <br>
 
 <div class="overlay" id="overlay">
-<DIV style="position:fixed; top:50px; width:14%; right:-7px;  z-index: 1">
+<DIV style="position:fixed; top:45px; width:14%; left:31%;  z-index: 1">
 <img id="null" src="https://rllom.github.io/andromeda/homepage/arm7.png" width=95% height="auto" style='opacity: 0.6; border-radius: 0px; box-shadow: 0px 0px 0px 0px #000000;'/></a>
 </div> 
 
@@ -192,6 +174,19 @@ style.innerHTML = `
 document.head.appendChild(style);
 </script>
 
+
+<DIV style='display:inline-block; position:fixed; top:7px; font: bold 0.8em dotum, "Michroma", arial; text-align: center; width:50%; right:0px;'>
+<a href="rockola.html" target="rockola">ROCKOLA</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="vinilo+luna.html" target="_top">LUNAPLAYER</a>
+</DIV>
+
+
+<DIV style='display:inline-block; position:fixed; top:35px; right:10px; width:50%; height:85%; margin-right:auto; border:0px solid greenyellow;' >
+<!-- BEGIN EMBED LUNA PLAYER --> 
+<iframe name='rockola' id='foot' width='100%' height='100%' src="rockola.html" frameborder="0" scrolling="yes" allow="autoplay"></iframe> 
+<!-- END EMBED LUNA PLAYER -->
+</div> 
 
 
 </body>
