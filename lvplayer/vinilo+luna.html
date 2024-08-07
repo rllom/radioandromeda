@@ -62,11 +62,11 @@ img {
 }
 
 .reloj {
-width: 300px; 
+width: 100%; 
 height: 20px; 
 padding: 0px 0px; 
 border: 0px solid black; 
-font: bold 1.8em dotum, "Michroma", arial; text-align: center; color:#ffffff;
+font: bold 1.6em dotum, "Michroma", arial; text-align: left; color:#ffffff;
 letter-spacing: 1px;
 }  
 </style>
@@ -196,7 +196,7 @@ document.head.appendChild(style);
 </script>
 
 
-<div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:scroll; position:fixed; top:2px; left:0px;'>
+<div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:inline-block; position:fixed; top:2px; left:10px; width:50%;'>
 <!-- Acá mostraremos el reloj --> 
 </div>
 
