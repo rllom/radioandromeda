@@ -11,9 +11,9 @@
 
 <style> 
 body {
-  A:link  {color:#ffcc00;text-decoration: none}
+  A:link  {color:#00C0FF; text-decoration: none}
   A { text-decoration:none;  background-color:Transparent; color:#0055FF;}
-  A:visited { color:#ffcc00;text-decoration: none}
+  A:visited { color:#00C0FF; text-decoration: none}
   a:hover {COLOR: #ffffff}
   
   overflow: hidden; /* Hide scrollbars */
@@ -22,7 +22,7 @@ body {
   display: grid;
   place-items: center;
   height: 83vh;
-  background-color: #000000;
+  background-color: #00365C;;
   background-image: url("");
   background-size: cover;  
   background-repeat: no-repeat; 
@@ -62,11 +62,11 @@ img {
 }
 
 .reloj {
-width: 300px; 
+width: 100%; 
 height: 20px; 
 padding: 0px 0px; 
 border: 0px solid black; 
-font: bold 1.8em dotum, "Michroma", arial; text-align: center; color:#ffffff;
+font: bold 1.3em dotum, "Michroma", arial; text-align: center; color:#00C0FF;
 letter-spacing: 1px;
 }  
 </style>
@@ -99,7 +99,7 @@ document.head.appendChild(style);
 <body>
 
 
-<DIV style='display:scroll; position:fixed; top:40px; left:20px; width:50%; height:82%; margin-right:auto;'>
+<DIV style='display:inline-block; position:fixed; top:35px; left:30px; width:50%; height:85%; margin-right:auto;'>
 <!-- BEGIN EMBED LUNA PLAYER --> 
 
 <iframe name='rockola' id='foot' width='100%' height='100%' src="rockola.html" frameborder="0" scrolling="no" allow="autoplay"></iframe> 
@@ -108,15 +108,14 @@ document.head.appendChild(style);
 </div> 
 
 
-<DIV style='display:scroll; display:scroll; position:fixed; bottom:60px; left:20%; font: bold 0.8em dotum, "Michroma", arial; text-align: center; color:#000000;'>
+<DIV style='display:inline-block; position:fixed; bottom:35px; font: bold 0.8em dotum, "Michroma", arial; text-align: center; width:50%; left:0px;'>
 <a href="rockola.html" target="rockola">ROCKOLA</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="vinilo+luna.html" target="_top">LUNAPLAYER</a>
 
 </DIV>
  
-	
-<DIV id='floting' style='position:fixed; top:5px; width:43%; right:68px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
+<DIV id='floting' style='position:fixed; top:5px; width:42%; right:40px; margin-left:0; margin-right:0; font: bold 0.8em dotum, "Michroma", arial; color:#ffffff; letter-spacing:0.5px;
 '>
 <center>
 <!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
@@ -125,11 +124,12 @@ document.head.appendChild(style);
 <!-- RadioBOSS Cloud NowPlaying Widget (End) -->
 </center>
 <br>
-<div class="overlay" id="overlay">
-<DIV style="position:fixed; top:15px; width:16%; right:-1px; margin-left:0; margin-right:50; z-index: 1">
-<img id="null" src="https://rllom.github.io/andromeda/homepage/arm7.png" width=100% height="auto" style='opacity: 0.8; border-radius: 0px; box-shadow: 0px 0px 0px 0px #000000;'/></a>
 
+<div class="overlay" id="overlay">
+<DIV style="position:fixed; top:50px; width:16%; right:-7px;  z-index: 1">
+<img id="null" src="https://rllom.github.io/andromeda/homepage/arm7.png" width=95% height="auto" style='opacity: 0.6; border-radius: 0px; box-shadow: 0px 0px 0px 0px #000000;'/></a>
 </div> 
+
 </div>
 
     <audio id="audio" src="https://c11.radioboss.fm:18071/stream" preload="none"></audio>
@@ -198,7 +198,7 @@ document.head.appendChild(style);
 </script>
 
 
-<div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:scroll; position:fixed; top:1px; right:40%;'>
+<div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:inline-block; position:fixed; top:4px; left:30px; width:50%;'>
 <!-- Acá mostraremos el reloj --> 
 </div>
 
@@ -235,6 +235,7 @@ function cargarReloj(){
 // Ejecutamos la función 'CargarReloj' 
 cargarReloj();
 </script>
+
 
 
 </body>
