@@ -55,12 +55,13 @@ img {
 .overlay.active {
   display: flex; /* Mostrar la capa cuando esté activa */
 }
+
 .reloj {
-width: 100%; 
+width: 200px; 
 height: 20px; 
 padding: 0px 0px; 
 border: 0px solid black; 
-font: bold 1.6em dotum, "Michroma", arial; text-align: left; color:#ffffff;
+font: bold 1.2em dotum, "Michroma", arial; text-align: left; color:#ffffff;
 letter-spacing: 1px;
 }  
 
@@ -108,6 +109,9 @@ document.head.appendChild(style);
     <audio id="audio" src="" preload="none"></audio>
     <img id="rbcloud_cover15531" src="https://c11.radioboss.fm/w/artwork/71.png" width="100%" height="100%" alt="Imagen de reproducción" style="cursor: pointer;">
     <script src='https://c11.radioboss.fm/w/cover.js?u=71&amp;wid=15531'></script>
+
+</div>
+
 
 <script>
 var audio = document.getElementById("audio");
@@ -168,9 +172,6 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 </script>
-
-
-</div>
 
 
 <div id="relojnumerico" class="reloj" onload="cargarReloj()" style='display:scroll; position:fixed; top:2px; left:90px;'>
