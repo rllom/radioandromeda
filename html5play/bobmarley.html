@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>The Best of Bob Marley</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="js/jquery.jplayer.js"></script>
+    <script type="text/javascript" src="js/ttw-music-player-min.js"></script>
+    <script type="text/javascript" src="js/bobmarley.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var description = 'Robert Nesta Marley (Nine Mile, Jamiaca , 6 de febrero de 1945 - Miami, 11 de mayo de 1981 a los 36 años) más conocido como Bob Marley, fue un cantante, guitarrista y compositor jamaiquino. Durante su carrera musical fue el líder, compositor y guitarrista de las bandas The Wailers (1964-1974) y Bob Marley & The Wailers (1974-1980). Marley sigue siendo el más conocido y respetado intérprete de la música reggae y es acreditado por ayudar a difundir tanto la música de Jamaica como el movimiento rastafari (del que era un miembro comprometido) a una audiencia mundial.';
+
+            $('body').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'js' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>

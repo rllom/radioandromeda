@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>The Best of Bob Marley</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="js/jquery.jplayer.js"></script>
+    <script type="text/javascript" src="js/ttw-music-player-min.js"></script>
+    <script type="text/javascript" src="js/myplaylist.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var description = 'Camilo Blanes Cortés (Alcoy, 16 de septiembre de 1946 - Madrid, 8 de septiembre de 2019), más conocido por su nombre artístico Camilo Sesto, fue un cantante, compositor e intérprete español de balada romántica, pop y rock. El cantautor alicantino fue una de las voces insignia de España, galardonado en 2011 con la medalla «Máximo Orgullo Hispano», entregada en la ciudad de Las Vegas (Estados Unidos). Con más de 40 producciones discográficas y gracias a su frenética actividad en las décadas de 1970 y 1980, fue uno de los intérpretes con mayor cantidad de números 1, con 52 en total, y 18 en la lista de Los 40 principales. Se estima que sus ventas superan los 180 millones de copias. El equipo de Camilo Sesto anunció su fallecimiento a través de la cuenta oficial del artista en la red social Twitter: "Queridos amigos y amigas, lamentamos mucho comunicaros que nuestro gran y querido artista Camilo Sesto nos acaba de dejar. Descanse en paz".5​ Posteriormente, la madre de su hijo, Lourdes Ornellas y también su representante, Eduardo Guervos, confirmaron su deceso a los medios. La causa de la muerte de Camilo Sesto fue un paro cardiorrespiratorio asociado a un fallo renal, por el cual ya mantenía un delicado estado de salud desde hacía varios años.';
+
+            $('body').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'js' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
