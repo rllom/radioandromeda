@@ -1,8 +1,8 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta charset="utf-8" />
@@ -10,7 +10,7 @@
 <title>Los 100 Exitos mas grandes de todos los tiempos en la lista Hot 100 (1958-2021)</title>
 
 
-<link type="text/css" rel="stylesheet" href="../topend/sublinks.css" />
+<link type="text/css" rel="stylesheet" href="https://rllom.github.io/radioandromeda/topend/sublinks.css" />
 
 <style>
 html,body  
@@ -35,13 +35,31 @@ a:hover {color:#00C0FF;text-decoration: none;-webkit-transition: all 0.25s ease-
 0s;transition: all 0.25s ease-in 0s;}
 a img {border-width:0;
 }
-</style>		
+/* Inicio Scrollbar Delgada y Coloreada */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #585858 #000000;
+}
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #000000;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #585858;
+  border-radius: 20px;
+  border: 3px solid #000000;
+}
 
+</style>		
 
 <link href="https://rllom.github.io/radioandromeda/jplayer/css/goat.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://rllom.github.io/radioandromeda/jplayer/js/jquery.min.js"></script>
 <script type="text/javascript" src="https://rllom.github.io/radioandromeda/jplayer/js/jquery.jplayer.min.js"></script>
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/jplayer/js/playlistgoat.js"></script>
+<script type="text/javascript" src="https://rllom.github.io/radioandromeda/jplayer/js/jplayer.playlist.min.js"></script>
 
 <script type="text/javascript">
 //<![CDATA[
@@ -573,18 +591,16 @@ $(document).ready(function(){
 
 
 </head>
-<body background="image/b10.jpg">
+<body>
 
 <center>
 
 <img src="https://i.pinimg.com/originals/8b/28/12/8b2812a4eee4806efecf572d3b34ee4a.jpg" style="max-width:100%;height:auto;">
 
-
-
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+ <div id="jquery_jplayer_1" class="jp-jplayer"></div>
 <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
 	<div class="jp-type-playlist">
-		<div class="jp-gui jp-interface">
+		<div class="jp-gui jp-interface" align="justify">
 			<div class="jp-controls">
 				<button class="jp-previous" role="button" tabindex="0">previous</button>
 				<button class="jp-play" role="button" tabindex="0">play</button>
@@ -612,26 +628,27 @@ $(document).ready(function(){
 				<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
 			</div>
 		</div>
-		<div class="jp-playlist" align="left">
+		<div class="jp-playlist">
 			<ul>
 				<li>&nbsp;</li>
 			</ul>
-		</div>
+
+ 
+  </div>
 	</div>
 </div>
 
 
 <br>
 
-Definida el 23 Noviembre 2021. Puedes descargar la canción que te guste haciendo click derecho en (mp3)<br>y seleccionar "Guardar enlace como..." e iniciará la descarga.
+Puedes descargar la canción que te guste haciendo click derecho en (mp3)<br>y seleccionar "Guardar enlace como..." e iniciará la descarga.
 <br><br>
 <A HREF="http://www.radioandromeda.tk">
 Www.RadioAndromeda.tK</a> - <a href="https://www.facebook.com/radioandromeda2" target="_blank">FacebooK</a>
 
 <br><br>
-<iframe id="ifrm" src="../topend/sublinks.html"></iframe>
+<iframe id="ifrm" src="https://rllom.github.io/radioandromeda/topend/sublinks.html"></iframe>
 </center>
- 
-       
+      
+</center>  
 </body>
-</html>

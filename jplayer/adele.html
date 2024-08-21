@@ -33,6 +33,26 @@ a:hover {color:#00C0FF;text-decoration: none;-webkit-transition: all 0.25s ease-
 0s;transition: all 0.25s ease-in 0s;}
 a img {border-width:0;
 }
+
+/* Inicio Scrollbar Delgada y Coloreada */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #585858 #000000;
+}
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #000000;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #585858;
+  border-radius: 20px;
+  border: 3px solid #000000;
+}
+
 </style>		
 
 <link href="https://rllom.github.io/radioandromeda/jplayer/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
@@ -50,134 +70,156 @@ $(document).ready(function(){
 		{
 			title:"Hello ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Hello.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Hello.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Rolling in the Deep ",
 			artist:" Adele",
 			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Rolling in the Deep.mp3",
-			free:true,			
+			free:true,
+			
 		},
 		{
 			title:"Someone Like You ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Someone Like You.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Someone Like You.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Set Fire To The Rain ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Set Fire To The Rain.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Set Fire To The Rain.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"One and Only ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/One and Only.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/One and Only.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Send My Love (To Your New Lover) ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/02. Send My Love (To Your New Lover).mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/02. Send My Love (To Your New Lover).mp3",	
+			free:true,
+		
 		},
 		{
 			title:" I Miss You",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/03. I Miss You.mp3",	
-			free:true,		
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/03. I Miss You.mp3",		
+			free:true,
+	
 		},
 		{
 			title:"When We Were Young ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/04. When We Were Young.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/04. When We Were Young.mp3",	
+			free:true,
+		
 		},
 		{
 			title:" Remedy",
 			artist:" Adele",
 			mp3:"https://saigonocean3.com/nghenhacAdele/songs/05. Remedy.mp3",
-			free:true,			
+			free:true,
+			
 		},
 		{
 			title:" Water Under The Bridge",
 			artist:" Adele",
 			mp3:"https://saigonocean3.com/nghenhacAdele/songs/06. Water Under The Bridge.mp3",
-			free:true,			
+			free:true,
+			
 		},
 		{
 			title:" River Lea",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/07. River Lea.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/07. River Lea.mp3",	
+			free:true,
+		
 		},
 		{
 			title:" Love In The Dark ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/08. Love In The Dark.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/08. Love In The Dark.mp3",	
+			free:true,
+		
 		},
 		{
 			title:" Million Years Ago",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/09. Million Years Ago.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/09. Million Years Ago.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"  All I Ask",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/10. All I Ask.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/10. All I Ask.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Sweetest Devotion ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/11. Sweetest Devotion.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/11. Sweetest Devotion.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Cant Let Go ",
 			artist:" Adele",
 			mp3:"https://saigonocean3.com/nghenhacAdele/songs/12. Cant Let Go.mp3",	
-			free:true,		
+			free:true,
+		
 		},
 		{
 			title:" Lay Me Down ",
 			artist:" Adele",
 			mp3:"https://saigonocean3.com/nghenhacAdele/songs/13. Lay Me Down.mp3",	
-			free:true,		
+			free:true,
+		
 		},
 		{
 			title:" Why Do You Love Me ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/14. Why Do You Love Me.mp3",
-			free:true,		
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/14. Why Do You Love Me.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Skyfall ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Skyfall.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Skyfall.mp3",		
+			free:true,
+	
 		},
 		{
 			title:"Lovesong ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Lovesong.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Lovesong.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Dont You Remember  ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Dont You Remember.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Dont You Remember.mp3",	
+			free:true,
+		
 		},
 		{
 			title:"Rumor Has It  ",
 			artist:" Adele",
-			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Rumor Has It.mp3",
-			free:true,			
+			mp3:"https://saigonocean3.com/nghenhacAdele/songs/Rumor Has It.mp3",	
+			free:true,
+		
 		}
 	], {
 		swfPath: "../dist/jplayer",
@@ -191,7 +233,6 @@ $(document).ready(function(){
 });
 //]]>
 </script>
-
 </head>
 <body>
 
