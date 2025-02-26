@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width">
     <title>MENTES INSIGNES</title>
 
-
-
 <link type="text/css" rel="stylesheet" href="sublinks.css" />
 
+<!--PWA-FACTORY.COM-->
+            <!--ADD THE FILES IN YOUR ROOT FOLDER & INCLUDE THIS IN YOUR HTML HEAD-->
+                <link rel="manifest" href="manifest.json">
+                <script>
+                    if ('serviceWorker' in navigator) {
+                        window.addEventListener("load", () => {
+                            navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                                console.log('ServiceWorker registered');
+                              }).catch(function(err) {
+                                console.log('ServiceWorker error: ', err);
+                              });
+                        })
+                    }
+                </script>    
+            <!--PWA-FACTORY.COM-->
 
+	
 <!--Star fancy box-->
 <script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/jquery-1.4.3.min.js"/>
 <script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
