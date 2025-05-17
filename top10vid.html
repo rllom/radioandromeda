@@ -144,15 +144,44 @@
                 <span class="show-more" onclick="toggleVideos()">Ver las otras 5</span>
             </div>
             <div class="video-player">
-                <iframe id="player" src="https://www.youtube.com/embed/kPa7bsKwL-c" allowfullscreen></iframe>
+                 <iframe id="player" src="https://www.youtube.com/embed/VIDEO_ID1?enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
+        const videoIds = [
+            'VIDEO_ID1', 'VIDEO_ID2', 'VIDEO_ID3', 'VIDEO_ID4', 'VIDEO_ID5',
+            'VIDEO_ID6', 'VIDEO_ID7', 'VIDEO_ID8', 'VIDEO_ID9', 'VIDEO_ID10'
+        ];
+
+        let currentIndex = 0;
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                currentIndex = (currentIndex + 1) % videoIds.length;
+                player.loadVideoById(videoIds[currentIndex]);
+            }
+        }
+
+        function playVideo(index) {
+            currentIndex = index;
+            player.loadVideoById(videoIds[index]);
+        }
+
         function changeVideo(url) {
             document.getElementById('player').src = url;
         }
+
         function toggleVideos() {
             var firstFive = document.getElementById('firstFive');
             var moreVideos = document.getElementById('moreVideos');
@@ -168,6 +197,12 @@
                 showMoreText.textContent = 'Ver las primeras 5';
             }
         }
+
+        // Cargar API de YouTube
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
 </body>
 </html>
