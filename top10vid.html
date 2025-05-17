@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP 10 BILLBOARD SEMANA 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1500px;
+            margin: auto;
+            background: #1D2E38;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .header {
+            background: #D1974D;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .playlist {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .video-list {
+            flex: 1;
+        }
+        .video-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .video-item:hover {
+            background: #ccc;
+        }
+        .video-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .video-item span {
+            font-weight: bold;
+        }
+        .video-player {
+            flex: 2;
+        }
+        iframe {
+            width: 100%;
+            height: 528px;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+       .show-more {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            background: #D1974D;
+            text-align: center;
+            width: fit-content;
+        }
+        .show-more:hover {
+            background: #ddd;
+            color: #574b90;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">TOP 10 DE ESTA SEMANA EN VIDEO</div>
+        <div class="playlist">
+            <div class="video-list">
+                <div id="firstFive">
+                      <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/sNY_2TEmzho')">
+                    <img src="https://i4.ytimg.com/vi/sNY_2TEmzho/hqdefault.jpg" alt="">
+                    <span>01 Kendrick Lamar & SZA - luther</span>
+                </div>
+                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/u2ah9tWTkmk')">
+                    <img src="https://i4.ytimg.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="">
+                    <span>02 Alex Warren - Ordinary</span>
+                </div>
+                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/ekr2nIex040')">
+                      <img src="https://i4.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg" alt="">
+                    <span>03 Die With A Smile - Lady Gaga & Bruno Mars</span>
+                </div>
+                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/t7bQwwqW-Hc')">
+                    <img src="https://i4.ytimg.com/vi/t7bQwwqW-Hc/hqdefault.jpg" alt="">
+                    <span>04 A Bar Song (Tipsy) - Shaboozey</span>
+                </div>
+                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/8ekJMC8OtGU')">
+                    <img src="https://i4.ytimg.com/vi/8ekJMC8OtGU/hqdefault.jpg" alt="">
+                    <span>05 Drake - NOKIA</span>
+                </div>
+                </div>
+                <div id="moreVideos" class="hidden">
+                   <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/GR3Liudev18')">
+                    <img src="https://i4.ytimg.com/vi/GR3Liudev18/hqdefault.jpg" alt="">
+                    <span>06 Chappell Roan - Pink Pony Club</span>
+                </div>
+
+		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/GZ3zL7kT6_c')">
+                    <img src="https://i4.ytimg.com/vi/GZ3zL7kT6_c/hqdefault.jpg" alt="">
+                    <span>07 Lose Control - Teddy Swims</span>
+                </div>
+
+		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/Oa_RSwwpPaA')">
+                    <img src="https://i4.ytimg.com/vi/Oa_RSwwpPaA/hqdefault.jpg" alt="">
+                    <span>08 Benson Boone - Beautiful Things</span>
+                </div>
+
+		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/riCP9x31Kuk')">
+                    <img src="https://i4.ytimg.com/vi/riCP9x31Kuk/hqdefault.jpg" alt="">
+                    <span>09 Doechii - Anxiety </span>
+                </div>
+
+   		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/HwThuMZ80RA')">
+                    <img src="https://i4.ytimg.com/vi/HwThuMZ80RA/hqdefault.jpg" alt="">
+                    <span>10 Morgan Wallen - I'm The Problem </span>
+                </div>
+
+                </div>
+                <span class="show-more" onclick="toggleVideos()">Ver las otras 5</span>
+            </div>
+            <div class="video-player">
+                <iframe id="player" src="https://www.youtube.com/embed/kPa7bsKwL-c" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeVideo(url) {
+            document.getElementById('player').src = url;
+        }
+        function toggleVideos() {
+            var firstFive = document.getElementById('firstFive');
+            var moreVideos = document.getElementById('moreVideos');
+            var showMoreText = document.querySelector('.show-more');
+
+            if (firstFive.classList.contains('hidden')) {
+                firstFive.classList.remove('hidden');
+                moreVideos.classList.add('hidden');
+                showMoreText.textContent = 'Ver las otras 5';
+            } else {
+                firstFive.classList.add('hidden');
+                moreVideos.classList.remove('hidden');
+                showMoreText.textContent = 'Ver las primeras 5';
+            }
+        }
+    </script>
+</body>
+</html>
