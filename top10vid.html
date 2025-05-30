@@ -44,7 +44,6 @@
             border-radius: 5px;
             margin-bottom: 8px;
             cursor: pointer;
-            transition: background 0.3s, color 0.3s;
         }
         .video-item:hover {
             background: #ccc;
@@ -58,12 +57,18 @@
         .video-item span {
             font-weight: bold;
         }
-        .video-item.active {
-            background: #D1974D;
-            color: white;
-        }
         .video-player {
             flex: 2;
+        }
+        .video-title {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 5px;
         }
         iframe {
             width: 100%;
@@ -98,52 +103,53 @@
         <div class="playlist">
             <div class="video-list">
                 <div id="firstFive">
-                    <div class="video-item" onclick="changeVideo(0, this)">
+                    <div class="video-item" onclick="playVideo(0)">
                         <img src="https://i4.ytimg.com/vi/sNY_2TEmzho/hqdefault.jpg" alt="">
                         <span>01 Kendrick Lamar & SZA - luther</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(1, this)">
+                    <div class="video-item" onclick="playVideo(1)">
                         <img src="https://i4.ytimg.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="">
                         <span>02 Alex Warren - Ordinary</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(2, this)">
+                    <div class="video-item" onclick="playVideo(2)">
                         <img src="https://i4.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg" alt="">
                         <span>03 Die With A Smile - Lady Gaga & Bruno Mars</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(3, this)">
+                    <div class="video-item" onclick="playVideo(3)">
                         <img src="https://i4.ytimg.com/vi/t7bQwwqW-Hc/hqdefault.jpg" alt="">
                         <span>04 A Bar Song (Tipsy) - Shaboozey</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(4, this)">
+                    <div class="video-item" onclick="playVideo(4)">
                         <img src="https://i4.ytimg.com/vi/8ekJMC8OtGU/hqdefault.jpg" alt="">
                         <span>05 Drake - NOKIA</span>
                     </div>
                 </div>
                 <div id="moreVideos" class="hidden">
-                    <div class="video-item" onclick="changeVideo(5, this)">
+                    <div class="video-item" onclick="playVideo(5)">
                         <img src="https://i4.ytimg.com/vi/HwThuMZ80RA/hqdefault.jpg" alt="">
-                        <span>06 Morgan Wallen - I'm The Problem </span>
+                        <span>06 Morgan Wallen - I'm The Problem</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(6, this)">
+                    <div class="video-item" onclick="playVideo(6)">
                         <img src="https://i4.ytimg.com/vi/GZ3zL7kT6_c/hqdefault.jpg" alt="">
                         <span>07 Lose Control - Teddy Swims</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(7, this)">
+                    <div class="video-item" onclick="playVideo(7)">
                         <img src="https://i4.ytimg.com/vi/Oa_RSwwpPaA/hqdefault.jpg" alt="">
                         <span>08 Benson Boone - Beautiful Things</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(8, this)">
+                    <div class="video-item" onclick="playVideo(8)">
                         <img src="https://i4.ytimg.com/vi/GR3Liudev18/hqdefault.jpg" alt="">
                         <span>09 Chappell Roan - Pink Pony Club</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(9, this)">
+                    <div class="video-item" onclick="playVideo(9)">
                         <img src="https://i4.ytimg.com/vi/riCP9x31Kuk/hqdefault.jpg" alt="">
-                        <span>10 Doechii - Anxiety </span>
+                        <span>10 Doechii - Anxiety</span>
                     </div>
                 </div>
                 <span class="show-more" onclick="toggleVideos()">Ver las otras 5</span>
             </div>
             <div class="video-player">
+                <div id="videoTitle" class="video-title">01 Kendrick Lamar & SZA - luther</div>
                 <iframe id="player" src="https://www.youtube.com/embed/sNY_2TEmzho?enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
             </div>
         </div>
@@ -151,16 +157,21 @@
 
     <script>
         const videoIds = [
-            'sNY_2TEmzho',
-            'u2ah9tWTkmk',
-            'kPa7bsKwL-c',
-            't7bQwwqW-Hc',
-            '8ekJMC8OtGU',
-            'HwThuMZ80RA',
-            'GZ3zL7kT6_c',
-            'Oa_RSwwpPaA',
-            'GR3Liudev18',
-            'riCP9x31Kuk'
+            'sNY_2TEmzho', 'u2ah9tWTkmk', 'kPa7bsKwL-c', 't7bQwwqW-Hc', '8ekJMC8OtGU',
+            'HwThuMZ80RA', 'GZ3zL7kT6_c', 'Oa_RSwwpPaA', 'GR3Liudev18', 'riCP9x31Kuk'
+        ];
+
+        const videoTitles = [
+            "01 Kendrick Lamar & SZA - luther",
+            "02 Alex Warren - Ordinary",
+            "03 Die With A Smile - Lady Gaga & Bruno Mars",
+            "04 A Bar Song (Tipsy) - Shaboozey",
+            "05 Drake - NOKIA",
+            "06 Morgan Wallen - I'm The Problem",
+            "07 Lose Control - Teddy Swims",
+            "08 Benson Boone - Beautiful Things",
+            "09 Chappell Roan - Pink Pony Club",
+            "10 Doechii - Anxiety"
         ];
 
         let currentIndex = 0;
@@ -168,8 +179,6 @@
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                videoId: videoIds[currentIndex],
-                playerVars: { 'autoplay': 1, 'controls': 1, 'rel': 0 },
                 events: {
                     'onStateChange': onPlayerStateChange
                 }
@@ -180,26 +189,24 @@
             if (event.data === YT.PlayerState.ENDED) {
                 currentIndex = (currentIndex + 1) % videoIds.length;
                 player.loadVideoById(videoIds[currentIndex]);
-                highlightActive(currentIndex);
+                updateTitle(currentIndex);
             }
         }
 
-        function changeVideo(index, element) {
+        function playVideo(index) {
             currentIndex = index;
             player.loadVideoById(videoIds[index]);
-            highlightActive(index);
+            updateTitle(index);
         }
 
-        function highlightActive(index) {
-            document.querySelectorAll('.video-item').forEach((el, i) => {
-                el.classList.toggle('active', i === index);
-            });
+        function updateTitle(index) {
+            document.getElementById('videoTitle').textContent = videoTitles[index];
         }
 
         function toggleVideos() {
-            const firstFive = document.getElementById('firstFive');
-            const moreVideos = document.getElementById('moreVideos');
-            const showMoreText = document.querySelector('.show-more');
+            var firstFive = document.getElementById('firstFive');
+            var moreVideos = document.getElementById('moreVideos');
+            var showMoreText = document.querySelector('.show-more');
 
             if (firstFive.classList.contains('hidden')) {
                 firstFive.classList.remove('hidden');
@@ -212,10 +219,10 @@
             }
         }
 
-        // Cargar la API de YouTube
-        const tag = document.createElement('script');
+        // Cargar API de YouTube
+        var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
+        var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
 </body>
