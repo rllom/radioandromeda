@@ -44,6 +44,7 @@
             border-radius: 5px;
             margin-bottom: 8px;
             cursor: pointer;
+            transition: background 0.3s, color 0.3s;
         }
         .video-item:hover {
             background: #ccc;
@@ -57,6 +58,10 @@
         .video-item span {
             font-weight: bold;
         }
+        .video-item.active {
+            background: #D1974D;
+            color: white;
+        }
         .video-player {
             flex: 2;
         }
@@ -68,7 +73,7 @@
         .hidden {
             display: none;
         }
-       .show-more {
+        .show-more {
             color: white;
             cursor: pointer;
             text-decoration: none;
@@ -93,75 +98,69 @@
         <div class="playlist">
             <div class="video-list">
                 <div id="firstFive">
-                      <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/sNY_2TEmzho')">
-                    <img src="https://i4.ytimg.com/vi/sNY_2TEmzho/hqdefault.jpg" alt="">
-                    <span>01 Kendrick Lamar & SZA - luther</span>
-                </div>
-                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/u2ah9tWTkmk')">
-                    <img src="https://i4.ytimg.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="">
-                    <span>02 Alex Warren - Ordinary</span>
-                </div>
-                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/ekr2nIex040')">
-                      <img src="https://i4.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg" alt="">
-                    <span>03 Die With A Smile - Lady Gaga & Bruno Mars</span>
-                </div>
-                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/t7bQwwqW-Hc')">
-                    <img src="https://i4.ytimg.com/vi/t7bQwwqW-Hc/hqdefault.jpg" alt="">
-                    <span>04 A Bar Song (Tipsy) - Shaboozey</span>
-                </div>
-                <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/8ekJMC8OtGU')">
-                    <img src="https://i4.ytimg.com/vi/8ekJMC8OtGU/hqdefault.jpg" alt="">
-                    <span>05 Drake - NOKIA</span>
-                </div>
+                    <div class="video-item" onclick="changeVideo(0, this)">
+                        <img src="https://i4.ytimg.com/vi/sNY_2TEmzho/hqdefault.jpg" alt="">
+                        <span>01 Kendrick Lamar & SZA - luther</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(1, this)">
+                        <img src="https://i4.ytimg.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="">
+                        <span>02 Alex Warren - Ordinary</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(2, this)">
+                        <img src="https://i4.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg" alt="">
+                        <span>03 Die With A Smile - Lady Gaga & Bruno Mars</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(3, this)">
+                        <img src="https://i4.ytimg.com/vi/t7bQwwqW-Hc/hqdefault.jpg" alt="">
+                        <span>04 A Bar Song (Tipsy) - Shaboozey</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(4, this)">
+                        <img src="https://i4.ytimg.com/vi/8ekJMC8OtGU/hqdefault.jpg" alt="">
+                        <span>05 Drake - NOKIA</span>
+                    </div>
                 </div>
                 <div id="moreVideos" class="hidden">
-                   <div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/HwThuMZ80RA')">
-                    <img src="https://i4.ytimg.com/vi/HwThuMZ80RA/hqdefault.jpg" alt="">
-                    <span>06 Morgan Wallen - I'm The Problem </span>
-                </div>
-
-		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/GZ3zL7kT6_c')">
-                    <img src="https://i4.ytimg.com/vi/GZ3zL7kT6_c/hqdefault.jpg" alt="">
-                    <span>07 Lose Control - Teddy Swims</span>
-                </div>
-
-		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/Oa_RSwwpPaA')">
-                    <img src="https://i4.ytimg.com/vi/Oa_RSwwpPaA/hqdefault.jpg" alt="">
-                    <span>08 Benson Boone - Beautiful Things</span>
-                </div>
-
-		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/GR3Liudev18')">
-                    <img src="https://i4.ytimg.com/vi/GR3Liudev18/hqdefault.jpg" alt="">
-                    <span>09 Chappell Roan - Pink Pony Club</span>
-
-                </div>
-
-   		<div class="video-item" onclick="changeVideo('https://www.youtube.com/embed/riCP9x31Kuk')">
-                    <img src="https://i4.ytimg.com/vi/riCP9x31Kuk/hqdefault.jpg" alt="">
-                    <span>10 Doechii - Anxiety </span>
-                </div>
-
+                    <div class="video-item" onclick="changeVideo(5, this)">
+                        <img src="https://i4.ytimg.com/vi/HwThuMZ80RA/hqdefault.jpg" alt="">
+                        <span>06 Morgan Wallen - I'm The Problem </span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(6, this)">
+                        <img src="https://i4.ytimg.com/vi/GZ3zL7kT6_c/hqdefault.jpg" alt="">
+                        <span>07 Lose Control - Teddy Swims</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(7, this)">
+                        <img src="https://i4.ytimg.com/vi/Oa_RSwwpPaA/hqdefault.jpg" alt="">
+                        <span>08 Benson Boone - Beautiful Things</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(8, this)">
+                        <img src="https://i4.ytimg.com/vi/GR3Liudev18/hqdefault.jpg" alt="">
+                        <span>09 Chappell Roan - Pink Pony Club</span>
+                    </div>
+                    <div class="video-item" onclick="changeVideo(9, this)">
+                        <img src="https://i4.ytimg.com/vi/riCP9x31Kuk/hqdefault.jpg" alt="">
+                        <span>10 Doechii - Anxiety </span>
+                    </div>
                 </div>
                 <span class="show-more" onclick="toggleVideos()">Ver las otras 5</span>
             </div>
             <div class="video-player">
-                 <iframe id="player" src="https://www.youtube.com/embed/sNY_2TEmzho?enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
+                <iframe id="player" src="https://www.youtube.com/embed/sNY_2TEmzho?enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
         const videoIds = [
-            'sNY_2TEmzho', 
-	    'u2ah9tWTkmk', 
-	    'kPa7bsKwL-c', 
-	    't7bQwwqW-Hc', 
+            'sNY_2TEmzho',
+            'u2ah9tWTkmk',
+            'kPa7bsKwL-c',
+            't7bQwwqW-Hc',
             '8ekJMC8OtGU',
-            'HwThuMZ80RA', 
-	    'GZ3zL7kT6_c', 
-	    'Oa_RSwwpPaA', 
-	    'GR3Liudev18', 
-	    'riCP9x31Kuk'
+            'HwThuMZ80RA',
+            'GZ3zL7kT6_c',
+            'Oa_RSwwpPaA',
+            'GR3Liudev18',
+            'riCP9x31Kuk'
         ];
 
         let currentIndex = 0;
@@ -169,6 +168,8 @@
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
+                videoId: videoIds[currentIndex],
+                playerVars: { 'autoplay': 1, 'controls': 1, 'rel': 0 },
                 events: {
                     'onStateChange': onPlayerStateChange
                 }
@@ -179,22 +180,26 @@
             if (event.data === YT.PlayerState.ENDED) {
                 currentIndex = (currentIndex + 1) % videoIds.length;
                 player.loadVideoById(videoIds[currentIndex]);
+                highlightActive(currentIndex);
             }
         }
 
-        function playVideo(index) {
+        function changeVideo(index, element) {
             currentIndex = index;
             player.loadVideoById(videoIds[index]);
+            highlightActive(index);
         }
 
-        function changeVideo(url) {
-            document.getElementById('player').src = url;
+        function highlightActive(index) {
+            document.querySelectorAll('.video-item').forEach((el, i) => {
+                el.classList.toggle('active', i === index);
+            });
         }
 
         function toggleVideos() {
-            var firstFive = document.getElementById('firstFive');
-            var moreVideos = document.getElementById('moreVideos');
-            var showMoreText = document.querySelector('.show-more');
+            const firstFive = document.getElementById('firstFive');
+            const moreVideos = document.getElementById('moreVideos');
+            const showMoreText = document.querySelector('.show-more');
 
             if (firstFive.classList.contains('hidden')) {
                 firstFive.classList.remove('hidden');
@@ -207,10 +212,10 @@
             }
         }
 
-        // Cargar API de YouTube
-        var tag = document.createElement('script');
+        // Cargar la API de YouTube
+        const tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
+        const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
 </body>
