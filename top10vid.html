@@ -94,74 +94,88 @@
     </style>
 </head>
 <body>
-    <div class="container">
+     <div class="container">
         <div class="header">TOP 10 DE ESTA SEMANA EN VIDEO</div>
         <div class="playlist">
             <div class="video-list">
                 <div id="firstFive">
+
                     <div class="video-item" onclick="changeVideo(0, this)">
-                        <img src="https://i4.ytimg.com/vi/sNY_2TEmzho/hqdefault.jpg" alt="">
-                        <span>01 Kendrick Lamar & SZA - luther</span>
-                    </div>
-                    <div class="video-item" onclick="changeVideo(1, this)">
                         <img src="https://i4.ytimg.com/vi/u2ah9tWTkmk/hqdefault.jpg" alt="">
-                        <span>02 Alex Warren - Ordinary</span>
+                        <span>01 Alex Warren - Ordinary</span>
                     </div>
+		
+                    <div class="video-item" onclick="changeVideo(1, this)">
+                        <img src="https://i4.ytimg.com/vi/hNrwlzBeFN8/hqdefault.jpg" alt="">
+                        <span>02 Morgan Wallen - What I Want (feat. Tate McRae)</span>
+                    </div>
+
                     <div class="video-item" onclick="changeVideo(2, this)">
                         <img src="https://i4.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg" alt="">
                         <span>03 Die With A Smile - Lady Gaga & Bruno Mars</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(3, this)">
-                        <img src="https://i4.ytimg.com/vi/t7bQwwqW-Hc/hqdefault.jpg" alt="">
-                        <span>04 A Bar Song (Tipsy) - Shaboozey</span>
+
+			<div class="video-item" onclick="changeVideo(3, this)">
+                        <img src="https://i4.ytimg.com/vi/sNY_2TEmzho/hqdefault.jpg" alt="">
+                        <span>04 Kendrick Lamar & SZA - luther</span>
                     </div>
+                    
                     <div class="video-item" onclick="changeVideo(4, this)">
-                        <img src="https://i4.ytimg.com/vi/8ekJMC8OtGU/hqdefault.jpg" alt="">
-                        <span>05 Drake - NOKIA</span>
-                    </div>
-                </div>
-                <div id="moreVideos" class="hidden">
-                    <div class="video-item" onclick="changeVideo(5, this)">
                         <img src="https://i4.ytimg.com/vi/HwThuMZ80RA/hqdefault.jpg" alt="">
-                        <span>06 Morgan Wallen - I'm The Problem </span>
+                        <span>05 Morgan Wallen - I'm The Problem </span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(6, this)">
+                
+		    
+</div><div id="moreVideos" class="hidden">
+
+
+        		<div class="video-item" onclick="changeVideo(5, this)">
+                        <img src="https://i4.ytimg.com/vi/t7bQwwqW-Hc/hqdefault.jpg" alt="">
+                        <span>06 A Bar Song (Tipsy) - Shaboozey</span>
+                    </div>
+                    
+			<div class="video-item" onclick="changeVideo(6, this)">
+                        <img src="https://i4.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg" alt="">
+                        <span>07 Die With A Smile - Lady Gaga & Bruno Mars</span>
+                    </div>
+			
+			<div class="video-item" onclick="changeVideo(7, this)">
                         <img src="https://i4.ytimg.com/vi/GZ3zL7kT6_c/hqdefault.jpg" alt="">
-                        <span>07 Lose Control - Teddy Swims</span>
+                        <span>08 Lose Control - Teddy Swims</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(7, this)">
-                        <img src="https://i4.ytimg.com/vi/Oa_RSwwpPaA/hqdefault.jpg" alt="">
-                        <span>08 Benson Boone - Beautiful Things</span>
-                    </div>
+                    
                     <div class="video-item" onclick="changeVideo(8, this)">
-                        <img src="https://i4.ytimg.com/vi/GR3Liudev18/hqdefault.jpg" alt="">
-                        <span>09 Chappell Roan - Pink Pony Club</span>
+                        <img src="https://i4.ytimg.com/vi/Oa_RSwwpPaA/hqdefault.jpg" alt="">
+                        <span>09 Benson Boone - Beautiful Things</span>
                     </div>
-                    <div class="video-item" onclick="changeVideo(9, this)">
-                        <img src="https://i4.ytimg.com/vi/riCP9x31Kuk/hqdefault.jpg" alt="">
-                        <span>10 Doechii - Anxiety </span>
+
+			<div class="video-item" onclick="changeVideo(9, this)">
+                        <img src="https://i4.ytimg.com/vi/8ekJMC8OtGU/hqdefault.jpg" alt="">
+                        <span>10 Drake - NOKIA</span>
                     </div>
-                </div>
+
+                
+		</div>
                 <span class="show-more" onclick="toggleVideos()">Ver las otras 5</span>
             </div>
             <div class="video-player">
-                <iframe id="player" src="https://www.youtube.com/embed/sNY_2TEmzho?enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
+                <iframe id="player" src="https://www.youtube.com/embed/u2ah9tWTkmk?enablejsapi=1" allow="autoplay" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
         const videoIds = [
-            'sNY_2TEmzho',
             'u2ah9tWTkmk',
+            'hNrwlzBeFN8',
             'kPa7bsKwL-c',
-            't7bQwwqW-Hc',
-            '8ekJMC8OtGU',
+            'sNY_2TEmzho',
             'HwThuMZ80RA',
+            't7bQwwqW-Hc',
+            'kPa7bsKwL-c',
             'GZ3zL7kT6_c',
             'Oa_RSwwpPaA',
-            'GR3Liudev18',
-            'riCP9x31Kuk'
+            '8ekJMC8OtGU'
         ];
 
         let currentIndex = 0;
