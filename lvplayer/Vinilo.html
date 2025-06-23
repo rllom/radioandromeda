@@ -1,0 +1,253 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<head>
+  <title>((( Radio Andromeda )))</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+
+<style>  
+body {
+  overflow: hidden; /* Hide scrollbars */
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  height: 90vh;
+  background-color: #ffffff;
+  background-image: url("espacio.jpg");
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed;
+
+A:link  {color:#A1CAF9;text-decoration: none}
+A { text-decoration:none;  background-color:Transparent; color:#A1CAF9;}
+A:visited { color:#A1CAF9;text-decoration: none}
+a:hover {COLOR: #ffffff}
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+img {
+  border-radius: 10px;
+}
+.img-special:hover {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  box-shadow: 0px 0px 10px 10px #0CD7C3;
+  -webkit-box-shadow: 0px 0px 10px 10px #0CD7C3;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+}
+.overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  /* background-color: rgba(0, 0, 0, 0.5); */  /* Fondo semitransparente */
+  display: none; /* Inicialmente oculta */
+  justify-content: center;
+  align-items: center;
+  font: bold 0.6em dotum, "Michroma", arial; text-align: center; color:#000000;
+}
+.overlay.active {
+  display: flex; /* Mostrar la capa cuando esté activa */
+}
+
+
+canvas{
+  filter: blur(1px); /* Efecto estrella */
+}
+
+</style>
+
+</head>
+<body>
+
+<body bgcolor=#00365C style="MARGIN: 10px 10px 10px 10px" text=ffffff>
+
+
+<DIV style='display:scroll; position:fixed; top:15px; left:50px; width:52%; height:80%; margin-right:auto;'>
+
+<img class="vinyl" id="rbcloud_cover732" src="https://c11.radioboss.fm/w/artwork/71.png" width="80%" height="auto" style='border-radius: 3%; box-shadow: 0px 0px 0px 0px #000000;' title="Radio Andromeda" />
+<script src='https://c11.radioboss.fm/w/cover.js?u=71&wid=732'></script>
+<!-- RadioBOSS Cloud Artwork Widget (End) -->
+
+</div> 
+	
+<canvas id="canvas"></canvas>
+
+<DIV id='floting' style='position:fixed; top:15px; width:43%; right:50px; margin-left:0; margin-right:0;'>
+<div class="overlay" id="overlay"></div>
+
+<audio id="audio" src="https://c11.radioboss.fm:18071/stream" preload="none"></audio>
+<img id="vinilo" src="disco-vinilo-on.png" width="100%" height="auto" alt="Imagen de reproducción" style="cursor: pointer;">
+
+
+<script>
+var audio = document.getElementById("audio");
+var imagen = document.getElementById("vinilo");
+var overlay = document.getElementById("overlay");
+var sound = false;
+
+imagen.addEventListener("click", function() {
+  if (!sound) {
+    audio.play();
+    imagen.src = "disco-vinilo-andro.png"; // Cambia la imagen a una imagen de pausa
+    imagen.setAttribute("width", "100%");
+    imagen.setAttribute("height", "auto");
+    imagen.classList.add("rotate"); // Agrega la clase 'rotate' para la animación de rotación
+    overlay.classList.add("active"); // Mostrar la capa oculta
+    sound = true;
+  } else {
+    audio.pause();
+    audio.src = audio.src;
+    imagen.src = "disco-vinilo-on.png"; // Cambia la imagen a una imagen de reproducción
+    imagen.setAttribute("id", "imagen-reproduccion"); // Agrega el id "imagen-reproduccion" a la imagen
+    imagen.setAttribute("width", "100%");
+    imagen.setAttribute("height", "auto");
+    imagen.classList.remove("rotate"); // Quita la clase 'rotate' para detener la animación de rotación
+    overlay.classList.remove("active"); // Ocultar la capa oculta
+    sound = false;
+  }
+});
+
+// Estilos CSS para la animación de rotación
+var style = document.createElement('style');
+style.innerHTML = `
+.rotate {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  animation: rotation 7s linear infinite;
+  border-radius: 50%;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+`;
+document.head.appendChild(style);
+</script>
+
+
+</div>
+</div>
+
+
+<DIV style='display:scroll; position:fixed; bottom:15px; left:54px; width:100%; margin-right:auto; font-size:18px; font-family:Michroma;'>
+
+<!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
+<a href="http://radioandromeda.tk">Radio Andromeda:</a> <span id='rbcloud_nowplaying16384'></span>
+<script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
+<!-- RadioBOSS Cloud NowPlaying Widget (End) -->
+
+</div> 
+
+<script>
+let c = init("canvas"),
+  w = (canvas.width = window.innerWidth),
+  h = (canvas.height = window.innerHeight);
+//initiation
+
+class firefly{
+  constructor(){
+    this.x = Math.random()*w;
+    this.y = Math.random()*h;
+    this.s = Math.random()*2;
+    this.ang = Math.random()*2*Math.PI;
+    this.v = this.s*this.s/2;
+  }
+  move(){
+    this.x += this.v*Math.cos(this.ang);
+    this.y += this.v*Math.sin(this.ang);
+    this.ang += Math.random()*20*Math.PI/180-10*Math.PI/180;
+  }
+  show(){
+    c.beginPath();
+    c.arc(this.x,this.y,this.s,0,2*Math.PI);
+    c.fillStyle="#fddba3";
+    c.fill();
+  }
+}
+
+let f = [];
+
+function draw() {
+  if(f.length < 100){
+    for(let j = 0; j < 10; j++){
+     f.push(new firefly());
+  }
+     }
+  //animation
+  for(let i = 0; i < f.length; i++){
+    f[i].move();
+    f[i].show();
+    if(f[i].x < 0 || f[i].x > w || f[i].y < 0 || f[i].y > h){
+       f.splice(i,1);
+       }
+  }
+}
+
+let mouse = {};
+let last_mouse = {};
+
+canvas.addEventListener(
+  "mousemove",
+  function(e) {
+    last_mouse.x = mouse.x;
+    last_mouse.y = mouse.y;
+
+    mouse.x = e.pageX - this.offsetLeft;
+    mouse.y = e.pageY - this.offsetTop;
+  },
+  false
+);
+function init(elemid) {
+  let canvas = document.getElementById(elemid),
+    c = canvas.getContext("2d"),
+    w = (canvas.width = window.innerWidth),
+    h = (canvas.height = window.innerHeight);
+  c.fillStyle = "rgba(30,30,30,1)";
+  c.fillRect(0, 0, w, h);
+  return c;
+}
+
+window.requestAnimFrame = (function() {
+  return (
+    window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function(callback) {
+      window.setTimeout(callback);
+    }
+  );
+});
+
+function loop() {
+  window.requestAnimFrame(loop);
+  c.clearRect(0, 0, w, h);
+  draw();
+}
+
+window.addEventListener("resize", function() {
+  (w = canvas.width = window.innerWidth),
+  (h = canvas.height = window.innerHeight);
+  loop();
+});
+
+loop();
+setInterval(loop, 1000 / 80);
+</script>
+
+</body>
+</html>
