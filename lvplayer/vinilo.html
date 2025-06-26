@@ -1,239 +1,369 @@
+<!DOCTYPE html>
 <html>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>((( Radio Andromeda )))</title>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
-
-<style>  
-body {
-  overflow: hidden; /* Hide scrollbars */
-  margin: 0;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  height: 90vh;
-  background-color: #ffffff;
-  background-image: url("espacio.jpg");
-  background-size: cover;  
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  background-position: center;
-  background-attachment: fixed;
-
-A:link  {color:#A1CAF9;text-decoration: none}
-A { text-decoration:none;  background-color:Transparent; color:#A1CAF9;}
-A:visited { color:#A1CAF9;text-decoration: none}
-a:hover {COLOR: #ffffff}
-
-.container {
-  width: 100%;
-  text-align: center;
-}
-img {
-  border-radius: 10px;
-}
-.img-special:hover {
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  box-shadow: 0px 0px 10px 10px #0CD7C3;
-  -webkit-box-shadow: 0px 0px 10px 10px #0CD7C3;
-  transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
-}
-.overlay {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: auto;
-  /* background-color: rgba(0, 0, 0, 0.5); */  /* Fondo semitransparente */
-  display: none; /* Inicialmente oculta */
-  justify-content: center;
-  align-items: center;
-  font: bold 0.6em dotum, "Michroma", arial; text-align: center; color:#000000;
-}
-.overlay.active {
-  display: flex; /* Mostrar la capa cuando esté activa */
-}
-
-
-canvas{
-  filter: blur(1px); /* Efecto estrella */
-}
-
-</style>
-
-</head>
-<body>
-
-<body bgcolor=#00365C style="MARGIN: 10px 10px 10px 10px" text=ffffff>
-
-
-<DIV style='display:scroll; position:fixed; top:25px; left:50px; width:52%; height:80%; margin-right:auto;'>
-
-<img class="vinyl" id="rbcloud_cover732" src="https://c11.radioboss.fm/w/artwork/71.png" width="80%" height="auto" style='border-radius: 3%; box-shadow: 0px 0px 0px 0px #000000;' title="Radio Andromeda" />
-<script src='https://c11.radioboss.fm/w/cover.js?u=71&wid=732'></script>
-<!-- RadioBOSS Cloud Artwork Widget (End) -->
-
-</div> 
-	
-<canvas id="canvas"></canvas>
-
-<DIV id='floting' style='position:fixed; top:20px; width:43%; right:50px; margin-left:0; margin-right:0;'>
-<div class="overlay" id="overlay"></div>
-
-<audio id="audio" src="https://c11.radioboss.fm:18071/stream" preload="none"></audio>
-<img id="vinilo" src="disco-vinilo-on.png" width="100%" height="auto" alt="Imagen de reproducción" style="cursor: pointer;">
-
-
-<script>
-var audio = document.getElementById("audio");
-var imagen = document.getElementById("vinilo");
-var overlay = document.getElementById("overlay");
-var sound = false;
-
-imagen.addEventListener("click", function() {
-  if (!sound) {
-    audio.play();
-    imagen.src = "disco-vinilo-andro.png"; // Cambia la imagen a una imagen de pausa
-    imagen.setAttribute("width", "100%");
-    imagen.setAttribute("height", "auto");
-    imagen.classList.add("rotate"); // Agrega la clase 'rotate' para la animación de rotación
-    overlay.classList.add("active"); // Mostrar la capa oculta
-    sound = true;
-  } else {
-    audio.pause();
-    audio.src = audio.src;
-    imagen.src = "disco-vinilo-on.png"; // Cambia la imagen a una imagen de reproducción
-    imagen.setAttribute("id", "imagen-reproduccion"); // Agrega el id "imagen-reproduccion" a la imagen
-    imagen.setAttribute("width", "100%");
-    imagen.setAttribute("height", "auto");
-    imagen.classList.remove("rotate"); // Quita la clase 'rotate' para detener la animación de rotación
-    overlay.classList.remove("active"); // Ocultar la capa oculta
-    sound = false;
-  }
-});
-
-// Estilos CSS para la animación de rotación
-var style = document.createElement('style');
-style.innerHTML = `
-.rotate {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  animation: rotation 7s linear infinite;
-  border-radius: 50%;
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-`;
-document.head.appendChild(style);
-</script>
-
-
-</div>
-</div>
-
-
-<DIV style='display:scroll; position:fixed; bottom:15px; left:54px; width:100%; margin-right:auto; font-size:18px; font-family:Michroma;'>
-
-<!-- RadioBOSS Cloud NowPlaying Widget (Start) -->
-<a href="vinilo+leyenda.html">Radio Andromeda:</a> <span id='rbcloud_nowplaying16384'></span>
-<script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
-<!-- RadioBOSS Cloud NowPlaying Widget (End) -->
-
-</div> 
-
-<script>
-let c = init("canvas"),
-  w = (canvas.width = window.innerWidth),
-  h = (canvas.height = window.innerHeight);
-
-class Firefly {
-  constructor() {
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
-    this.s = Math.random() * 2;
-    this.ang = Math.random() * 2 * Math.PI;
-    this.v = (this.s * this.s) / 4; // Reduce la Velocidad entre mayor sea el divisor Originalmente era 2
-  }
-  move() {
-    this.x += this.v * Math.cos(this.ang);
-    this.y += this.v * Math.sin(this.ang);
-    this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180; //al disminuir el 10 y el 5 los cambio de las luciernagas seran menos abrupto Originalmente er 20 y 10
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+  <style>  
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     
-    // Reaparecer en el lado opuesto
-    if (this.x < 0) this.x = w;
-    if (this.x > w) this.x = 0;
-    if (this.y < 0) this.y = h;
-    if (this.y > h) this.y = 0;
-  }
-  show() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
-    c.fillStyle = "#fddba3";
-    c.fill();
-  }
-}
-
-let f = [];
-
-function draw() {
-  if (f.length < 100) {
-    for (let j = 0; j < 10; j++) {
-      f.push(new Firefly());
+    body {
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      background-image: url("https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg");
+      background-size: cover;  
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      font-family: Michroma, sans-serif;
     }
-  }
-  for (let i = 0; i < f.length; i++) {
-    f[i].move();
-    f[i].show();
-  }
-}
 
-function init(elemid) {
-  let canvas = document.getElementById(elemid),
-    c = canvas.getContext("2d"),
-    w = (canvas.width = window.innerWidth),
-    h = (canvas.height = window.innerHeight);
-  c.fillStyle = "rgba(30,30,30,1)";
-  c.fillRect(0, 0, w, h);
-  return c;
-}
-
-window.requestAnimFrame = (function () {
-  return (
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-      window.setTimeout(callback);
+    a:link, a:visited, a {
+      color: #A1CAF9;
+      text-decoration: none;
+      background-color: transparent;
     }
-  );
-})();
+    
+    a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #0CD7C3;
+    }
 
-function loop() {
-  window.requestAnimFrame(loop);
-  c.clearRect(0, 0, w, h);
-  draw();
-}
+    .main-container {
+      width: 95%;
+      height: 90vh;
+      max-width: 1400px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      gap: 20px;
+    }
 
-window.addEventListener("resize", function () {
-  (w = canvas.width = window.innerWidth), 
-  (h = canvas.height = window.innerHeight);
-  loop();
-});
+    .cover-container {
+      flex: 0 1 45%;
+      height: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-loop();
-</script>
+    .cover-img {
+      width: auto;
+      height: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
 
+    .cover-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(12, 215, 195, 0.4);
+    }
+
+    .player-container {
+      flex: 0 1 50%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .player-img {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+      filter: drop-shadow(0 0 15px rgba(12, 215, 195, 0.6));
+      position: relative;
+    }
+
+    .now-playing {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.0em;
+      margin-top: 30px;
+      background-color: rgba(0,0,0,0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(12, 215, 195, 0.5);
+      letter-spacing: 1px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      font: bold 1em dotum, "Michroma", arial; 
+      text-align: center;
+      color: white;
+      background-color: rgba(0,54,92,0.7);
+      border-radius: 50%;
+      border: 2px solid #0CD7C3;
+      z-index: 1; /* Cambiado a z-index menor que la imagen */
+      pointer-events: none; /* Esto permite que los clics pasen a través del overlay */
+    }
+
+    .overlay.active {
+      display: flex;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px 5px rgba(12, 215, 195, 0.4); }
+      50% { box-shadow: 0 0 20px 10px rgba(12, 215, 195, 0.6); }
+      100% { box-shadow: 0 0 10px 5px rgba(12, 215, 195, 0.4); }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      filter: blur(1px);
+    }
+
+    /* Animación de rotación */
+    .rotate {
+      animation: rotation 7s linear infinite;
+      border-radius: 50%;
+      box-shadow: 0 0 40px #0CD7C3;
+    }
+
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Media Queries para responsividad */
+    @media (max-width: 1200px) {
+      .main-container {
+        height: auto;
+        min-height: 90vh;
+      }
+      
+      .cover-container {
+        height: 60vh;
+        flex: 1 1 90%;
+      }
+      
+      .player-container {
+        height: 70vh;
+        flex: 1 1 90%;
+      }
+      
+      .now-playing {
+        font-size: 1.5em;
+        margin-top: 20px;
+      }
+      
+      .overlay {
+        width: 70%;
+        height: 70%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cover-container {
+        height: 50vh;
+      }
+      
+      .player-container {
+        height: 60vh;
+      }
+      
+      .now-playing {
+        font-size: 1.3em;
+        padding: 15px;
+      }
+      
+      .overlay {
+        font-size: 0.8em;
+        width: 80%;
+        height: 80%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cover-container {
+        height: 40vh;
+      }
+      
+      .player-container {
+        height: 50vh;
+      }
+      
+      .now-playing {
+        font-size: 1.1em;
+        padding: 10px;
+      }
+      
+      .overlay {
+        width: 90%;
+        height: 90%;
+        font-size: 0.7em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="cover-container">
+      <img class="cover-img vinyl" id="rbcloud_cover732" src="https://c11.radioboss.fm/w/artwork/71.png" title="Radio Andromeda" />
+      <script src='https://c11.radioboss.fm/w/cover.js?u=71&wid=732'></script>
+    </div>
+    
+    <div class="player-container">
+      <div class="overlay" id="overlay"></div>
+      <audio id="audio" src="https://c11.radioboss.fm:18071/stream" preload="none"></audio>
+      <img id="vinilo" class="player-img" src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo-on.png" alt="Reproductor Radio Andromeda">
+    </div>
+    
+    <div class="now-playing">
+      <a href="vinilo+leyenda.html">Radio Andromeda:</a> <span id='rbcloud_nowplaying16384'></span>
+      <script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
+    </div>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    // Controlador del reproductor de audio
+    const audio = document.getElementById("audio");
+    const imagen = document.getElementById("vinilo");
+    const overlay = document.getElementById("overlay");
+    let sound = false;
+
+    imagen.addEventListener("click", function() {
+      if (!sound) {
+        audio.play();
+        imagen.src = "https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo-andro.png";
+        imagen.classList.add("rotate");
+        overlay.classList.add("active");
+        sound = true;
+      } else {
+        audio.pause();
+        audio.src = audio.src;
+        imagen.src = "https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo-on.png";
+        imagen.classList.remove("rotate");
+        overlay.classList.remove("active");
+        sound = false;
+      }
+    });
+
+    // Efecto de luciérnagas
+    let c = init("canvas"),
+      w = (canvas.width = window.innerWidth),
+      h = (canvas.height = window.innerHeight);
+
+    class Firefly {
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.s = Math.random() * 2;
+        this.ang = Math.random() * 2 * Math.PI;
+        this.v = (this.s * this.s) / 4;
+      }
+      move() {
+        this.x += this.v * Math.cos(this.ang);
+        this.y += this.v * Math.sin(this.ang);
+        this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180;
+        
+        if (this.x < 0) this.x = w;
+        if (this.x > w) this.x = 0;
+        if (this.y < 0) this.y = h;
+        if (this.y > h) this.y = 0;
+      }
+      show() {
+        c.beginPath();
+        c.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+        c.fillStyle = "#fddba3";
+        c.fill();
+      }
+    }
+
+    let f = [];
+
+    function draw() {
+      if (f.length < 100) {
+        for (let j = 0; j < 10; j++) {
+          f.push(new Firefly());
+        }
+      }
+      for (let i = 0; i < f.length; i++) {
+        f[i].move();
+        f[i].show();
+      }
+    }
+
+    function init(elemid) {
+      let canvas = document.getElementById(elemid),
+        c = canvas.getContext("2d"),
+        w = (canvas.width = window.innerWidth),
+        h = (canvas.height = window.innerHeight);
+      c.fillStyle = "rgba(30,30,30,1)";
+      c.fillRect(0, 0, w, h);
+      return c;
+    }
+
+    window.requestAnimFrame = (function () {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback);
+        }
+      );
+    })();
+
+    function loop() {
+      window.requestAnimFrame(loop);
+      c.clearRect(0, 0, w, h);
+      draw();
+    }
+
+    window.addEventListener("resize", function () {
+      (w = canvas.width = window.innerWidth), 
+      (h = canvas.height = window.innerHeight);
+      loop();
+    });
+
+    loop();
+  </script>
 </body>
 </html>
