@@ -162,12 +162,12 @@ class Firefly {
     this.y = Math.random() * h;
     this.s = Math.random() * 2;
     this.ang = Math.random() * 2 * Math.PI;
-    this.v = (this.s * this.s) / 2;
+    this.v = (this.s * this.s) / 4; // Reduce la Velocidad entre mayor sea el divisor Originalmente era 2
   }
   move() {
     this.x += this.v * Math.cos(this.ang);
     this.y += this.v * Math.sin(this.ang);
-    this.ang += (Math.random() * 20 * Math.PI) / 180 - (10 * Math.PI) / 180;
+    this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180; //al disminuir el 10 y el 5 los cambio de las luciernagas seran menos abrupto Originalmente er 20 y 10
     
     // Reaparecer en el lado opuesto
     if (this.x < 0) this.x = w;
