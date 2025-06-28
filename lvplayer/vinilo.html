@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>((( Radio Andromeda )))</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
   <style>  
@@ -40,21 +40,21 @@
     }
 
     .main-container {
-      width: 90%;
-      height: 95vh;
-      max-width: 1600px;
+      width: 95%;
+      height: 90vh;
+      max-width: 1400px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       align-items: center;
       position: relative;
       z-index: 1;
-      gap: 5px;
+      gap: 20px;
     }
 
     .cover-container {
       flex: 0 1 45%;
-      height: 65%;
+      height: 80%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -66,19 +66,19 @@
       max-height: 100%;
       object-fit: contain;
       border-radius: 10px;
-      box-shadow: 0 0 40px rgba(12, 215, 195, 0.6);
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
       transition: all 0.3s ease;
       z-index: 2;
     }
 
     .cover-img:hover {
-      transform: scale(1.0);
+      transform: scale(1.03);
       box-shadow: 0 0 40px rgba(12, 215, 195, 0.4);
     }
 
     .player-container {
       flex: 0 1 45%;
-      height: 66%;
+      height: 82%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -98,10 +98,10 @@
     }
 
     .now-playing {
-      width: 100%;
+      width: 90%;
       text-align: center;
       padding: 10px;
-      font-size: 1.0em;
+      font-size: 0.9em;
       margin-top: 30px;
       background-color: rgba(0,0,0,0.7);
       border-radius: 10px;
@@ -125,8 +125,8 @@
       background-color: rgba(0,54,92,0.7);
       border-radius: 50%;
       border: 2px solid #0CD7C3;
-      z-index: 1; /* Cambiado a z-index menor que la imagen */
-      pointer-events: none; /* Esto permite que los clics pasen a través del overlay */
+      z-index: 1;
+      pointer-events: none;
     }
 
     .overlay.active {
@@ -167,19 +167,19 @@
     }
 
     /* Media Queries para responsividad */
-    @media (max-width: 1000px) and (orientation: landscape) {
+    @media (max-width: 1200px) {
       .main-container {
         height: auto;
-        min-height: 95vh;
+        min-height: 90vh;
       }
       
       .cover-container {
-        height: 65vh;
+        height: 60vh;
         flex: 1 1 90%;
       }
       
       .player-container {
-        height: 66vh;
+        height: 70vh;
         flex: 1 1 90%;
       }
       
@@ -235,13 +235,57 @@
         font-size: 0.7em;
       }
     }
+
+    /* Media Queries específicos para landscape en móviles */
+    @media (orientation: landscape) and (max-height: 600px) {
+      .main-container {
+        flex-wrap: nowrap;
+        height: 80vh;
+        gap: 15px;
+      }
+      
+      .cover-container {
+        height: 70vh;
+        flex: 0 1 40%;
+      }
+      
+      .player-container {
+        height: 70vh;
+        flex: 0 1 40%;
+      }
+      
+      .now-playing {
+        position: absolute;
+        bottom: 10px;
+        width: 90%;
+        font-size: 1.0em;
+        margin-top: 0;
+      }
+      
+      .overlay {
+        width: 50%;
+        height: 50%;
+        font-size: 0.6em;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 400px) {
+      .cover-container, .player-container {
+        height: 85vh;
+      }
+      
+      .now-playing {
+        font-size: 0.8em;
+        padding: 5px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="main-container">
     <div class="cover-container">
-      <img class="cover-img vinyl" id="rbcloud_cover732" src="https://c11.radioboss.fm/w/artwork/71.png" title="" />
+      <img class="cover-img vinyl" id="rbcloud_cover732" src="https://c11.radioboss.fm/w/artwork/71.png" title="Radio Andromeda" />
       <script src='https://c11.radioboss.fm/w/cover.js?u=71&wid=732'></script>
     </div>
     
