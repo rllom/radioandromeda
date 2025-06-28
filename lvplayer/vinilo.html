@@ -98,17 +98,26 @@
     }
 
     .now-playing {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 90%;
+      max-width: 800px;
       text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
-      margin-top: 30px;
-      background-color: rgba(0,0,0,0.7);
+      padding: 12px 20px;
+      font-size: 1.1em;
+      background-color: rgba(0,0,0,0.8);
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(12, 215, 195, 0.5);
       letter-spacing: 1px;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(12, 215, 195, 0.3);
     }
 
+    /* ELIMINADO EL OVERLAY */
+    /*
     .overlay {
       position: absolute;
       top: 50%;
@@ -133,6 +142,7 @@
       display: flex;
       animation: pulse 2s infinite;
     }
+    */
 
     @keyframes pulse {
       0% { box-shadow: 0 0 10px 5px rgba(12, 215, 195, 0.4); }
@@ -184,13 +194,8 @@
       }
       
       .now-playing {
-        font-size: 1.5em;
-        margin-top: 20px;
-      }
-      
-      .overlay {
-        width: 70%;
-        height: 70%;
+        font-size: 1.3em;
+        padding: 15px 20px;
       }
     }
 
@@ -204,14 +209,9 @@
       }
       
       .now-playing {
-        font-size: 1.3em;
-        padding: 15px;
-      }
-      
-      .overlay {
-        font-size: 0.8em;
-        width: 80%;
-        height: 80%;
+        font-size: 1.1em;
+        padding: 12px 15px;
+        bottom: 15px;
       }
     }
 
@@ -225,14 +225,10 @@
       }
       
       .now-playing {
-        font-size: 1.1em;
-        padding: 10px;
-      }
-      
-      .overlay {
-        width: 90%;
-        height: 90%;
-        font-size: 0.7em;
+        font-size: 0.9em;
+        padding: 10px 12px;
+        bottom: 10px;
+        width: 95%;
       }
     }
 
@@ -255,17 +251,9 @@
       }
       
       .now-playing {
-        position: absolute;
-        bottom: 10px;
-        width: 90%;
-        font-size: 1.0em;
-        margin-top: 0;
-      }
-      
-      .overlay {
-        width: 50%;
-        height: 50%;
-        font-size: 0.6em;
+        font-size: 0.9em;
+        padding: 8px 12px;
+        bottom: 5px;
       }
     }
 
@@ -276,7 +264,7 @@
       
       .now-playing {
         font-size: 0.8em;
-        padding: 5px;
+        padding: 5px 8px;
       }
     }
   </style>
@@ -290,15 +278,15 @@
     </div>
     
     <div class="player-container">
-      <div class="overlay" id="overlay"></div>
+      <!-- ELIMINADO EL DIV OVERLAY -->
       <audio id="audio" src="https://c11.radioboss.fm:18071/stream" preload="none"></audio>
       <img id="vinilo" class="player-img" src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo-on.png" alt="Reproductor Radio Andromeda">
     </div>
-    
-    <div class="now-playing">
-      <a href="vinilo+leyenda.html">Radio Andromeda:</a> <span id='rbcloud_nowplaying16384'></span>
-      <script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
-    </div>
+  </div>
+  
+  <div class="now-playing">
+    <a href="vinilo+leyenda.html">Radio Andromeda:</a> <span id='rbcloud_nowplaying16384'></span>
+    <script src='https://c11.radioboss.fm/w/nowplaying.js?u=71&amp;wid=16384'></script>
   </div>
 
   <canvas id="canvas"></canvas>
@@ -307,7 +295,6 @@
     // Controlador del reproductor de audio
     const audio = document.getElementById("audio");
     const imagen = document.getElementById("vinilo");
-    const overlay = document.getElementById("overlay");
     let sound = false;
 
     imagen.addEventListener("click", function() {
@@ -315,14 +302,12 @@
         audio.play();
         imagen.src = "https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo-andro.png";
         imagen.classList.add("rotate");
-        overlay.classList.add("active");
         sound = true;
       } else {
         audio.pause();
         audio.src = audio.src;
         imagen.src = "https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo-on.png";
         imagen.classList.remove("rotate");
-        overlay.classList.remove("active");
         sound = false;
       }
     });
