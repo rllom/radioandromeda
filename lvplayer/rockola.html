@@ -1,263 +1,618 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radio Andromeda: Rockola</title>
-<head>
-
-
-<!--Menu-->
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-body {
-	background: #00365C;;
-	font-family: 'Roboto', sans-serif;
-	line-height: 50px;
-}
-a {
-	text-decoration: none;
-	color:#fff;
-}
-.btn-menu {
-	display: none;
-	padding: 0px;
-	background: #0d2c44;
-	color:#fff;
-}
-.btn-menu .icono {
-	float: right;
-}
-.contenedor-menu {
-	width: 20%;
-	min-width: 100%;
-	margin: 0px;
-	display: inline-block;
-	font-family: 'Roboto', sans-serif;
-	line-height: 18px;
-}
-.contenedor-menu .menu {
-	width: 100%;
-}
-.contenedor-menu ul {
-	list-style: none;
-}
-.contenedor-menu .menu li a {
-	color:#fff;
-	display: block;
-	padding: 7px 10px;
-	background: #00365C;
-}
-.contenedor-menu .menu li a:hover {
-	background: #00C0FF;
-	color:#fff;
-}
-.contenedor-menu .menu .icono {
-	font-size: 14px;
-	line-height: 14px;
-}
-.contenedor-menu .menu .icono.izquierda {
-	float: left;
-	margin-right: 10px; 
-}
-.contenedor-menu .menu .icono.derecha {
-	float: right;
-	margin-left: 5px; 
-}
-.contenedor-menu .menu ul {
-	display: none;
-}
-.contenedor-menu .menu ul li a {
-	background: #0c4598;
-	color:#e9e9e9;
-}
-.contenedor-menu .menu .activado > a {
-	background: #1a95d5;
-	color:#fff;
-}
-@media screen and (width: 450px) {
-	body {
-		padding-top: 40px;
-	}
-	.contenedor-menu {
-		margin: 0;
-		width: 100%;
-		position: fixed;
-		top:0;
-		z-index: 1000;
-	}
-	.btn-menu {
-		display: block;
-	}
-	.contenedor-menu .menu {
-		display: none;
-	}
-}
-</style>
-
-<style>
-/* Inicio Scrollbar Delgada y Coloreada */
-/* Works on Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #585858 #000000;
-}
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 12px;
-}
-*::-webkit-scrollbar-track {
-  background: #000000;
-}
-*::-webkit-scrollbar-thumb {
-  background-color: #585858;
-  border-radius: 20px;
-  border: 3px solid #000000;
-}
-	
-</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a2a45 0%, #00365C 50%, #001e33 100%);
+            font-family: 'Open Sans', sans-serif;
+            color: #e0f7ff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo i {
+            font-size: 2.8rem;
+            color: #00C0FF;
+            text-shadow: 0 0 15px rgba(0, 192, 255, 0.7);
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 192, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #a0dfff;
+            font-weight: 300;
+        }
+        
+        /* Gallery Styles */
+        .gallery-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00C0FF, transparent);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            padding: 15px;
+        }
+        
+        .cover-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            aspect-ratio: 1/1;
+            transform: translateY(0);
+        }
+        
+        .cover-container:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 192, 255, 0.5);
+            z-index: 10;
+        }
+        
+        .cover-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            display: block;
+        }
+        
+        .cover-container:hover img {
+            filter: brightness(1.15) saturate(1.1);
+        }
+        
+        .cover-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            padding: 15px 10px 10px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .cover-container:hover .cover-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cover-overlay span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Menu Styles */
+        .menu-section {
+            margin: 40px 0 50px;
+        }
+        
+        .menu-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contenedor-menu {
+            width: 100%;
+            margin: 0 auto;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-menu {
+            display: none;
+            padding: 16px 25px;
+            background: linear-gradient(135deg, #0d2c44 0%, #1a3b5a 100%);
+            color: #fff;
+            text-align: center;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            margin: 15px auto;
+            width: 90%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #00C0FF;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-menu:hover {
+            background: linear-gradient(135deg, #1a3b5a 0%, #0d2c44 100%);
+            color: #00C0FF;
+        }
+        
+        .btn-menu .icono {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-menu.active .icono {
+            transform: rotate(180deg);
+        }
+        
+        .contenedor-menu .menu {
+            width: 100%;
+            background: rgba(13, 44, 68, 0.85);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 192, 255, 0.3);
+        }
+        
+        .contenedor-menu ul {
+            list-style: none;
+        }
+        
+        .contenedor-menu .menu > li > a {
+            color: #fff;
+            display: block;
+            padding: 16px 20px;
+            background: rgba(0, 54, 92, 0.9);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 192, 255, 0.2);
+            text-decoration: none;
+        }
+        
+        .contenedor-menu .menu li a:hover {
+            background: #00C0FF;
+            color: #00365C;
+        }
+        
+        .contenedor-menu .menu .icono {
+            font-size: 16px;
+        }
+        
+        .contenedor-menu .menu .icono.izquierda {
+            float: left;
+            margin-right: 15px;
+        }
+        
+        .contenedor-menu .menu .icono.derecha {
+            float: right;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contenedor-menu .menu .activado > a .icono.derecha {
+            transform: rotate(180deg);
+        }
+        
+        .contenedor-menu .menu ul {
+            display: none;
+            background: rgba(12, 69, 152, 0.85);
+        }
+        
+        .contenedor-menu .menu ul li a {
+            background: transparent;
+            color: #e9e9e9;
+            padding: 14px 20px 14px 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .contenedor-menu .menu ul li a:hover {
+            background: rgba(255, 255, 255, 0.0);
+            color: #00C0FF;
+            padding-left: 45px;
+        }
+        
+        .contenedor-menu .menu .activado > a {
+            background: #1a95d5;
+            color: #fff;
+        }
+        
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            color: #8ac6e6;
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 192, 255, 0.2);
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #001e33;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00C0FF, #0077b6);
+            border-radius: 10px;
+            border: 2px solid #001e33;
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .logo h1 {
+                font-size: 2.4rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 15px;
+            }
+            
+            .cover-overlay span {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 12px;
+            }
+            
+            .btn-menu {
+                display: block;
+            }
+            
+            .contenedor-menu .menu {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+       
+        <section class="gallery-section">
+            
+            <div class="gallery">
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/jplayer/100GOAT.html" target="rockola">
+                        <img src="https://rllom.github.io/radioandromeda/lvplayer/100goat.png" alt="100 Greatest Artists">
+                        <div class="cover-overlay">
+                            <span>100 Greatest Artists</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/airsupply.html" target="rockola">
+                        <img src="https://i.ibb.co/gwv17dS/13makinlove.jpg" alt="Air Supply">
+                        <div class="cover-overlay">
+                            <span>Air Supply</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/thebeatles.html" target="rockola">
+                        <img src="https://image.ibb.co/irSYVU/10_yesterday.jpg" alt="The Beatles">
+                        <div class="cover-overlay">
+                            <span>The Beatles</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/thecranberries.html" target="rockola">
+                        <img src="https://i.ibb.co/GTgJnQf/cover1.jpg" alt="The Cranberries">
+                        <div class="cover-overlay">
+                            <span>The Cranberries</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/roxette.html" target="rockola">
+                        <img src="https://i.ibb.co/Z68dzp8/Roxette-It-Must-Have-Been-Love.jpg" alt="Roxette">
+                        <div class="cover-overlay">
+                            <span>Roxette</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/tracy.html" target="rockola">
+                        <img src="https://i.ibb.co/TMKg9CZ/tracy1.jpg" alt="Tracy Chapman">
+                        <div class="cover-overlay">
+                            <span>Tracy Chapman</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/jplayer/adele.html" target="rockola">
+                        <img src="https://rllom.github.io/radioandromeda/jplayer/cover/A2.jpg" alt="Adele">
+                        <div class="cover-overlay">
+                            <span>Adele</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/jplayer/carpenters.html" target="rockola">
+                        <img src="https://rllom.github.io/radioandromeda/jplayer/cover/C1.jpg" alt="The Carpenters">
+                        <div class="cover-overlay">
+                            <span>The Carpenters</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/html5play/bobmarley.html" target="rockola">
+                        <img src="https://rllom.github.io/radioandromeda/jplayer/cover/B1.jpg" alt="Bob Marley">
+                        <div class="cover-overlay">
+                            <span>Bob Marley</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/mariahcarey.html" target="rockola">
+                        <img src="https://i.ibb.co/8mPWpK2/01-visionoflove.jpg" alt="Mariah Carey">
+                        <div class="cover-overlay">
+                            <span>Mariah Carey</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/whitneyhouston.html" target="rockola">
+                        <img src="https://i.ibb.co/Z8CNvRJ/whitney1.jpg" alt="Whitney Houston">
+                        <div class="cover-overlay">
+                            <span>Whitney Houston</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/mjackson.html" target="rockola">
+                        <img src="https://image.ibb.co/m60Dzp/03_Rock_With_Yo.jpg" alt="Michael Jackson">
+                        <div class="cover-overlay">
+                            <span>Michael Jackson</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/jplayer/celinedion.html" target="rockola">
+                        <img src="https://rllom.github.io/radioandromeda/jplayer/cover/CD3.jpg" alt="Celine Dion">
+                        <div class="cover-overlay">
+                            <span>Celine Dion</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/jplayer/olivianewton.html" target="rockola">
+                        <img src="https://rllom.github.io/radioandromeda/jplayer/cover/O3.jpg" alt="Olivia Newton-John">
+                        <div class="cover-overlay">
+                            <span>Olivia Newton-John</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/camilosesto.html" target="rockola">
+                        <img src="https://i.ibb.co/8sLkCyf/camilo1.jpg" alt="Camilo Sesto">
+                        <div class="cover-overlay">
+                            <span>Camilo Sesto</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="cover-container">
+                    <a href="https://rllom.github.io/radioandromeda/topend/josejosem.html" target="rockola">
+                        <img src="https://i.ibb.co/JkRqt8C/Lo-Que-No-fue-No-Sera.jpg" alt="José José">
+                        <div class="cover-overlay">
+                            <span>José José</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-<center>
-<a href="https://rllom.github.io/radioandromeda/jplayer/100GOAT.html" target="rockola">
-<img src="https://rllom.github.io/radioandromeda/lvplayer/100goat.png" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/airsupply.html" target="rockola">
-<img src="https://i.ibb.co/gwv17dS/13makinlove.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/thebeatles.html" target="rockola">
-<img  src="https://image.ibb.co/irSYVU/10_yesterday.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/thecranberries.html" target="rockola">
-<img  src="https://i.ibb.co/GTgJnQf/cover1.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/roxette.html" target="rockola">
-<img  src="https://i.ibb.co/Z68dzp8/Roxette-It-Must-Have-Been-Love.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/tracy.html" target="rockola">
-<img  src="https://i.ibb.co/TMKg9CZ/tracy1.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/jplayer/adele.html" target="rockola">
-<img  src="https://rllom.github.io/radioandromeda/jplayer/cover/A2.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/jplayer/carpenters.html" target="rockola">
-<img  src="https://rllom.github.io/radioandromeda/jplayer/cover/C1.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/html5play/bobmarley.html" target="rockola">
-<img  src="https://rllom.github.io/radioandromeda/jplayer/cover/B1.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/mariahcarey.html" target="rockola">
-<img  src="https://i.ibb.co/8mPWpK2/01-visionoflove.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/whitneyhouston.html" target="rockola">
-<img  src="https://i.ibb.co/Z8CNvRJ/whitney1.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/mjackson.html" target="rockola">
-<img  src="https://image.ibb.co/m60Dzp/03_Rock_With_Yo.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/jplayer/celinedion.html" target="rockola">
-<img  src="https://rllom.github.io/radioandromeda/jplayer/cover/CD3.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/jplayer/olivianewton.html" target="rockola">
-<img  src="https://rllom.github.io/radioandromeda/jplayer/cover/O3.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/camilosesto.html" target="rockola">
-<img  src="https://i.ibb.co/8sLkCyf/camilo1.jpg" width="150" height="150";> </a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://rllom.github.io/radioandromeda/topend/josejosem.html" target="rockola">
-<img  src="https://i.ibb.co/JkRqt8C/Lo-Que-No-fue-No-Sera.jpg" width="150" height="150";> </a>
+        <section class="menu-section">
+          
+            <div class="menu-container">
+                <div class="contenedor-menu">
+                    <a href="#" class="btn-menu">Menú Principal <i class="icono fas fa-bars"></i></a>
+                    <ul class="menu">
+                        <li>
+                            <a href="#"><i class="icono izquierda fas fa-crown"></i>ARTISTAS CON MÁS No.1<i class="icono derecha fas fa-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/thebeatles.html" target="rockola">The Beatles</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/mariahcarey.html" target="rockola">Mariah Carey</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/elvis.html" target="rockola">Elvis Presley</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/rihanna.html" target="rockola">Rihanna</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/mjackson.html" target="rockola">Michael Jackson</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/drake.html" target="rockola">Drake</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/madonna.html" target="rockola">Madonna</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/thesupremes.html" target="rockola">The Supremes</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/whitneyhouston.html" target="rockola">Whitney Houston</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/taylorswift.html" target="rockola">Taylor Swift</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#"><i class="icono izquierda fas fa-calendar-star"></i>No.1 POR AÑO<i class="icono derecha fas fa-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2022.html" target="rockola">Solo las No.1 del 2022</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2021.html" target="rockola">Solo las No.1 del 2021</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2020.html" target="rockola">Solo las No.1 del 2020</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2019.html" target="rockola">Solo las No.1 del 2019</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2018.html" target="rockola">Solo las No.1 del 2018</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2017.html" target="rockola">Solo las No.1 del 2017</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#"><i class="icono izquierda fas fa-chart-line"></i>TOP 10 DEL AÑO<i class="icono derecha fas fa-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2023.html" target="rockola">Las 10 Mejores del 2023</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2022.html" target="rockola">Las 10 Mejores del 2022</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2021.html" target="rockola">Las 10 Mejores del 2021</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2020.html" target="rockola">Las 10 Mejores del 2020</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2019.html" target="rockola">Las 10 mejores del 2019</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2018.html" target="rockola">Las 10 mejores del 2018</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2017.html" target="rockola">Las 10 mejores del 2017</a></li>
+                                <li><a href="https://rllom.github.io/radioandromeda/topend/top2016.html" target="rockola">Las 10 mejores del 2016</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+       <footer>
+            Radio Andromeda &copy; 2023 - La mejor música para tus oídos
+        </footer>
+    </div>
 
-</center>
-
-<!-- partial:index.partial.html -->
-<center>
-<div class="contenedor-menu">
-		<a href="#" class="btn-menu">Menu<i class="icono fa fa-bars"></i></a>
-		<ul class="menu">
-		
-             <li><a href="#"><i class="icono izquierda fa fa-music"></i>LOS QUE MAS NO.1 HAN LOGRADO<i class="icono derecha fa fa-chevron-down"></i></a>
-      <ul>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/thebeatles.html" target="rockola">The Beatles</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/mariahcarey.html" target="rockola">Mariah Carey</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/elvis.html" target="rockola">Elvis Presley</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/rihanna.html" target="rockola">Rihanna</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/mjackson.html" target="rockola">Michael Jackson</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/drake.html" target="rockola">Drake</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/madonna.html" target="rockola">Madonna</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/thesupremes.html" target="rockola">The Supremes</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/whitneyhouston.html" target="rockola">Whitney Houston</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/taylorswift.html" target="rockola">Taylor Swift</a></li>
-      </ul></li>
-	  
-	  <li><a href="#"><i class="icono izquierda fa fa-music"></i>ESTUVIERON EN No.1 EN EL AÑO<i class="icono derecha fa fa-chevron-down"></i></a>
-      <ul>
-	 <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2022.html" target="rockola">Solo las No.1 del 2022</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2021.html" target="rockola">Solo las No.1 del 2021</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2020.html" target="rockola">Solo las No.1 del 2020</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2019.html" target="rockola">Solo las No.1 del 2019</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2018.html" target="rockola">Solo las No.1 del 2018</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/solouno2017.html" target="rockola">Solo las No.1 del 2017</a></li>
-      </ul></li>
-	
-		<li><a href="#"><i class="icono izquierda fa fa-music"></i>LAS 10 MEJORES DEL AÑO<i class="icono derecha fa fa-chevron-down"></i></a>
-      <ul>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2023.html" target="rockola">Las 10 Mejores del 2023</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2022.html" target="rockola">Las 10 Mejores del 2022</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2021.html" target="rockola">Las 10 Mejores del 2021</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2020.html" target="rockola">Las 10 Mejores del 2020</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2019.html" target="rockola">Las 10 mejores del 2019</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2018.html" target="rockola">Las 10 mejores del 2018</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2017.html" target="rockola">Las 10 mejores del 2017</a></li>
-      <li><a href="https://rllom.github.io/radioandromeda/topend/top2016.html" target="rockola">Las 10 mejores del 2016</a></li>
-      </ul></li>
-
-</div>
-
-</center>
-
-
-
-<!-- partial -->
-<script>
-$(document).ready(function(){
-	$('.menu li:has(ul)').click(function(e){
-		e.preventDefault();
-
-		if ($(this).hasClass('activado')){
-			$(this).removeClass('activado');
-			$(this).children('ul').slideUp();
-		} else {
-			$('.menu li ul').slideUp();
-			$('.menu li').removeClass('activado');
-			$(this).addClass('activado');
-			$(this).children('ul').slideDown();
-		}
-	});
-
-	$('.btn-menu').click(function(){
-		$('.contenedor-menu .menu').slideToggle();
-	});
-
-	
-	$('.menu li ul li a').click(function(){
-		url = $(this).attr("href"); window.open(url, 'rockola');
-      return false;
-	});
-});
-</script>
-
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Manejar clic en elementos del menú con submenús
+            $('.menu > li > a').click(function(e){
+                if($(this).parent().has('ul').length) {
+                    e.preventDefault();
+                    
+                    if($(this).parent().hasClass('activado')) {
+                        $(this).parent().removeClass('activado');
+                        $(this).next('ul').slideUp();
+                    } else {
+                        $('.menu > li.activado').removeClass('activado');
+                        $('.menu > li > ul').slideUp();
+                        $(this).parent().addClass('activado');
+                        $(this).next('ul').slideDown();
+                    }
+                }
+            });
+            
+            // Botón para mostrar/ocultar menú en móviles
+            $('.btn-menu').click(function(e){
+                e.preventDefault();
+                $('.contenedor-menu .menu').slideToggle();
+                $(this).toggleClass('active');
+            });
+            
+            // Manejar clic en enlaces del submenú
+            $('.menu ul li a').click(function(e){
+                e.preventDefault();
+                window.open($(this).attr('href'), 'rockola');
+            });
+            
+            // Cerrar menús al hacer clic fuera
+            $(document).click(function(e) {
+                if (!$(e.target).closest('.contenedor-menu').length) {
+                    $('.menu > li.activado').removeClass('activado');
+                    $('.menu > li > ul').slideUp();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
