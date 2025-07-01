@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Radio Vinilo Player</title>
 
+
 <style>
+
 body {
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(to bottom, #000000, #FFFFFF);
-  background-image: url("https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg");
+  background: linear-gradient(to bottom, #000000, #1F70E8);
+  background-image: url("espacio.jpg");
   background-size: cover;  
   background-repeat: no-repeat; 
   background-position: center;
@@ -104,8 +106,8 @@ audio {
 
 .buttons {
   position: absolute;
-  top: 25%;
-  left: 15%;
+  top: 20%;
+  left: 5%;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -139,6 +141,7 @@ audio {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.4));
 }
+
 .logo-container img:hover {
   transform: scale(1.08);
   filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8));
@@ -161,23 +164,27 @@ audio {
 
 @media screen and (orientation: landscape) and (max-height: 500px) {
   .player {
-    width: 60vh;
-    height: 60vh;
+    width: 50vh;
+    height: 50vh;
   }
 
   .buttons {
+    position: absolute;
     top: 10px;
-    left: auto;
-    right: 10px;
-    flex-direction: row;
+    left: 10px;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
+    transform: scale(0.8);
+  }
+
+  .buttons img {
+    width: 100px;
   }
 
   .logo-container {
-    top: auto;
-    bottom: 10px;
+    top: 10px;
     left: 10px;
-    height: auto;
   }
 
   .logo-container img {
@@ -185,81 +192,66 @@ audio {
   }
 
   .now-playing {
-    font-size: 14px;
-    padding: 6px 10px;
-    margin-top: 10px;
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-top: 6px;
   }
 }
-</style> 
+</style>
 
 </head>
 <body>
 
 <div class="logo-container">
-  <a href="http://radioandromeda.tk"><img src="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png" alt="Radio Andromeda"></a>
+  <a href="http://radioandromeda.tk"><img src="Logo-Andromeda-500x500.png" alt="Radio Andromeda"></a>
 </div>
 
   <div class="player" id="player">
-    <!-- Vinilo detrás del cover -->
-    <img src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png" alt="Vinyl" class="vinyl" id="vinyl">
-    
-    <!-- Portada dinámica sobre el vinilo -->
+    <img src="disco-vinilo2.png" alt="Vinyl" class="vinyl" id="vinyl">
     <img id="rbcloud_cover19578" class="cover" src="https://c11.radioboss.fm/w/artwork/71.jpg" alt="cover art">
-    
-    <!-- Botón de play encima de todo -->
-    <img src="https://rllom.github.io/radioandromeda/lvplayer/play.png" alt="Play Button" class="play-btn" id="playButton">
-    
-    <!-- Reproductor -->
+    <img src="play.png" alt="Play Button" class="play-btn" id="playButton">
     <audio id="radio" src="https://c11.radioboss.fm:8071/stream" preload="none"></audio>
   </div>
 
-
-<!-- Texto de canción actual -->
 <div class="now-playing">
-   
   <span id="rbcloud_nowplaying16384"></span>
   <script src="https://c11.radioboss.fm/w/nowplaying.js?u=71&wid=16384"></script>
 </div>
 
-
 <div class="buttons">
   <a href="https://rllom.github.io/radioandromeda/lvplayer/vinilo+leyenda.html" target="_self">
-    <img src="https://rllom.github.io/radioandromeda/lvplayer/100goat.png" alt="Leyendas">
+    <img src="100goat.png" alt="Leyendas">
   </a>
   <a href="https://www.appcreator24.com/app329973-zn5mvq" target="_blank">
-    <img src="https://rllom.github.io/radioandromeda/lvplayer/apk.png" alt="App Android">
+    <img src="apk.png" alt="App Android">
   </a>
   <a href="https://rllom.github.io/radioandromeda/Radio_Andromeda.zip">
-    <img src="https://rllom.github.io/radioandromeda/lvplayer/usb.png" alt="App Portable">
+    <img src="usb.png" alt="App Portable">
   </a>
 </div>
 
+<script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
+<script>
+  const player = document.getElementById("player");
+  const audio = document.getElementById("radio");
+  const vinyl = document.getElementById("vinyl");
 
+  let isPlaying = false;
 
-  <!-- Script de portada dinámica -->
-  <script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
-
-  <script>
-    const player = document.getElementById("player");
-    const audio = document.getElementById("radio");
-    const vinyl = document.getElementById("vinyl");
-
-    let isPlaying = false;
-
-    player.addEventListener("click", () => {
-      if (!isPlaying) {
-        audio.play();
-        vinyl.classList.add("rotate");
-        player.classList.add("playing");
-        isPlaying = true;
-      } else {
-        audio.pause();
-        vinyl.classList.remove("rotate");
-        player.classList.remove("playing");
-        isPlaying = false;
-      }
-    });
-  </script>
+  player.addEventListener("click", () => {
+    if (!isPlaying) {
+      audio.play();
+      vinyl.classList.add("rotate");
+      player.classList.add("playing");
+      isPlaying = true;
+    } else {
+      audio.pause();
+      vinyl.classList.remove("rotate");
+      player.classList.remove("playing");
+      isPlaying = false;
+    }
+  });
+</script>
 
 </body>
 </html>
