@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radio Vinilo Player</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+
+<style>
+:root {
+  --cover-size: min(90vw, 90vh);
+  --vinyl-size: calc(var(--cover-size) * 0.98);
+  --logo-size: calc(var(--cover-size) * 0.75); /* Tamaño del logo */
+  --play-btn-size: calc(var(--cover-size) * 0.2);
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-image: url("https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg");
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Michroma;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 20px;
+}
+
+.clock {
+  position: fixed;
+  top: 2px;
+  right: 20px;
+  font-size: 1.2rem;
+  color: #00fff7;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  background-color: rgba(0,0,0,0.5);
+  padding: 5px 15px;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.player-wrapper {
+  position: relative;
+  width: var(--cover-size);
+  height: calc(var(--cover-size) + var(--logo-size) + 20px); /* Ajuste para logo completo */
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  height: var(--cover-size);
+  cursor: pointer;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(12, 215, 195, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.vinyl {
+  position: absolute;
+  width: var(--vinyl-size);
+  height: var(--vinyl-size);
+  left: 50%;
+  top: calc(100% - (var(--vinyl-size) * 0.5));
+  transform: translateX(-50%) scale(0);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px rgba(12, 215, 195, 0.9));
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.5s ease;
+  z-index: 1;
+}
+
+.logo-pause {
+  position: absolute;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  left: 50%;
+  top: 95%; /* Posicionado justo debajo de la carátula */
+  transform: translateX(-50%);
+  margin-top:0px; /* Espacio entre carátula y logo */
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.7));
+}
+
+.player.playing .logo-pause {
+  opacity: 0;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--play-btn-size);
+  height: var(--play-btn-size);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  object-fit: contain;
+}
+
+.player:hover .play-btn {
+  opacity: 1;
+}
+
+.player.playing .play-btn {
+  opacity: 0;
+}
+
+.rotate {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.player.playing .vinyl {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.now-playing {
+  padding: 8px 16px;
+  margin-top: -80px; /* Espacio reducido */
+  font-size: clamp(14px, 3vw, 18px); /* Tamaño responsive */
+  border-radius: 5px;
+  color: #00fff7;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  text-align: center;
+  width: 90%;
+  max-width: var(--cover-size);
+  position: relative;
+  z-index: 2;
+}
+</style>
+  
+</head>
+<body>
+
+<div class="clock" id="clock">--:--:-- --</div>
+
+<div class="main-container">
+  <div class="player-wrapper">
+    <div class="player" id="player">
+      <img id="rbcloud_cover19578" class="cover" src="https://c11.radioboss.fm/w/artwork/71.jpg" alt="cover art">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/play.png" alt="Play Button" class="play-btn" id="playButton">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png" alt="Vinyl" class="vinyl" id="vinyl">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png" alt="Logo Radio Andromeda" class="logo-pause" id="logoPause">
+      <audio id="radio" src="https://c11.radioboss.fm:8071/stream" preload="none"></audio>
+    </div>
+  </div>
+
+  <div class="now-playing">
+    <span id="rbcloud_nowplaying16384"></span>
+    <script src="https://c11.radioboss.fm/w/nowplaying.js?u=71&wid=16384"></script>
+  </div>
+</div>
+
+<script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
+
+<script>
+  // Reloj en formato 12h
+  function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'p' : 'a';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Convertir 0 a 12
+    
+    document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+  }
+  
+  // Actualizar el reloj cada segundo
+  setInterval(updateClock, 1000);
+  updateClock(); // Mostrar inmediatamente
+
+  // Control del reproductor
+  const player = document.getElementById("player");
+  const audio = document.getElementById("radio");
+  const vinyl = document.getElementById("vinyl");
+  const logoPause = document.getElementById("logoPause");
+
+  let isPlaying = false;
+
+  player.addEventListener("click", () => {
+    if (!isPlaying) {
+      audio.play();
+      vinyl.classList.add("rotate");
+      player.classList.add("playing");
+      isPlaying = true;
+    } else {
+      audio.pause();
+      vinyl.classList.remove("rotate");
+      player.classList.remove("playing");
+      isPlaying = false;
+    }
+  });
+</script>
+
+
+</body>
+</html>
