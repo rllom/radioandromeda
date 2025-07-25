@@ -24,9 +24,9 @@
 
 <style>
 :root {
-  --cover-size: min(93vw, 93vh);
+  --cover-size: min(80vw, 80vh);
   --vinyl-size: calc(var(--cover-size) * 0.98);
-  --logo-size: calc(var(--cover-size) * 0.75); /* Tamaño del logo */
+  --logo-size: calc(var(--cover-size) * 0.70); /* Tamaño del logo */
   --play-btn-size: calc(var(--cover-size) * 0.2);
 }
 
@@ -74,7 +74,7 @@ a:hover {COLOR: #ffffff}
   background-color: rgba(0,0,0,0.6);
   backdrop-filter: blur(4px);
   box-shadow: 0 0 20px rgba(0,255,255,0.6);
-  padding: 3px 10px;
+  padding: 3px 15px;
   border-radius: 5px;
   z-index: 10;
 }
@@ -126,7 +126,7 @@ a:hover {COLOR: #ffffff}
   width: var(--logo-size);
   height: var(--logo-size);
   left: 50%;
-  top: 95%; /* Posicionado justo debajo de la carátula */
+  top: 90%; /* Posicionado justo debajo de la carátula */
   transform: translateX(-50%);
   margin-top:30px; /* Espacio entre carátula y logo */
   opacity: 1;
@@ -178,7 +178,7 @@ a:hover {COLOR: #ffffff}
 
 .now-playing {
   padding: 8px 16px;
-  margin-top: -50px; /* Espacio reducido */
+  margin-top: -70px; /* Espacio reducido */
   font-size: clamp(14px, 3vw, 18px); /* Tamaño responsive */
   border-radius: 5px;
   color: #00fff7;
