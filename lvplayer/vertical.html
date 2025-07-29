@@ -40,13 +40,24 @@ body {
   background-attachment: fixed;
   font-family: Michroma;
 
-
-A:link  {color:#00fff7;text-decoration: none}
-A { text-decoration:none;  background-color:Transparent; color:#00fff7; }
-A:visited { color:#00fff7;text-decoration: none}
-a:hover {COLOR: #ffffff}
-
-
+/* Unvisited link */
+a:link {
+  color: #00fff7;
+  text-decoration: none;
+}
+/* Visited link */
+a:visited {
+  color: #00fff7;
+}
+/* Mouse over link */
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+/* Selected link */
+a:active {
+  color: #00fff7;
+  background-color: lightgray;
 }
 
 .main-container {
