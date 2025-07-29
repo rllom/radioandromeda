@@ -41,10 +41,27 @@ body {
   font-family: Michroma;
 
 
-A:link  {color:#00fff7;text-decoration: none}
-A { text-decoration:none;  background-color:Transparent; color:#00fff7; }
-A:visited { color:#00fff7;text-decoration: none}
-a:hover {COLOR: #ffffff}
+/* ESTILOS PARA ENLACES - VERSIÓN MEJORADA */
+/* Regla base para todos los enlaces */
+a {
+  text-decoration: none;
+  background-color: transparent;
+  color: #00fff7;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Estados de los enlaces */
+a:link,
+a:visited,
+a:active {
+  color: #00fff7;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
 
 
 }
@@ -81,6 +98,11 @@ a:hover {COLOR: #ffffff}
 
 .clock-url {
   font-weight: bold;
+}
+.clock-url a {
+  font-weight: inherit; /* Hereda el peso de .clock-url */
+  display: inline-block; /* Mejor control del espacio */
+  padding: 2px 0; /* Espaciado vertical mínimo */
 }
 
 .player-wrapper {
