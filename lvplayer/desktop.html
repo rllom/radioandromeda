@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- Meta Tags Esenciales -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Radio Andrómeda - Diseñada Exclusivamente para Tus Oídos. La Combinación Perfecta del Pasado y El Presente">
+  <meta name="keywords" content="radio, música, streaming, andromeda">
+  <meta name="author" content="Radio Andromeda">
+  <meta property="og:title" content="Radio Andromeda">
+  <meta property="og:description" content="Radio Andrómeda - Diseñada Exclusivamente para Tus Oídos. La Combinación Perfecta del Pasado y El Presente">
+  <meta property="og:image" content="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png">
+  <meta property="og:url" content="http://www.radioandromeda.tk">
+  <meta name="theme-color" content="#00fff7">
+
+  
+  <title>Radio Andromeda</title>
+
+<!-- Favicon -->
+<link rel="icon" href="https://rllom.github.io/radioandromeda/lvplayer/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+
+<style>
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #000000;
+  background-image: url("https://rllom.github.io/radioandromeda/lvplayer/limbo.jpg");
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Michroma;
+
+
+A:link  {color:#00fff7;text-decoration: none}
+A { text-decoration:none;  background-color:Transparent; color:#242424}
+A:visited { color:#00fff7;text-decoration: none}
+a:hover {COLOR: #ffffff}
+
+
+}
+
+/*Efecto Luciernaga */
+ canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      filter: blur(1px);
+    }
+</style>
+ 
+
+</head>
+<body>
+
+<br>
+<center>
+<iframe id="radioIframe"  style="border-radius: 5px; color: #00fff7; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,255,255,0.6); width:30%; height:900px;" src="https://rllom.github.io/radioandromeda/lvplayer/vertical.html " scrolling="no" frameborder="no"></iframe>
+</center>
+
+<script>
+  document.getElementById('radioIframe').onload = function() {
+    const css = `
+      a {
+        text-decoration: none !important;
+        background-color: transparent !important;
+        color: #00fff7 !important;
+        transition: color 0.3s ease, text-shadow 0.3s ease !important;
+      }
+      a:link, a:visited, a:active {
+        color: #00fff7 !important;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
+      }
+      a:hover {
+        color: #ffffff !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
+      }
+    `;
+    
+    const iframeDoc = this.contentDocument || this.contentWindow.document;
+    const style = iframeDoc.createElement('style');
+    style.type = 'text/css';
+    style.appendChild(iframeDoc.createTextNode(css));
+    iframeDoc.head.appendChild(style);
+  };
+</script>
+
+</body>
