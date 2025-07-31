@@ -37,13 +37,15 @@ body {
   font-family: Michroma;
 
 
-A:link  {color:#00fff7;text-decoration: none}
-A { text-decoration:none;  background-color:Transparent; color:#242424}
-A:visited { color:#00fff7;text-decoration: none}
-a:hover {COLOR: #ffffff}
-
-
+/* iframe-styles.css */
+a {
+  text-decoration: none !important;
+  background-color: transparent !important;
+  color: #00fff7 !important;
+  transition: color 0.3s ease, text-shadow 0.3s ease !important;
 }
+/* [Resto de tus estilos...] */
+
 
 /*Efecto Luciernaga */
  canvas {
@@ -61,34 +63,8 @@ a:hover {COLOR: #ffffff}
 </head>
 <body>
 <center>
-<iframe id="radioIframe"  style="border-radius: 5px; color: #00fff7; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,255,255,0.6); width:30%; height:900px;" src="https://rllom.github.io/radioandromeda/lvplayer/vertical.html " scrolling="no" frameborder="no"></iframe>
+<iframe   style="border-radius: 5px; color: #00fff7; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,255,255,0.6); width:30%; height:900px;" src="https://rllom.github.io/radioandromeda/lvplayer/vertical.html " scrolling="no" frameborder="no"></iframe>
 </center>
 
-<script>
-  document.getElementById('radioIframe').onload = function() {
-    const css = `
-      a {
-        text-decoration: none !important;
-        background-color: transparent !important;
-        color: #00fff7 !important;
-        transition: color 0.3s ease, text-shadow 0.3s ease !important;
-      }
-      a:link, a:visited, a:active {
-        color: #00fff7 !important;
-        text-shadow: 0 0 5px rgba(0, 255, 255, 0.3) !important;
-      }
-      a:hover {
-        color: #ffffff !important;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7) !important;
-      }
-    `;
-    
-    const iframeDoc = this.contentDocument || this.contentWindow.document;
-    const style = iframeDoc.createElement('style');
-    style.type = 'text/css';
-    style.appendChild(iframeDoc.createTextNode(css));
-    iframeDoc.head.appendChild(style);
-  };
-</script>
 
 </body>
