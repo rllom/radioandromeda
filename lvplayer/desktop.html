@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 
 <!-- Meta Tags Esenciales -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Radio Andrómeda - Diseñada Exclusivamente para Tus Oídos. La Combinación Perfecta del Pasado y El Presente">
   <meta name="keywords" content="radio, música, streaming, andromeda">
   <meta name="author" content="Radio Andromeda">
@@ -15,7 +14,7 @@
   <meta property="og:url" content="http://www.radioandromeda.tk">
   <meta name="theme-color" content="#00fff7">
 
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Radio Andromeda</title>
 
 <!-- Favicon -->
@@ -24,11 +23,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
 
 <style>
+:root {
+  --cover-size: min(55vw, 55vh);
+  --vinyl-size: calc(var(--cover-size) * 0.98);
+  --logo-size: calc(var(--cover-size) * 0.70); /* Tamaño del logo */
+  --play-btn-size: calc(var(--cover-size) * 0.2);
+}
 
 body {
   margin: 0;
   overflow: hidden;
-  background-color: #000000;
   background-image: url("https://rllom.github.io/radioandromeda/lvplayer/limbo.jpg");
   background-size: cover;  
   background-repeat: no-repeat; 
@@ -37,16 +41,159 @@ body {
   font-family: Michroma;
 
 
-/* iframe-styles.css */
-a {
-  text-decoration: none !important;
-  background-color: transparent !important;
-  color: #00fff7 !important;
-  transition: color 0.3s ease, text-shadow 0.3s ease !important;
-}
-/* [Resto de tus estilos...] */
+A:link  {color:#00fff7;text-decoration: none}
+A { text-decoration:none;  background-color:Transparent; color:#00fff7; }
+A:visited { color:#00fff7;text-decoration: none}
+a:hover {COLOR: #ffffff}
+
+
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 20px;
+}
+
+.clock {
+  position: fixed;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  font-size: clamp(12px, 3vw, 14px); /* Tamaño responsive */
+
+  /*font-size: 0.9rem;*/
+
+  color: #00fff7;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  padding: 3px 8px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.clock-url {
+  font-weight: bold;
+}
+
+.player-wrapper {
+  position: relative;
+  width: var(--cover-size);
+  height: calc(var(--cover-size) + var(--logo-size) + 20px); /* Ajuste para logo completo */
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  height: var(--cover-size);
+  cursor: pointer;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(12, 215, 195, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.vinyl {
+  position: absolute;
+  width: var(--vinyl-size);
+  height: var(--vinyl-size);
+  left: 50%;
+  top: calc(100% - (var(--vinyl-size) * 0.47));
+  transform: translateX(-50%) scale(0);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px rgba(12, 215, 195, 0.9));
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.5s ease;
+  z-index: 1;
+}
+
+.logo-pause {
+  position: absolute;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  left: 50%;
+  top: 90%; /* Posicionado justo debajo de la carátula */
+  transform: translateX(-50%);
+  margin-top:40px; /* Espacio entre carátula y logo */
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.7));
+}
+
+.player.playing .logo-pause {
+  opacity: 0;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--play-btn-size);
+  height: var(--play-btn-size);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  object-fit: contain;
+}
+
+.player:hover .play-btn {
+  opacity: 1;
+}
+
+.player.playing .play-btn {
+  opacity: 0;
+}
+
+.rotate {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.player.playing .vinyl {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.now-playing {
+  padding: 8px 16px;
+  margin-bottom: 25px; /* Espacio reducido */
+  font-size: clamp(12px, 3vw, 14px); /* Tamaño responsive */
+  border-radius: 5px;
+  color: #00fff7;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  text-align: center;
+  width: 90%;
+  max-width: var(--cover-size);
+  position: relative;
+  z-index: 2;
+}
 
 /*Efecto Luciernaga */
  canvas {
@@ -59,13 +206,179 @@ a {
       filter: blur(1px);
     }
 </style>
- 
-
+  
 </head>
 <body>
-<center>
-<iframe   style="border-radius: 5px; color: #00fff7; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(4px); box-shadow: 0 0 20px rgba(0,255,255,0.6); width:30%; height:900px;" src="https://rllom.github.io/radioandromeda/lvplayer/vertical.html " scrolling="no" frameborder="no"></iframe>
-</center>
+
+<div class="clock">
+  <span class="clock-url"><a href="http://www.radioandromeda.tk">Www.RadioAndromeda.Tk </a></span>
+  <span id="clock">--:--:-- --</span>
+</div>
+
+<div class="main-container">
+  <div class="player-wrapper">
+    <div class="player" id="player">
+      <img id="rbcloud_cover19578" class="cover" src="https://c11.radioboss.fm/w/artwork/71.jpg" alt="cover art">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/play.png" alt="Play Button" class="play-btn" id="playButton">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png" alt="Vinyl" class="vinyl" id="vinyl">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png" alt="Logo Radio Andromeda" class="logo-pause" id="logoPause">
+      <audio id="radio" src="https://c11.radioboss.fm:8071/stream" preload="none"></audio>
+    </div>
+  </div>
+
+  <div class="now-playing">
+    <span id="rbcloud_nowplaying16384"></span>
+    <script src="https://c11.radioboss.fm/w/nowplaying.js?u=71&wid=16384"></script>
+  </div>
+</div>
+
+<--! Efecto Luciernagas -->
+<canvas id="canvas"></canvas>
+
+<script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
+
+<script>
+// Precarga de imágenes (añade esto al inicio de tu script)
+function preloadImages() {
+  const images = [
+    'https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png',
+    'https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png',
+    'https://c11.radioboss.fm/w/artwork/71.jpg'
+  ];
+  
+  images.forEach(img => {
+    new Image().src = img;
+  });
+}
+
+window.addEventListener('load', preloadImages);  
+
+
+// Reloj en formato 12h
+  function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Convertir 0 a 12
+    
+    document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+  }
+  
+  // Actualizar el reloj cada segundo
+  setInterval(updateClock, 1000);
+  updateClock(); // Mostrar inmediatamente
+
+  // Control del reproductor
+  const player = document.getElementById("player");
+  const audio = document.getElementById("radio");
+  const vinyl = document.getElementById("vinyl");
+  const logoPause = document.getElementById("logoPause");
+
+  let isPlaying = false;
+
+  player.addEventListener("click", () => {
+    if (!isPlaying) {
+      audio.play();
+      vinyl.classList.add("rotate");
+      player.classList.add("playing");
+      isPlaying = true;
+    } else {
+      audio.pause();
+      vinyl.classList.remove("rotate");
+      player.classList.remove("playing");
+      isPlaying = false;
+    }
+  });
+
+
+ // Efecto de luciérnagas
+    let c = init("canvas"),
+      w = (canvas.width = window.innerWidth),
+      h = (canvas.height = window.innerHeight);
+
+    class Firefly {
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.s = Math.random() * 2;
+        this.ang = Math.random() * 2 * Math.PI;
+        this.v = (this.s * this.s) / 4;
+      }
+      move() {
+        this.x += this.v * Math.cos(this.ang);
+        this.y += this.v * Math.sin(this.ang);
+        this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180;
+        
+        if (this.x < 0) this.x = w;
+        if (this.x > w) this.x = 0;
+        if (this.y < 0) this.y = h;
+        if (this.y > h) this.y = 0;
+      }
+      show() {
+        c.beginPath();
+        c.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+        c.fillStyle = "#fddba3";
+        c.fill();
+      }
+    }
+
+    let f = [];
+
+    function draw() {
+      if (f.length < 100) {
+        for (let j = 0; j < 10; j++) {
+          f.push(new Firefly());
+        }
+      }
+      for (let i = 0; i < f.length; i++) {
+        f[i].move();
+        f[i].show();
+      }
+    }
+
+    function init(elemid) {
+      let canvas = document.getElementById(elemid),
+        c = canvas.getContext("2d"),
+        w = (canvas.width = window.innerWidth),
+        h = (canvas.height = window.innerHeight);
+      c.fillStyle = "rgba(30,30,30,1)";
+      c.fillRect(0, 0, w, h);
+      return c;
+    }
+
+    window.requestAnimFrame = (function () {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback);
+        }
+      );
+    })();
+
+    function loop() {
+      window.requestAnimFrame(loop);
+      c.clearRect(0, 0, w, h);
+      draw();
+    }
+
+    window.addEventListener("resize", function () {
+      (w = canvas.width = window.innerWidth), 
+      (h = canvas.height = window.innerHeight);
+      loop();
+    });
+
+    loop();
+
+</script>
 
 
 </body>
+</html>
