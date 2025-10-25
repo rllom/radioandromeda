@@ -190,25 +190,35 @@ body {
 
 <script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
 <script>
+  // Control del reproductor
   const player = document.getElementById("player");
   const audio = document.getElementById("radio");
   const vinyl = document.getElementById("vinyl");
+  const logoPause = document.getElementById("logoPause");
+  
+  // URL del stream
+  const streamUrl = "https://c11.radioboss.fm:8071/stream";
 
   let isPlaying = false;
 
   player.addEventListener("click", () => {
     if (!isPlaying) {
+      // Reiniciar el stream cada vez que se reproduce
+      audio.src = streamUrl + '?nocache=' + new Date().getTime();
       audio.play();
       vinyl.classList.add("rotate");
       player.classList.add("playing");
       isPlaying = true;
     } else {
+      // Detener completamente el audio
       audio.pause();
+      audio.src = "";
       vinyl.classList.remove("rotate");
       player.classList.remove("playing");
       isPlaying = false;
     }
   });
+
 
 // Efecto de luciérnagas
     let c = init("canvas"),
