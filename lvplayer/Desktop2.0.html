@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- Meta Tags Esenciales -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Radio Andrómeda - Diseñada Exclusivamente para Tus Oídos. La Combinación Perfecta del Pasado y El Presente">
+  <meta name="keywords" content="radio, música, streaming, andromeda">
+  <meta name="author" content="Radio Andromeda">
+  <meta property="og:title" content="Radio Andromeda">
+  <meta property="og:description" content="Radio Andrómeda - Diseñada Exclusivamente para Tus Oídos. La Combinación Perfecta del Pasado y El Presente">
+  <meta property="og:image" content="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png">
+  <meta property="og:url" content="http://www.radioandromeda.tk">
+  <meta name="theme-color" content="#00fff7">
+  <title>Radio Andromeda - Halo Musical</title>
+
+<!-- Favicon -->
+<link rel="icon" href="https://rllom.github.io/radioandromeda/lvplayer/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+
+<style>
+:root {
+  --cover-size: min(55vw, 55vh);
+  --vinyl-size: calc(var(--cover-size) * 0.98);
+  --logo-size: calc(var(--cover-size) * 0.70);
+  --play-btn-size: calc(var(--cover-size) * 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-image: url("https://rllom.github.io/radioandromeda/lvplayer/limbo.jpg");
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Michroma, sans-serif;
+}
+
+a:link {
+  color: #00fff7;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+  color: #00fff7;
+}
+
+a:visited {
+  color: #00fff7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.clock {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: clamp(12px, 3vw, 14px);
+  color: #00fff7;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  padding: 3px 8px;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.clock-url {
+  font-weight: bold;
+}
+
+.player-wrapper {
+  position: relative;
+  width: var(--cover-size);
+  height: calc(var(--cover-size) + var(--logo-size) + 20px);
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  height: var(--cover-size);
+  cursor: pointer;
+}
+
+/* Contenedor de la carátula con el halo animado */
+.cover-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 22px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+/* Halo animado usando CSS con pulsos */
+.halo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border-radius: 15px;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.05s ease-out;
+}
+
+/* Capas del halo */
+.halo-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  pointer-events: none;
+  transition: all 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.halo-layer-1 {
+  width: calc(100% + 15px);
+  height: calc(100% + 15px);
+  background: radial-gradient(circle, rgba(0,255,247,0.6) 0%, rgba(0,255,247,0) 70%);
+  filter: blur(8px);
+}
+
+.halo-layer-2 {
+  width: calc(100% + 25px);
+  height: calc(100% + 25px);
+  background: radial-gradient(circle, rgba(255,0,170,0.5) 0%, rgba(255,0,170,0) 70%);
+  filter: blur(12px);
+}
+
+.halo-layer-3 {
+  width: calc(100% + 35px);
+  height: calc(100% + 35px);
+  background: radial-gradient(circle, rgba(255,170,0,0.4) 0%, rgba(255,170,0,0) 70%);
+  filter: blur(16px);
+}
+
+.halo-layer-4 {
+  width: calc(100% + 45px);
+  height: calc(100% + 45px);
+  background: radial-gradient(circle, rgba(255,68,255,0.3) 0%, rgba(255,68,255,0) 70%);
+  filter: blur(20px);
+}
+
+/* Partículas orbitantes */
+.orbiting-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #00fff7, #ff00aa);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.05s linear;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(12, 215, 195, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.vinyl {
+  position: absolute;
+  width: var(--vinyl-size);
+  height: var(--vinyl-size);
+  left: 50%;
+  top: calc(100% - (var(--vinyl-size) * 0.47));
+  transform: translateX(-50%) scale(0);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px rgba(12, 215, 195, 0.9));
+  opacity: 0;
+  transition: transform 1.2s ease-out, opacity 1.5s ease;
+  z-index: 1;
+}
+
+.logo-pause {
+  position: absolute;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  left: 50%;
+  top: 90%;
+  transform: translateX(-50%);
+  margin-top: 40px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.7));
+}
+
+.player.playing .logo-pause {
+  opacity: 0;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--play-btn-size);
+  height: var(--play-btn-size);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  object-fit: contain;
+}
+
+.player:hover .play-btn {
+  opacity: 1;
+}
+
+.player.playing .play-btn {
+  opacity: 0;
+}
+
+.rotate {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.player.playing .vinyl {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.now-playing {
+  padding: 8px 16px;
+  margin-bottom: 70px;
+  font-size: clamp(12px, 3vw, 14px);
+  border-radius: 5px;
+  color: #00fff7;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  text-align: center;
+  width: 90%;
+  max-width: var(--cover-size);
+  position: relative;
+  z-index: 2;
+}
+
+/* Animación de pulso para el halo */
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+.halo-pulse {
+  animation: pulseGlow 0.3s ease-out;
+}
+
+/* Efecto Luciernaga */
+canvas.firefly-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  filter: blur(1px);
+}
+</style>
+  
+</head>
+<body>
+
+<div class="clock">
+  <span class="clock-url"><a href="https://rllom.github.io/radioandromeda/lvplayer/vinilov2.html"><img src="https://rllom.github.io/radioandromeda/lvplayer/name.png" alt="Radio Andromeda"></a></span>
+  <span id="clock">--:--:-- --</span>
+</div>
+
+<div class="main-container">
+  <div class="player-wrapper">
+    <div class="player" id="player">
+      <div class="cover-container" id="coverContainer">
+        <!-- Capas del halo animado -->
+        <div class="halo-ring" id="haloRing">
+          <div class="halo-layer halo-layer-1" id="halo1"></div>
+          <div class="halo-layer halo-layer-2" id="halo2"></div>
+          <div class="halo-layer halo-layer-3" id="halo3"></div>
+          <div class="halo-layer halo-layer-4" id="halo4"></div>
+        </div>
+        <div class="orbiting-particles" id="orbitingParticles"></div>
+        <img id="rbcloud_cover19578" class="cover" src="https://c11.radioboss.fm/w/artwork/71.jpg" alt="cover art">
+      </div>
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/play.png" alt="Play Button" class="play-btn" id="playButton">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png" alt="Vinyl" class="vinyl" id="vinyl">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png" alt="Logo Radio Andromeda" class="logo-pause" id="logoPause">
+      <audio id="radio" preload="none" crossorigin="anonymous"></audio>
+    </div>
+  </div>
+
+  <div class="now-playing">
+    <span id="rbcloud_nowplaying16384"></span>
+    <script src="https://c11.radioboss.fm/w/nowplaying.js?u=71&wid=16384"></script>
+  </div>
+</div>
+
+<!-- Efecto Luciernagas -->
+<canvas id="fireflyCanvas" class="firefly-canvas"></canvas>
+
+<script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
+
+<script>
+// Precarga de imágenes
+function preloadImages() {
+  const images = [
+    'https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png',
+    'https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png',
+    'https://c11.radioboss.fm/w/artwork/71.jpg'
+  ];
+  
+  images.forEach(img => {
+    new Image().src = img;
+  });
+}
+
+window.addEventListener('load', preloadImages);
+
+// Reloj en formato 12h
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  
+  document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+// ========== DETECTOR DE RITMO MEJORADO ==========
+class BeatDetector {
+  constructor() {
+    this.volumeHistory = [];
+    this.historySize = 43;
+    this.sensitivity = 1.3;
+    this.lastBeatTime = 0;
+    this.beatCooldown = 300; // ms entre beats
+    this.currentVolume = 0;
+    this.isBeat = false;
+    this.intensity = 0;
+    this.animationFrame = null;
+  }
+  
+  updateVolume(volume) {
+    // Suavizar el volumen
+    this.currentVolume = this.currentVolume * 0.7 + volume * 0.3;
+    
+    // Guardar en historial
+    this.volumeHistory.push(this.currentVolume);
+    if (this.volumeHistory.length > this.historySize) {
+      this.volumeHistory.shift();
+    }
+    
+    // Calcular promedio
+    let sum = 0;
+    for (let i = 0; i < this.volumeHistory.length; i++) {
+      sum += this.volumeHistory[i];
+    }
+    const average = sum / this.volumeHistory.length;
+    
+    // Detectar beat
+    const now = Date.now();
+    if (this.currentVolume > average * this.sensitivity && 
+        now - this.lastBeatTime > this.beatCooldown) {
+      this.isBeat = true;
+      this.lastBeatTime = now;
+      // Calcular intensidad del beat
+      this.intensity = Math.min(1, (this.currentVolume - average) / average);
+    } else {
+      this.isBeat = false;
+      // Decaimiento de intensidad
+      this.intensity = Math.max(0, this.intensity * 0.95);
+    }
+    
+    return { isBeat: this.isBeat, intensity: this.intensity, volume: this.currentVolume };
+  }
+}
+
+// ========== GESTOR DEL HALO ANIMADO ==========
+class HaloAnimator {
+  constructor() {
+    this.haloLayers = [
+      document.getElementById('halo1'),
+      document.getElementById('halo2'),
+      document.getElementById('halo3'),
+      document.getElementById('halo4')
+    ];
+    this.particlesContainer = document.getElementById('orbitingParticles');
+    this.particles = [];
+    this.particleCount = 24;
+    this.isPlaying = false;
+    this.currentIntensity = 0;
+    this.beatDetector = new BeatDetector();
+    this.animationId = null;
+    
+    this.createParticles();
+    this.startAnimation();
+  }
+  
+  createParticles() {
+    this.particlesContainer.innerHTML = '';
+    for (let i = 0; i < this.particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const angle = (i / this.particleCount) * Math.PI * 2;
+      particle.angle = angle;
+      particle.speed = 0.02 + Math.random() * 0.03;
+      particle.radius = 0;
+      particle.size = 3 + Math.random() * 4;
+      particle.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      this.particles.push(particle);
+      this.particlesContainer.appendChild(particle);
+    }
+  }
+  
+  updateParticlePositions(intensity, beat) {
+    const container = this.particlesContainer;
+    const parentRect = container.parentElement.getBoundingClientRect();
+    const centerX = parentRect.width / 2;
+    const centerY = parentRect.height / 2;
+    const baseRadius = Math.min(parentRect.width, parentRect.height) / 2;
+    
+    // Velocidad de rotación aumentada con el ritmo
+    const time = Date.now() * (0.005 + intensity * 0.01);
+    
+    this.particles.forEach((particle, index) => {
+      const angle = particle.angle + time * particle.speed;
+      // Radio que pulsa con el ritmo
+      const pulseRadius = beat ? 0.2 : 0;
+      const radius = baseRadius * (0.9 + intensity * 0.3 + pulseRadius);
+      
+      const x = centerX + Math.cos(angle) * radius;
+      const y = centerY + Math.sin(angle) * radius;
+      
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      particle.style.width = `${particle.size * (0.8 + intensity * 0.8)}px`;
+      particle.style.height = `${particle.size * (0.8 + intensity * 0.8)}px`;
+      
+      // Color dinámico
+      const hue = (time * 20 + index * 15) % 360;
+      particle.style.background = `radial-gradient(circle, hsl(${hue}, 100%, 65%), hsl(${hue + 60}, 100%, 55%))`;
+      particle.style.boxShadow = `0 0 ${8 + intensity * 12}px hsl(${hue}, 100%, 60%)`;
+    });
+  }
+  
+  updateHaloLayers(intensity, beat) {
+    // Escala base
+    const baseScale = 1.7;
+    const scale = baseScale + intensity * 0.25 + (beat ? 0.1 : 0);
+    
+    // Opacidad según intensidad
+    const baseOpacity = 0.4;
+    const opacity = Math.min(0.9, baseOpacity + intensity * 0.6);
+    
+    // Colores dinámicos
+    const hue = (Date.now() * 0.05) % 360;
+    
+    this.haloLayers.forEach((layer, index) => {
+      if (!layer) return;
+      
+      // Diferente escala para cada capa
+      const layerScale = scale * (1 + index * 0.05);
+      const layerOpacity = opacity * (1 - index * 0.15);
+      
+      layer.style.transform = `translate(-50%, -50%) scale(${layerScale})`;
+      layer.style.opacity = layerOpacity;
+      
+      // Cambiar colores dinámicamente en beats
+      if (beat || intensity > 0.3) {
+        const layerHue = (hue + index * 30) % 360;
+        if (index === 0) {
+          layer.style.background = `radial-gradient(circle, hsla(${layerHue}, 100%, 60%, ${layerOpacity}) 0%, hsla(${layerHue}, 100%, 50%, 0) 70%)`;
+        } else if (index === 1) {
+          layer.style.background = `radial-gradient(circle, hsla(${layerHue + 40}, 100%, 60%, ${layerOpacity * 0.8}) 0%, hsla(${layerHue + 40}, 100%, 50%, 0) 70%)`;
+        } else if (index === 2) {
+          layer.style.background = `radial-gradient(circle, hsla(${layerHue + 80}, 100%, 60%, ${layerOpacity * 0.6}) 0%, hsla(${layerHue + 80}, 100%, 50%, 0) 70%)`;
+        } else {
+          layer.style.background = `radial-gradient(circle, hsla(${layerHue + 120}, 100%, 60%, ${layerOpacity * 0.4}) 0%, hsla(${layerHue + 120}, 100%, 50%, 0) 70%)`;
+        }
+      }
+    });
+  }
+  
+  startAnimation() {
+    if (this.animationId) return;
+    
+    let lastVolume = 0;
+    let beatFlash = 0;
+    
+    const animate = () => {
+      if (!this.isPlaying) {
+        // Si no está reproduciendo, desvanecer gradualmente
+        this.currentIntensity = Math.max(0, this.currentIntensity * 0.95);
+        beatFlash = Math.max(0, beatFlash * 3);
+      }
+      
+      // Simular detección de volumen basada en el elemento de audio
+      if (this.isPlaying && this.audioElement) {
+        try {
+          // Intentar obtener volumen real si es posible
+          if (this.audioElement.mozCurrentSample) {
+            // Firefox puede tener esto
+            lastVolume = Math.abs(this.audioElement.mozCurrentSample) / 255;
+          } else {
+            // Simulación basada en la actividad de audio
+            // Usar un oscilador simple para demostración
+            const time = Date.now();
+            // Simulación de ritmo musical (esto se reemplazará cuando el audio funcione)
+            const simulatedVolume = (Math.sin(time * 0.008) + 1) / 2 * 0.5 + Math.random() * 0.3;
+            lastVolume = lastVolume * 0.7 + simulatedVolume * 0.3;
+          }
+        } catch(e) {
+          // Fallback: simular ritmo basado en tiempo
+          const time = Date.now();
+          lastVolume = (Math.sin(time * 0.005) + 1) / 2 * 0.6 + Math.random() * 0.2;
+        }
+        
+        // Usar el detector de ritmo
+        const beatInfo = this.beatDetector.updateVolume(lastVolume);
+        this.currentIntensity = beatInfo.intensity;
+        
+        if (beatInfo.isBeat) {
+          beatFlash = 0.8;
+          // Añadir efecto de flash rápido
+          this.haloLayers.forEach(layer => {
+            if (layer) {
+              layer.style.transition = 'all 0.05s cubic-bezier(0.4, 0, 0.2, 1)';
+              setTimeout(() => {
+                if (layer) layer.style.transition = 'all 0.08s cubic-bezier(0.4, 0, 0.2, 1)';
+              }, 50);
+            }
+          });
+        } else {
+          beatFlash = Math.max(0, beatFlash * 0.9);
+        }
+        
+        // Actualizar visualización
+        this.updateHaloLayers(this.currentIntensity + beatFlash * 0.5, beatInfo.isBeat);
+        this.updateParticlePositions(this.currentIntensity + beatFlash * 0.3, beatInfo.isBeat);
+      } else {
+        // Modo inactivo
+        this.updateHaloLayers(0, false);
+        this.updateParticlePositions(0, false);
+      }
+      
+      this.animationId = requestAnimationFrame(animate);
+    };
+    
+    animate();
+  }
+  
+  setPlaying(playing, audioElement) {
+    this.isPlaying = playing;
+    this.audioElement = audioElement;
+    
+    if (!playing) {
+      // Resetear intensidad
+      this.currentIntensity = 0;
+    }
+  }
+}
+
+// ========== CONTROL DEL REPRODUCTOR ==========
+const player = document.getElementById("player");
+const audio = document.getElementById("radio");
+const vinyl = document.getElementById("vinyl");
+const logoPause = document.getElementById("logoPause");
+
+let isPlaying = false;
+let haloAnimator = null;
+
+// Inicializar el animador del halo
+haloAnimator = new HaloAnimator();
+
+// URL del stream
+const streamUrl = "https://c11.radioboss.fm:8071/stream";
+
+// Función para capturar el volumen del audio
+function setupAudioMonitoring() {
+  if (!audio) return;
+  
+  // Intentar acceder al volumen del audio
+  const updateVolume = () => {
+    if (isPlaying && audio) {
+      try {
+        // Crear un nodo de audio para analizar si es posible
+        if (!window.audioContext) {
+          window.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          window.sourceNode = window.audioContext.createMediaElementSource(audio);
+          window.analyserNode = window.audioContext.createAnalyser();
+          window.analyserNode.fftSize = 256;
+          window.sourceNode.connect(window.analyserNode);
+          window.analyserNode.connect(window.audioContext.destination);
+        }
+        
+        if (window.analyserNode && window.audioContext && window.audioContext.state !== 'running') {
+          window.audioContext.resume();
+        }
+      } catch(e) {
+        console.log("No se pudo acceder al análisis de audio:", e);
+      }
+    }
+  };
+  
+  audio.addEventListener('play', updateVolume);
+  audio.addEventListener('playing', updateVolume);
+}
+
+player.addEventListener("click", async () => {
+  if (!isPlaying) {
+    // Reiniciar el stream
+    audio.src = streamUrl + '?nocache=' + new Date().getTime();
+    
+    try {
+      await audio.play();
+      vinyl.classList.add("rotate");
+      player.classList.add("playing");
+      isPlaying = true;
+      
+      // Activar el halo
+      if (haloAnimator) {
+        haloAnimator.setPlaying(true, audio);
+      }
+      
+      // Configurar monitoreo de audio
+      setupAudioMonitoring();
+      
+      // Reanudar contexto de audio si existe
+      if (window.audioContext && window.audioContext.state === 'suspended') {
+        window.audioContext.resume();
+      }
+    } catch (e) {
+      console.error("Error al reproducir:", e);
+    }
+  } else {
+    // Detener
+    audio.pause();
+    audio.src = "";
+    vinyl.classList.remove("rotate");
+    player.classList.remove("playing");
+    isPlaying = false;
+    
+    if (haloAnimator) {
+      haloAnimator.setPlaying(false, null);
+    }
+  }
+});
+
+// Asegurar que el contexto de audio se active con interacción del usuario
+document.body.addEventListener('click', () => {
+  if (window.audioContext && window.audioContext.state === 'suspended') {
+    window.audioContext.resume();
+  }
+});
+
+// ========== EFECTO DE LUCIÉRNAGAS ==========
+let fireflyCanvas = document.getElementById("fireflyCanvas");
+let fireflyCtx = fireflyCanvas.getContext("2d");
+let fireflyWidth = window.innerWidth;
+let fireflyHeight = window.innerHeight;
+
+class Firefly {
+  constructor() {
+    this.x = Math.random() * fireflyWidth;
+    this.y = Math.random() * fireflyHeight;
+    this.s = Math.random() * 2;
+    this.ang = Math.random() * 2 * Math.PI;
+    this.v = (this.s * this.s) / 4;
+  }
+  move() {
+    this.x += this.v * Math.cos(this.ang);
+    this.y += this.v * Math.sin(this.ang);
+    this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180;
+    
+    if (this.x < 0) this.x = fireflyWidth;
+    if (this.x > fireflyWidth) this.x = 0;
+    if (this.y < 0) this.y = fireflyHeight;
+    if (this.y > fireflyHeight) this.y = 0;
+  }
+  show() {
+    fireflyCtx.beginPath();
+    fireflyCtx.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+    fireflyCtx.fillStyle = "#fddba3";
+    fireflyCtx.fill();
+  }
+}
+
+let fireflies = [];
+
+function drawFireflies() {
+  if (fireflies.length < 100) {
+    for (let j = 0; j < 10; j++) {
+      fireflies.push(new Firefly());
+    }
+  }
+  for (let i = 0; i < fireflies.length; i++) {
+    fireflies[i].move();
+    fireflies[i].show();
+  }
+}
+
+function initFireflyCanvas() {
+  fireflyCanvas.width = fireflyWidth;
+  fireflyCanvas.height = fireflyHeight;
+  fireflyCtx.fillStyle = "rgba(30,30,30,1)";
+  fireflyCtx.fillRect(0, 0, fireflyWidth, fireflyHeight);
+}
+
+function fireflyLoop() {
+  requestAnimationFrame(fireflyLoop);
+  fireflyCtx.clearRect(0, 0, fireflyWidth, fireflyHeight);
+  drawFireflies();
+}
+
+window.addEventListener("resize", () => {
+  fireflyWidth = window.innerWidth;
+  fireflyHeight = window.innerHeight;
+  fireflyCanvas.width = fireflyWidth;
+  fireflyCanvas.height = fireflyHeight;
+  fireflies = [];
+});
+
+initFireflyCanvas();
+fireflyLoop();
+
+// Ajustar tamaño de partículas cuando cambie el tamaño del contenedor
+const resizeObserver = new ResizeObserver(() => {
+  if (haloAnimator) {
+    haloAnimator.updateParticlePositions(haloAnimator.currentIntensity, false);
+  }
+});
+
+const coverContainer = document.querySelector('.cover-container');
+if (coverContainer) {
+  resizeObserver.observe(coverContainer);
+}
+</script>
+
+</body>
+</html>
