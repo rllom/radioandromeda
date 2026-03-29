@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Andromeda En Cabina</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+
+    <style>
+        :root {
+            --primary-orange: #ff6600;
+            --tv-text-color: #e0e0e0;
+            --neon-glow: 0 0 10px rgba(255, 102, 0, 0.7), 0 0 20px rgba(255, 102, 0, 0.5);
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden; background-color: #000;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .studio-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url('smartTV.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        /* --- RELOJ FUTURISTA --- */
+        #digital-clock {
+            position: absolute;
+            top: 115px;
+            right: 200px;
+            font-family: 'Michroma', Courier, monospace; /* Fuente estilo terminal */
+            font-size: 2.2em;
+            color: rgba(255, 165, 0, 0.4);
+ 	    rgba(255, 255, 255, 0.15);
+	    font-weight: bold;
+            text-shadow: var(--neon-glow);
+            letter-spacing: 1px;
+ /* Efecto de inclinación para realismo */
+            transform: perspective(0px) rotateY(0deg) rotateX(0deg);
+
+
+            z-index: 100;
+        }
+
+        /* --- SMART TV: Layout Horizontal --- */
+        .tv-overlay {
+            position: absolute;
+            top: 8.5%; 
+            left: 2%;
+            width: 37%; 
+            height: 28%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .rbcloud_nowplaying {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center;
+            gap: 40px; 
+            width: 100%;
+        }
+
+        .cover-art-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #rbcloud_np_c856 {
+            width: 280px !important;
+            height: 280px !important;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0); 
+            transition: box-shadow 0.1s ease-out, transform 0.2s ease; 
+        }
+
+        .cover-art-container:hover #rbcloud_np_c856 {
+            transform: scale(1.02);
+            border-color: var(--primary-orange);
+        }
+
+        #rbcloud_np_a856, #rbcloud_np_t856 {
+            color: var(--tv-text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.9);
+            max-width: 300px;
+        }
+
+        #rbcloud_np_a856 { font-size: 1.8rem; font-weight: bold; color: var(--primary-orange);}
+        #rbcloud_np_t856 { font-size: 1.4rem; margin-top: 5px;}
+
+        /* --- BOTÓN PLAY ESTRELLA --- */
+        .play-trigger {
+            position: absolute;
+            top: 58%; left: 6.01%;
+            width: 8.0%; height: 18%;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        .play-trigger:hover {
+            background: rgba(255, 102, 0, 0.10);
+            box-shadow: 0 0 0px var(--primary-orange);
+        }
+
+        /* --- ESPECTRO SOBRE CONSOLA --- */
+        canvas#visualizer {
+            position: absolute;
+            bottom: 0%; left: 25%;
+            width:50%; height: 20%;
+            transform: perspective(100px) rotateX(0deg);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="studio-container">
+    <div id="digital-clock"><a href="http://www.radioandroemda.tk">00:00:00 PM</a></div>
+
+    <div class="tv-overlay">
+        <div class='rbcloud_nowplaying'>
+            <div class="cover-art-container" id="coverBtn">
+                <img id='rbcloud_np_c856' src='https://c11.radioboss.fm/w/artwork/71.jpg' alt='cover art'>
+            </div>
+            <div class="info-txt">
+                <div id='rbcloud_np_a856'>Artista</div>
+                <div id='rbcloud_np_t856'>Título de la canción</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="play-trigger" id="playBtn"></div>
+    <canvas id="visualizer"></canvas>
+</div>
+
+
+
+<DIV style='display:scroll; display:scroll; position:fixed; bottom:5px; right:1%;'>
+<a href="vinilo+leyenda.html" target="_top"><img src="homelogo.png" width="120px" height="120px" title="Rockola">
+</a>
+</DIV>
+
+
+
+<audio id="radioStream" crossorigin="anonymous"></audio>
+
+<script src='https://c11.radioboss.fm/w/nowplaying2.js?u=71&amp;wid=856&amp;tf=1'></script>
+
+<script>
+    const audio = document.getElementById('radioStream');
+    const playBtn = document.getElementById('playBtn');
+    const coverBtn = document.getElementById('coverBtn');
+    const coverArt = document.getElementById('rbcloud_np_c856');
+    const canvas = document.getElementById('visualizer');
+    const ctx = canvas.getContext('2d');
+    const clockElement = document.getElementById('digital-clock');
+
+    let audioCtx, analyser, source, dataArray;
+    let isPlaying = false;
+    const streamUrl = "https://c11.radioboss.fm:8071/stream";
+
+    // --- LÓGICA DEL RELOJ 12H ---
+    function updateClock() {
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'pm' : 'am';
+        
+        hours = hours % 12;
+        hours = hours ? hours : 12; // el "0" debe ser "12"
+        const strHours = String(hours).padStart(2, '0');
+
+        clockElement.textContent = `${strHours}:${minutes}:${seconds} ${ampm}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock(); // Carga inicial
+
+    // --- CONTROL DE AUDIO ---
+    function toggleStreaming() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioCtx.createAnalyser();
+            source = audioCtx.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            analyser.fftSize = 128;
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            drawVisualizer();
+            updateReactiveHalo();
+        }
+
+        if (!isPlaying) {
+            audio.src = streamUrl + "?t=" + new Date().getTime();
+            audio.load();
+            audio.play().then(() => { isPlaying = true; }).catch(e => console.error(e));
+        } else {
+            audio.pause();
+            audio.src = ""; 
+            isPlaying = false;
+            coverArt.style.boxShadow = "none";
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    playBtn.addEventListener('click', toggleStreaming);
+    coverBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleStreaming();
+    });
+
+    // --- VISUALIZADORES ---
+    function drawVisualizer() {
+        requestAnimationFrame(drawVisualizer);
+        if (!isPlaying) return;
+        analyser.getByteFrequencyData(dataArray);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let barWidth = (canvas.width / dataArray.length) * 2.5;
+        let x = 0;
+        for(let i = 0; i < dataArray.length; i++) {
+            let barHeight = dataArray[i] / 2.5;
+            ctx.fillStyle = `rgba(255, 102, 0, ${barHeight/100})`;
+            ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+            x += barWidth + 2;
+        }
+    }
+
+    function updateReactiveHalo() {
+        requestAnimationFrame(updateReactiveHalo);
+        if (!isPlaying) return;
+        analyser.getByteFrequencyData(dataArray);
+        let beatEnergy = 0;
+        for(let i = 0; i < 4; i++) { beatEnergy += dataArray[i]; }
+        beatEnergy = beatEnergy / 4;
+        const beatThreshold = 220; 
+
+        if (beatEnergy > beatThreshold) {
+            const randomHue = Math.floor(Math.random() * 360);
+            const randomColor = `hsl(${randomHue}, 100%, 60%)`;
+            const haloSize = (beatEnergy - beatThreshold) * 1.5;
+            coverArt.style.boxShadow = `0 0 ${20 + haloSize}px ${5 + haloSize/2}px ${randomColor}`;
+        } else {
+            coverArt.style.boxShadow = `0 0 10px 2px rgba(255, 102, 0, 0.2)`;
+        }
+    }
+</script>
+</body>
+</html>
