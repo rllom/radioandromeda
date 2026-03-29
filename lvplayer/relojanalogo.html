@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Andromeda: Rockola</title>
+    <title>Reloj de Rockola</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -19,19 +19,41 @@
             color: #e0f7ff;
             line-height: 1.6;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
             background-attachment: fixed;
         }
         
-</style>
-<center>
-</p>
-<canvas id="canvas_tt61d2336567a61" width="500px" height="500px"></canvas>
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        canvas {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            display: block;
+        }
+        
+        .clock24 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <canvas id="canvas_tt61d2336567a61" width="500" height="500"></canvas>
+        <a href="https://24timezones.com/Managua/hora" style="text-decoration: none" class="clock24" id="tz24-1641165669-c1143-eyJzaXplIjoiMjUwIiwiYmRjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlcyIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NjFkMjMzNjU2N2E2MSJ9" title="reloj mundial - Managua" target="_blank"></a>
+    </div>
 
-<a href="https://24timezones.com/Managua/hora" style="text-decoration: none" class="clock24" id="tz24-1641165669-c1143-eyJzaXplIjoiMjUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlcyIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NjFkMjMzNjU2N2E2MSJ9" title="reloj mundial - Managua" target="_blank"></a>
-<script type="text/javascript" src="https://w.24timezones.com/l.js" async></script>
-
-</center>
-
+    <script type="text/javascript" src="https://w.24timezones.com/l.js" async></script>
 </body>
 </html>
