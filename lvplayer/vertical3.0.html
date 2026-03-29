@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Radio Andrómeda - Diseñada Exclusivamente para Tus Oídos.">
+  <meta name="author" content="Radio Andromeda">
+  <meta name="theme-color" content="#00fff7">
+  <title>Radio Andromeda</title>
+
+  <link rel="icon" href="https://rllom.github.io/radioandromeda/lvplayer/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+
+  <style>
+    :root {
+      --cover-size: min(85vw, 85vh);
+      --vinyl-size: calc(var(--cover-size) * 0.98);
+      --logo-size: calc(var(--cover-size) * 0.70);
+      --play-btn-size: calc(var(--cover-size) * 0.2);
+      /* Color base por defecto (Cian) */
+      --base-halo-color: hsla(180, 100%, 50%, 0.5); 
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: url("https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Michroma', sans-serif;
+    }
+
+    a { text-decoration: none; color: #00fff7; transition: 0.3s; }
+    a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      
+      position: relative;
+      z-index: 1;
+    }
+
+  .clock {
+  position: fixed;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: clamp(12px, 3vw, 14px); /* Tamaño responsive */
+  color: #00fff7;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  padding: 3px 8px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.clock-url {
+  font-weight: bold;
+}
+.clock-url a {
+  font-weight: inherit; /* Hereda el peso de .clock-url */
+  display: inline-block; /* Mejor control del espacio */
+  padding: 2px 0; /* Espaciado vertical mínimo */
+}
+
+
+    .player-wrapper {
+      position: relative;
+      width: var(--cover-size);
+      height: var(--cover-size);
+      margin-bottom: 20px;
+      margin-top: 50px; 
+    }
+
+    .player {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-top: 0px; /* Espacio de seguridad para el reloj */
+      cursor: pointer;
+      /* Transición suave para el pulso de tamaño */
+      transition: transform 0.05s ease-out; 
+    }
+
+    /* EL HALO ANIMADO (Ahora vacío, JS controla el color) */
+    .halo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 15px;
+      z-index: 1;
+      pointer-events: none;
+      /* Transición muy rápida para el brillo y color */
+      transition: box-shadow 0.05s ease-out; 
+      /* Brillo base tenue */
+      box-shadow: 0 0 15px var(--base-halo-color); 
+    }
+
+    .cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+
+    .vinyl {
+      position: absolute;
+      width: var(--vinyl-size);
+      height: var(--vinyl-size);
+      left: 50%;
+      top: 5%;
+      transform: translateX(-50%) scale(0);
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 2;
+    }
+
+    .player.playing .vinyl {
+      top: 45%;
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .logo-pause {
+      position: absolute;
+      width: var(--logo-size);
+      left: 50%;
+      bottom: -280px;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 0 10px #00fff7);
+      transition: opacity 0.5s;
+      z-index: 1;
+    }
+
+    .player.playing .logo-pause { opacity: 0; }
+
+    .play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: var(--play-btn-size);
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      opacity: 0.8;
+      transition: 0.3s;
+    }
+
+    .player.playing .play-btn { opacity: 0; pointer-events: none; }
+
+    .rotate { animation: spin 5s linear infinite; }
+    @keyframes spin { from { transform: translateX(-50%) rotate(0deg); } to { transform: translateX(-50%) rotate(360deg); } }
+
+    .now-playing {
+      background: rgba(0,0,0,0.7);
+      color: #00fff7;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid rgba(0,255,247,0.4);
+      margin-top: 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+/*Efecto Luciernaga */
+ canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      filter: blur(1px);
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="clock">
+  <span class="clock-url"><a href="https://rllom.github.io/radioandromeda/lvplayer/vinilov2.html"><img src="https://rllom.github.io/radioandromeda/lvplayer/name.png" alt="Radio Andromeda"></a></span>
+  <span id="clock">--:--:-- --</span>
+</div>
+
+<div class="main-container">
+  <div class="player-wrapper">
+    <div class="player" id="player">
+      <div id="audio-halo" class="halo"></div>
+      <img id="rbcloud_cover19578" class="cover" src="https://c11.radioboss.fm/w/artwork/71.jpg" alt="cover art">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/play.png" class="play-btn" alt="Play">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png" class="vinyl" id="vinyl">
+      <img src="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png" class="logo-pause" id="logoPause">
+      <audio id="radio" crossorigin="anonymous"></audio>
+    </div>
+  </div>
+
+  <div class="now-playing">
+    <span id="rbcloud_nowplaying16384">Cargando señal...</span>
+  </div>
+</div>
+
+<!-- Efecto Luciernagas -->
+<canvas id="canvas"></canvas>
+
+<script src="https://c11.radioboss.fm/w/nowplaying.js?u=71&wid=16384"></script>
+<script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
+
+<script>
+  // ==========================================
+  // CONFIGURACIÓN AUDIO API & HALO DE COLOR
+  // ==========================================
+  let audioCtx, analyser, source, dataArray, animationId;
+  const audio = document.getElementById("radio");
+  const player = document.getElementById("player");
+  const halo = document.getElementById("audio-halo");
+  const vinyl = document.getElementById("vinyl");
+  const streamUrl = "https://c11.radioboss.fm:8071/stream";
+  let isPlaying = false;
+
+  // Función para inicializar el contexto de audio (requiere interacción del usuario)
+  function initAudio() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 64; // Determina la resolución del análisis (más bajo = más rápido)
+      
+      try {
+        source = audioCtx.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+      } catch(e) {
+        console.warn("El análisis visual está limitado por restricciones de CORS del servidor de radio.");
+      }
+      
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+    }
+  }
+
+  // Bucle de animación que corre en cada frame
+  function renderFrame() {
+    if (!isPlaying) return;
+    animationId = requestAnimationFrame(renderFrame);
+    
+    // Llenar dataArray con los datos de frecuencia actuales
+    analyser.getByteFrequencyData(dataArray);
+
+    // Capturar la intensidad de los graves (el 'beat'). Índice 0-5 suele ser el bombo/bajo.
+    let intensity = dataArray[5]; // Usamos el índice 1 para buena respuesta
+    
+    // Normalizar la intensidad a un valor entre 0 y 1
+    let boost = (intensity / 180); 
+    
+    // ==========================================
+    // LÓGICA DE CAMBIO DE COLOR (HSL)
+    // ==========================================
+    
+    // 1. Mapear intensidad al Tono (Hue):
+    // Rango: 180 (Cian) -> 280 (Púrpura/Magenta). 
+    // Cuando la música es suave es cian, cuando pega fuerte tiende al púrpura.
+    let hue = 130 + (boost * 100); 
+    
+    // 2. Mapear intensidad a la Luminosidad (Lightness):
+    // Rango: 40% (base) -> 70% (brillante con el beat).
+    let lightness = 40 + (boost * 30);
+    
+    // 3. Controlar la opacidad (Alpha):
+    // Más intenso el beat, más sólido el color del halo.
+    let alpha = 0.4 + (boost * 0.5);
+
+    // Crear la cadena de color HSL
+    let dynamicColor = `hsla(${hue}, 100%, ${lightness}%, ${alpha})`;
+
+    // ==========================================
+    // APLICAR EFECTOS VISUALES
+    // ==========================================
+    
+    // 1. Brillo del Halo (box-shadow)
+    // El tamaño del blur crece con la intensidad (Rango: 15px -> 85px)
+    let glowSize = 15 + (boost * 70);
+    halo.style.boxShadow = `0 0 ${glowSize}px ${dynamicColor}`;
+    
+    // 2. Pulso de la Carátula (scale)
+    // La carátula crece ligeramente (Rango: 100% -> 106%)
+    let scaleFactor = 1 + (boost * 0.06);
+    player.style.transform = `scale(${scaleFactor})`;
+  }
+
+  // Evento de clic en el reproductor
+  player.addEventListener("click", () => {
+    // Inicializar audio tras el primer clic (requisito de navegadores)
+    initAudio();
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+
+    if (!isPlaying) {
+      // Reproducir
+      audio.src = streamUrl + '?t=' + Date.now(); // Evitar cache
+      audio.play().then(() => {
+        isPlaying = true;
+        player.classList.add("playing");
+        vinyl.classList.add("rotate");
+        renderFrame(); // Iniciar animación del halo
+      }).catch(err => {
+        console.error("Error crítico de reproducción:", err);
+        // Intento de rescate si falla por CORS (el halo no se moverá)
+        audio.removeAttribute("crossorigin");
+        audio.load();
+        audio.play();
+      });
+    } else {
+      // Detener
+      audio.pause();
+      audio.src = ""; // Cortar la descarga del stream
+      isPlaying = false;
+      player.classList.remove("playing");
+      vinyl.classList.remove("rotate");
+      cancelAnimationFrame(animationId); // Parar bucle de animación
+      
+      // Resetear estados visuales
+      player.style.transform = "scale(1)";
+      halo.style.boxShadow = "0 0 10px var(--base-halo-color)"; // Volver al cian base
+    }
+  });
+
+  // Reloj en formato 12h
+function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  
+  document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+
+// ========== EFECTO DE LUCIÉRNAGAS ==========
+// Efecto de luciérnagas
+    let c = init("canvas"),
+      w = (canvas.width = window.innerWidth),
+      h = (canvas.height = window.innerHeight);
+
+    class Firefly {
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.s = Math.random() * 2;
+        this.ang = Math.random() * 2 * Math.PI;
+        this.v = (this.s * this.s) / 4;
+      }
+      move() {
+        this.x += this.v * Math.cos(this.ang);
+        this.y += this.v * Math.sin(this.ang);
+        this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180;
+        
+        if (this.x < 0) this.x = w;
+        if (this.x > w) this.x = 0;
+        if (this.y < 0) this.y = h;
+        if (this.y > h) this.y = 0;
+      }
+      show() {
+        c.beginPath();
+        c.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+        c.fillStyle = "#fddba3";
+        c.fill();
+      }
+    }
+
+    let f = [];
+
+    function draw() {
+      if (f.length < 100) {
+        for (let j = 0; j < 10; j++) {
+          f.push(new Firefly());
+        }
+      }
+      for (let i = 0; i < f.length; i++) {
+        f[i].move();
+        f[i].show();
+      }
+    }
+
+    function init(elemid) {
+      let canvas = document.getElementById(elemid),
+        c = canvas.getContext("2d"),
+        w = (canvas.width = window.innerWidth),
+        h = (canvas.height = window.innerHeight);
+      c.fillStyle = "rgba(30,30,30,1)";
+      c.fillRect(0, 0, w, h);
+      return c;
+    }
+
+    window.requestAnimFrame = (function () {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback);
+        }
+      );
+    })();
+
+    function loop() {
+      window.requestAnimFrame(loop);
+      c.clearRect(0, 0, w, h);
+      draw();
+    }
+
+    window.addEventListener("resize", function () {
+      (w = canvas.width = window.innerWidth), 
+      (h = canvas.height = window.innerHeight);
+      loop();
+    });
+
+    loop();
+</script>
+
+</body>
+</html>
