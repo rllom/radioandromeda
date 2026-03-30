@@ -11,9 +11,26 @@
   <link rel="icon" href="https://rllom.github.io/radioandromeda/lvplayer/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+function changeBackground() {
+    var images = [ 
+	"https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg", 
+        "https://i.postimg.cc/QxTb74w9/skyblue2.jpg",
+        "https://i.ibb.co/C6mCrz7/skyblue.jpg",
+	"https://i.ibb.co/DgtfH2M/raygreen.jpg", 
+	"https://rllom.github.io/radioandromeda/lvplayer/limbo.jpg" ]; // list of image files
+    var randomImage = images[Math.floor(Math.random() * images.length)];
+    document.body.style.backgroundImage = "url(" + randomImage + ")";
+    setTimeout(changeBackground, 300000); // change image every 5 minutes (300000 milliseconds)
+}
+</script>
+
+
   <style>
     :root {
-      --cover-size: min(85vw, 85vh);
+      --cover-size: min(55vw, 55vh);
       --vinyl-size: calc(var(--cover-size) * 0.98);
       --logo-size: calc(var(--cover-size) * 0.70);
       --play-btn-size: calc(var(--cover-size) * 0.2);
@@ -24,8 +41,13 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: url("https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg") no-repeat center center fixed;
-      background-size: cover;
+      background-color: #000000;
+      background-image: url("https://rllom.github.io/radioandromeda/lvplayer/limbo.jpg");
+      background-size: cover;  
+      background-repeat: no-repeat; 
+      background-position: center;
+      background-attachment: fixed;
+  
       font-family: 'Michroma', sans-serif;
     }
 
@@ -170,9 +192,9 @@
 font-size: clamp(10px, 3vw, 12px); /* Tamaño responsive */
       text-align: center;
       width: 80%;
-      max-width: 400px;
+      max-width: 300px;
       border: 1px solid rgba(0,255,247,0.4);
-      margin-top: 150px;
+      margin-top: 180px;
       position: relative;
       z-index: 2;
     }
@@ -190,7 +212,7 @@ font-size: clamp(10px, 3vw, 12px); /* Tamaño responsive */
 
   </style>
 </head>
-<body>
+<body onload="changeBackground()">
 
 <div class="clock">
   <span class="clock-url"><a href="vinilo+leyenda.html"><img src="https://rllom.github.io/radioandromeda/lvplayer/name.png" alt="Radio Andromeda"></a></span>
