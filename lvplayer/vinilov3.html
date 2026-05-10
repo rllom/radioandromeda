@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Radio Vinilo Player - Efecto Bit</title>
+
+<style>
+:root {
+  --cover-size: min(80vw, 80vh);
+  --vinyl-size: calc(var(--cover-size) * 0.98);
+  --button-width: clamp(30px, 8vw, 90px);
+  --logo-height: clamp(90px, 15vw, 200px);
+  --base-halo-color: hsla(180, 100%, 50%, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-image: url("https://rllom.github.io/radioandromeda/lvplayer/espacio.jpg");
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.logo-container {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  z-index: 10;
+}
+.logo-container img {
+  height: var(--logo-height);
+  width: auto;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.4));
+  transition: transform 0.3s ease;
+}
+.logo-container img:hover {
+  transform: scale(1.05);
+}
+
+.player {
+  position: relative;
+  width: var(--cover-size);
+  height: var(--cover-size);
+  cursor: pointer;
+  transition: transform 0.05s ease-out;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+.halo {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border-radius: 20px;
+  z-index: 5;
+  pointer-events: none;
+  transition: box-shadow 0.05s ease-out;
+  box-shadow: 0 0 15px var(--base-halo-color);
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(12, 215, 195, 0.4);
+  z-index: 15;
+  position: relative;
+}
+
+.vinyl {
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  width: var(--vinyl-size);
+  height: var(--vinyl-size);
+  transform: translate(-60%, -50%) scale(0);
+  opacity: 0;
+  border-radius: 50%;
+  z-index: 12;
+  transition: transform 1.7s ease-in-out, opacity 2.0s ease;
+  filter: drop-shadow(0 0 15px rgba(12, 215, 195, 0.9));
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25%;
+  max-width: 130px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.player:hover .play-btn {
+  opacity: 1;
+}
+.player.playing .play-btn {
+  opacity: 0;
+}
+
+.rotate {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translate(-60%, -50%) rotate(0deg); }
+  to   { transform: translate(-60%, -50%) rotate(360deg); }
+}
+.playing .vinyl {
+  transform: translate(-60%, -50%) scale(1);
+  opacity: 1;
+}
+
+.buttons {
+  position: absolute;
+  top: 28%;
+  left: 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 15;
+}
+.buttons img {
+  width: var(--button-width);
+  height: auto;
+  border-radius: 6px;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.4));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.buttons img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.7));
+}
+
+.now-playing {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  color: #00fff7;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  z-index: 10;
+  text-align: center;
+  font-family: 'Michroma', sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+}
+</style>
+  
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="logo-container">
+  <a href="http://www.radioandromeda.tk"><img src="https://rllom.github.io/radioandromeda/lvplayer/Logo-Andromeda-500x500.png" alt="Radio Andromeda"></a>
+</div>
+
+<div class="player" id="player">
+  <div id="audio-halo" class="halo"></div>
+  <img src="https://rllom.github.io/radioandromeda/lvplayer/disco-vinilo2.png" alt="Vinyl" class="vinyl" id="vinyl">
+  <img id="rbcloud_cover19578" class="cover" src="https://c11.radioboss.fm/w/artwork/71.jpg" alt="cover art">
+  <img src="https://rllom.github.io/radioandromeda/lvplayer/play.png" alt="Play Button" class="play-btn" id="playButton">
+  <audio id="radio" crossorigin="anonymous"></audio>
+</div>
+
+<div class="now-playing">
+  <span id="rbcloud_nowplaying16384">Cargando señal...</span>
+</div>
+
+<div class="buttons">
+  <a href="https://rllom.github.io/radioandromeda/lvplayer/vinilo+leyenda.html" target="_self">
+    <img src="https://rllom.github.io/radioandromeda/lvplayer/100goat.png" alt="Leyendas">
+  </a>
+  <a href="https://www.appcreator24.com/app329973-zn5mvq" target="_blank">
+    <img src="https://rllom.github.io/radioandromeda/lvplayer/apk.png" alt="App Android">
+  </a>
+  <a href="https://rllom.github.io/radioandromeda/lvplayer/desktop.html">
+    <img src="https://rllom.github.io/radioandromeda/lvplayer/weicon.gif" alt="For Desktop">
+  </a>
+</div>
+
+<script src="https://c11.radioboss.fm/w/cover.js?u=71&wid=19578"></script>
+<script src="https://c11.radioboss.fm/w/nowplaying.js?u=71&wid=16384"></script>
+
+<script>
+  // ==========================================
+  // VERSIÓN ORIGINAL - EFECTO BIT EQUILIBRADO
+  // ==========================================
+  let audioCtx, analyser, source, dataArray, animationId;
+  const audio = document.getElementById("radio");
+  const player = document.getElementById("player");
+  const halo = document.getElementById("audio-halo");
+  const vinyl = document.getElementById("vinyl");
+  const streamUrl = "https://c11.radioboss.fm:8071/stream";
+  let isPlaying = false;
+
+  function initAudio() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 64;  // ← ORIGINAL: 64 (estable)
+      
+      try {
+        source = audioCtx.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+      } catch(e) {
+        console.warn("Análisis visual limitado por CORS del servidor de radio.");
+      }
+      
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+    }
+  }
+
+  function stopPlayback() {
+    audio.pause();
+    audio.src = "";
+    audio.load();
+    
+    isPlaying = false;
+    player.classList.remove("playing");
+    vinyl.classList.remove("rotate");
+    
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+    
+    player.style.transform = "scale(1)";
+    halo.style.boxShadow = "0 0 15px hsla(180, 100%, 50%, 0.5)";
+    
+    if (audioCtx && audioCtx.state !== 'closed') {
+      audioCtx.suspend();
+    }
+  }
+
+  function startPlayback() {
+    stopPlayback();
+    initAudio();
+    
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    
+    audio.src = streamUrl + '?nocache=' + new Date().getTime();
+    
+    audio.play().then(() => {
+      isPlaying = true;
+      player.classList.add("playing");
+      vinyl.classList.add("rotate");
+      renderFrame();
+    }).catch(err => {
+      console.error("Error de reproducción:", err);
+      audio.removeAttribute("crossorigin");
+      audio.load();
+      audio.play().then(() => {
+        isPlaying = true;
+        player.classList.add("playing");
+        vinyl.classList.add("rotate");
+        renderFrame();
+      }).catch(err2 => {
+        console.error("Error crítico de reproducción:", err2);
+      });
+    });
+  }
+
+  // VERSIÓN ORIGINAL - SIN SOBRESATURACIÓN
+  function renderFrame() {
+    if (!isPlaying) return;
+    animationId = requestAnimationFrame(renderFrame);
+    
+    if (analyser && dataArray) {
+      analyser.getByteFrequencyData(dataArray);
+      
+      // ORIGINAL: Solo el índice 5 (graves puros)
+      let intensity = dataArray[5] || 0;
+      let boost = intensity / 180;  // ← Normalización simple, sin curvas raras
+      
+      // ORIGINAL: Rango suave y natural
+      let hue = 130 + (boost * 100);
+      let lightness = 40 + (boost * 30);
+      let alpha = 0.4 + (boost * 0.5);
+      
+      let dynamicColor = `hsla(${hue}, 100%, ${lightness}%, ${alpha})`;
+      
+      // ORIGINAL: Glow de 15 a 85px
+      let glowSize = 15 + (boost * 70);
+      halo.style.boxShadow = `0 0 ${glowSize}px ${dynamicColor}`;
+      
+      // ORIGINAL: Pulso muy sutil (máximo 6%)
+      let scaleFactor = 1 + (boost * 0.06);
+      player.style.transform = `scale(${scaleFactor})`;
+    }
+  }
+
+  player.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (isPlaying) {
+      stopPlayback();
+    } else {
+      startPlayback();
+    }
+  });
+
+  window.addEventListener('beforeunload', () => {
+    if (animationId) cancelAnimationFrame(animationId);
+    if (audioCtx) audioCtx.close();
+  });
+
+  // ========== EFECTO DE LUCIÉRNAGAS ==========
+  let c = init("canvas"),
+    w = (canvas.width = window.innerWidth),
+    h = (canvas.height = window.innerHeight);
+
+  class Firefly {
+    constructor() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.s = Math.random() * 2;
+      this.ang = Math.random() * 2 * Math.PI;
+      this.v = (this.s * this.s) / 4;
+    }
+    move() {
+      this.x += this.v * Math.cos(this.ang);
+      this.y += this.v * Math.sin(this.ang);
+      this.ang += (Math.random() * 10 * Math.PI) / 180 - (5 * Math.PI) / 180;
+      
+      if (this.x < 0) this.x = w;
+      if (this.x > w) this.x = 0;
+      if (this.y < 0) this.y = h;
+      if (this.y > h) this.y = 0;
+    }
+    show() {
+      c.beginPath();
+      c.arc(this.x, this.y, this.s, 0, 2 * Math.PI);
+      c.fillStyle = "#fddba3";
+      c.fill();
+    }
+  }
+
+  let f = [];
+
+  function draw() {
+    if (f.length < 100) {
+      for (let j = 0; j < 10; j++) {
+        f.push(new Firefly());
+      }
+    }
+    for (let i = 0; i < f.length; i++) {
+      f[i].move();
+      f[i].show();
+    }
+  }
+
+  function init(elemid) {
+    let canvas = document.getElementById(elemid),
+      ctx = canvas.getContext("2d"),
+      width = (canvas.width = window.innerWidth),
+      height = (canvas.height = window.innerHeight);
+    ctx.fillStyle = "rgba(30,30,30,1)";
+    ctx.fillRect(0, 0, width, height);
+    return ctx;
+  }
+
+  window.requestAnimFrame = (function () {
+    return (
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function (callback) {
+        window.setTimeout(callback, 1000 / 60);
+      }
+    );
+  })();
+
+  function loop() {
+    window.requestAnimFrame(loop);
+    c.clearRect(0, 0, w, h);
+    draw();
+  }
+
+  window.addEventListener("resize", function () {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    c = init("canvas");
+  });
+
+  loop();
+</script>
+
+</body>
+</html>
