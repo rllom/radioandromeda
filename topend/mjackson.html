@@ -1,159 +1,1138 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <meta name="viewport" content="width=device-width">
-    <title>Michael Jackson: Solo Los Hits No.1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Las 13 canciones No.1 de Michael Jackson</title>
+
+<link type="text/css" rel="stylesheet" href="https://rllom.github.io/radioandromeda/topend/sublinks.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #121c0f;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
 
 
-<link type="text/css" rel="stylesheet" href="sublinks.css" />
 
-
-<!--Star fancy box-->
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/jquery-1.4.3.min.js"/>
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/embedplayerswf.js"></script>
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/embedvideohtml5.js"></script>
-<script type="text/javascript" src="https://rllom.github.io/radioandromeda/fancybox/examples_various.js"></script>
-<link rel="stylesheet" type="text/css" href="https://rllom.github.io/radioandromeda/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-
-<!-- Youtube FancyBox -->
-<script type="text/javascript">
-$(document).ready(function() {
-	$("a#open_video").fancybox({width: 950,height: 534});
-});
-</script>
-<!-- End Youtube FancyBox -->
-
-<style>
-html,body  
-{
-	position: relative;
-	margin: 0px 0px 0px;
-	background: #000000;
-	color: #ffffff;
-	font-family: "Open Sans", arial;
-	font-size: 14px;
-	text-align: left;
-}
-img 
-{
-height: auto;
-max-width: 100%;
-}
-a:link {color:#D1974D;text-decoration:none;-webkit-transition: all 0.25s ease-in 0s;-moz-transition: all 0.25s ease-in 0s;-o-transition: all 0.25s ease-in 
+a:link {color:#D1974D; text-decoration:none;-webkit-transition: all 0.25s ease-in 0s;-moz-transition: all 0.25s ease-in 0s;-o-transition: all 0.25s ease-in 
 0s;transition: all 0.25s ease-in 0s;}
-a:visited {color:#D1974D;;text-decoration:none;}
-a:hover {color:#00C0FF;text-decoration: none;-webkit-transition: all 0.25s ease-in 0s;-moz-transition: all 0.25s ease-in 0s;-o-transition: all 0.25s ease-in 
+a:visited {color:#F4B942; text-decoration:none;}
+a:hover {color:#FFFFFF;text-decoration: none;-webkit-transition: all 0.25s ease-in 0s;-moz-transition: all 0.25s ease-in 0s;-o-transition: all 0.25s ease-in 
 0s;transition: all 0.25s ease-in 0s;}
-a img {border-width:0;
-}
-</style>		
+a img {border-width:0;}
 
-    
-    <!-- Insert to your webpage before the </head> -->
-    <script src="audioplayerengine/jquery.js"></script>
-    <script src="audioplayerengine/amazingaudioplayer.js"></script>
-    <link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">
-    <script src="audioplayerengine/initaudioplayer-1.js"></script>
-    <!-- End of head section HTML codes -->
-    
+
+        }
+        /* ===== BANNER PRINCIPAL: FIJO ===== */
+        .hero-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #0f2b0c, #1e3a1a, #2b5323);
+            background-size: 200% 200%;
+            animation: gradientFlow 12s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #47753B;
+            z-index: 1000;
+        }
+
+        .banner-image {
+            max-width: 90%;
+            max-height: 140px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .banner-image:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,120,0.15) 0%, rgba(0,0,0,0) 70%);
+            animation: shimmer 18s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0,0) rotate(0deg); opacity: 0.3; }
+            100% { transform: translate(10%,10%) rotate(360deg); opacity: 0.6; }
+        }
+
+        /* Contenedor principal - con margen superior para evitar el banner fijo */
+        .excel-container {
+            max-width: 1300px;
+            width: 90%;
+            margin-top: 150px; /* Banner(140px) + espacio */
+            margin-bottom: 30px;
+            background: #2b3b2a;
+            border-radius: 12px;
+            box-shadow: 0 24px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Barra de herramientas */
+        .toolbar {
+            background: #243b21;
+            padding: 10px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid #5a7c4e;
+        }
+
+        .toolbar-left {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-badge {
+            background: #1f2e1c;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #e2f0d3;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-random {
+            background: #f4b942;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #1e2a1c;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-random:hover {
+            background: #ffcf6e;
+            transform: scale(0.97);
+        }
+
+        .shuffle-status {
+            background: #2c5224;
+            color: #ffeaac;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .sheet-name {
+            background: #47753b;
+            color: white;
+        }
+
+        /* TABLA: encabezados en FILA 1 */
+        .sheet-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fef9e8;
+            font-size: 14px;
+        }
+
+        .sheet-table th, .sheet-table td {
+            border: 1px solid #b8cbab;
+            padding: 14px 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        /* Encabezados con estilo fijo */
+        .sheet-table thead tr th {
+            background: #dbe8cf;
+            font-weight: 700;
+            color: #1e3a2a;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .sheet-table tbody tr td {
+            background-color: #fffef5;
+        }
+
+        .song-row {
+            cursor: pointer;
+            transition: background 0.08s linear;
+        }
+
+        .song-row:hover {
+            background-color: #e9f3de !important;
+        }
+
+        /* Botón de descarga con imagen GIF */
+        .btn-download {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-download img {
+            width: 16px;
+            height: 16px;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .btn-download:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-download:active {
+            transform: scale(0.95);
+        }
+
+        /* Reproductor modal */
+        .player-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+
+        .player-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .player-card {
+            background: linear-gradient(145deg, #1e2a1b, #0e160b);
+            width: 92%;
+            max-width: 560px;
+            border-radius: 16px;
+            box-shadow: 0 35px 55px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,120,0.2) inset;
+            padding: 18px 24px 22px;
+            color: #f5f9e6;
+            text-align: center;
+        }
+
+        /* Logo dentro del reproductor (cabecera) */
+        .player-logo {
+            width: 500px;
+            margin: 0 auto 10px auto;
+            display: block;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.3);
+            padding: 0px;
+        }
+        .player-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .cover-art {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto 20px;
+            background: #2c3e25;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+            border: 2px solid #47753B;
+        }
+
+        @media (max-width: 650px) {
+            .cover-art {
+                width: 320px;
+                height: 320px;
+            }
+            .player-logo {
+                width: 450px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .cover-art {
+                width: 300px;
+                height: 300px;
+            }
+            .player-card {
+                padding: 20px 16px 28px;
+            }
+            .excel-container {
+                margin-top: 170px;
+            }
+            .player-logo {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-banner {
+                height: 150px;
+            }
+            .excel-container {
+                margin-top: 170px;
+            }
+            .banner-image {
+                max-height: 110px;
+            }
+            .btn-download img {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        .cover-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cover-placeholder {
+            font-size: 3.8rem;
+            background: #3f6036;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fffbcf;
+            font-weight: bold;
+        }
+
+        .song-info {
+            margin-bottom: 22px;
+        }
+
+        .song-info h3 {
+            margin: 8px 0 6px;
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #FFE6B0, #FFD966);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .song-info p {
+            margin: 5px 0;
+            opacity: 0.85;
+            font-size: 1.2rem;
+            font-weight: 450;
+            color: #cfdfc2;
+        }
+
+        /* Controles personalizados */
+        .custom-player-controls {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 18px;
+            padding: 12px 12px;
+            margin: 10px 0 10px;
+            backdrop-filter: blur(4px);
+        }
+
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 14px;
+        }
+
+        .ctrl-btn {
+            background: rgba(255, 245, 200, 0.12);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #ffefb9;
+            font-size: 1.5rem;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .ctrl-btn:hover {
+            background: #47753B;
+            color: #1a2a15;
+            transform: scale(1.05);
+        }
+
+        .ctrl-btn:active {
+            transform: scale(0.95);
+        }
+
+        .play-pause-btn {
+            background: #47753B;
+            color: #1e2a1c;
+            width: 58px;
+            height: 58px;
+            font-size: 1.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .play-pause-btn:hover {
+            background: #F13D36;
+            transform: scale(1.02);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 6px;
+            margin-bottom: 8px;
+        }
+
+        .time-current, .time-duration {
+            font-size: 0.7rem;
+            font-family: monospace;
+            background: #00000055;
+            padding: 2px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            color: #f5e2b0;
+        }
+
+        .progress-bar-bg {
+            flex: 1;
+            height: 5px;
+            background: rgba(220, 210, 150, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #f5bc5e, #ffdf9c);
+            border-radius: 10px;
+            transition: width 0.05s linear;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+            background: rgba(0,0,0,0.3);
+            padding: 5px 12px;
+            border-radius: 40px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .volume-icon {
+            font-size: 1rem;
+            color: #ffecb3;
+        }
+
+        .volume-slider {
+            width: 90px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: #5e6b52;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f5bc5e;
+            cursor: pointer;
+            box-shadow: 0 0 4px white;
+        }
+
+        .close-player {
+            background: #47753B;
+            border: none;
+            color: white;
+            font-size: 0.95rem;
+            padding: 6px 10px;
+            margin-top: 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.1s;
+        }
+
+        .close-player:hover {
+            background: #F13D36;
+        }
+
+        .native-audio {
+            display: none;
+        }
+
+        .excel-footer {
+            background: #1f331c;
+            padding: 8px 24px;
+            font-size: 0.75rem;
+            color: #cde2bc;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #587a49;
+        }
+
+       
+        /* Info complementaria dentro de la tabla (la que ya existía) */
+       
+	 .info-complementaria {
+            background: #243b21;
+            padding: 16px 24px;
+            margin: 0;
+            border-top: 1px solid #5a7c4e;
+            color: #e2f0d3;
+            font-size: 0.85rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .info-complementaria a {
+            color: #f4b942;
+            text-decoration: none;
+        }
+        
+        .info-complementaria a:hover {
+            color: #ffcf6e;
+            text-decoration: underline;
+        }
+        
+        .info-complementaria p {
+            margin: 5px 0;
+        }
+        
+        .info-complementaria .separator {
+            width: 60px;
+            height: 2px;
+            background: #47753B;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .random-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c3e2a;
+            color: #ffecb3;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            z-index: 4000;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+            white-space: nowrap;
+        }
+
+ 	/* NUEVA SECCIÓN EXTERNA (fuera de la tabla) - PARA INFORMACIÓN COMPLEMENTARIA */
+        
+	    .seccion-externa {
+            max-width: 1300px;
+            width: 90%;
+            margin: 0 auto 40px;
+            background: #1e2e1c;
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #3a5a32;
+            color: #e2f0d3;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .seccion-externa h3 {
+            color: #f4b942;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .seccion-externa p {
+            margin: 8px 0;
+        }
+        
+        .seccion-externa .separator {
+            width: 80px;
+            height: 2px;
+            background: #47753B;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .seccion-externa a {
+            color: #f4b942;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .seccion-externa a:hover {
+            color: #ffcf6e;
+            text-decoration: underline;
+        }
+        
+        .seccion-externa .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0 10px;
+        }
+        
+        .seccion-externa .badge {
+            background: #2c3e2a;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #ffeaac;
+        }
+
+
+        @media (max-width: 700px) {
+            .random-toast { white-space: normal; width: 90%; font-size: 0.75rem; }
+            .info-complementaria { font-size: 0.75rem; padding: 12px 16px; }
+            .seccion-externa { padding: 18px 16px; }
+            .seccion-externa h3 { font-size: 1.1rem; }
+        }
+
+/* Inicio Scrollbar Delgada y Coloreada */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #585858 #000000;
+}
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #000000;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #585858;
+  border-radius: 20px;
+  border: 3px solid #000000;
+}
+
+    </style>
 </head>
 <body>
 
+<!-- BANNER FIJO -->
+<header class="hero-banner">
+    <img class="banner-image" src="images/headmj.png" alt="Music Excel Banner">
+</header>
 
-<div style="margin:12px auto;">
+<div class="excel-container">
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <span class="toolbar-badge">🎵</span>
+            <span class="toolbar-badge sheet-name">🎤 Las 13 No.1 de Michael Jackson</span>
+            <button id="randomPlayBtn" class="btn-random">🔀 REPRODUCIR TODO ALEATORIAMENTE 🎲</button>
+            <span id="shuffleIndicator" class="shuffle-status">⚡ Click <img src="https://rllom.github.io/radioandromeda/images/down.gif"> para descargar ⚡</span>
+        </div>
+        <div class="toolbar-badge">💿 Click en la canción que quieras escuchar</div>
+    </div>
+    <div style="overflow-x: auto;">
+        <table class="sheet-table" id="musicTable">
+            <thead id="tableHeader"></thead>
+            <tbody id="songsTableBody"></tbody>
+        </table>
+    </div>
+    
+<!-- INFO COMPLEMENTARIA DENTRO DE LA TABLA (ya existente) -->
 
-<a href="http://www.radioandromeda.tk" target="_top"><img src="images/logoMJ.png" width="100%"></a>    
-
-<!-- Insert to your webpage where you want to display the audio player -->
-<div id="amazingaudioplayer-1" style="display:block;position:relative;width:100%;height:auto;margin:0px auto 0px;">
-<ul class="amazingaudioplayer-audios" style="display:none;" >
-           
-<li data-artist="Michael Jackson" data-title="1972 Ben" data-album="" data-info="" data-image="https://image.ibb.co/bGVrkU/01_Ben.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkzMDZf/01%201972_Ben.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1979 Dont Stop Till You Get Enough" data-album="" data-info="" data-image="https://image.ibb.co/hLvP5U/02_Dont_Stop_Till_You_Get_Enough.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkzNDdf/02%201979_Dont%20Stop%20Till%20You%20Get%20Enough.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1979 Rock With You" data-album="" data-info="" data-image="https://image.ibb.co/m60Dzp/03_Rock_With_Yo.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg2ODdf/03%201979_Rock%20With%20Yo.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1983 Billy Jean" data-album="" data-info="" data-image="https://image.ibb.co/eA6WkU/04_Billy_Jean.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg3NDFf/04%201983_Billy%20Jean.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1983 Beat It" data-album="" data-info="" data-image="https://image.ibb.co/ddHFC9/05_Beat_It.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg3NTdf/05%2019783_Beat%20It.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1987 I Just Can't Stop Loving You feat Siedah Garrett" data-album="" data-info="" data-image="https://image.ibb.co/iRHtzp/06_I_Just_Can_t_Stop_Loving_You.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg4Nzlf/06%201987_I%20Just%20Can%27t%20Stop%20Loving%20You-feat._Siedah%20Garrett.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1987 Bad" data-album="" data-info="" data-image="https://image.ibb.co/hwv7QU/07_Bad.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg5MjFf/07%201987_Bad.mp3" data-type="audio/mpeg" />
-</li>
-
-
-<li data-artist="Michael Jackson" data-title="1988 The Way You Make Me Feel" data-album="" data-info="" data-image="https://image.ibb.co/kku1kU/08_The_Way_You_Make_Me_Feel.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg5NjRf/08%201988_The%20Way%20You%20Make%20Me%20Feel.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1988 Man in The Mirror" data-album="" data-info="" data-image="https://image.ibb.co/njjdX9/09_Man_In_The_Mirror.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkwMThf/09%201988_Man%20In%20The%20Mirror.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1988 Dirty Diana" data-album="" data-info="" data-image="https://image.ibb.co/ecrgkU/10_Dirty_Diana.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkwNjFf/10%201988_Dirty%20Diana.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1991 Black or White" data-album="" data-info="" data-image="https://image.ibb.co/n8Q7QU/11_Black_or_White.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkwOTlf/11%201991_Black%20or%20White.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1992 Heal The World" data-album="" data-info="" data-image="https://image.ibb.co/cF3GKp/12_Heal_The_World.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkxNThf/12%201992_Heal%20The%20World.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1993 Will You Be There" data-album="" data-info="" data-image="https://image.ibb.co/k6VJX9/13_Will_You_Be_There.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkyMjlf/13%201993_Will_You_Be_There.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="Michael Jackson" data-title="1993 You are Not Alone" data-album="" data-info="" data-image="https://image.ibb.co/mueTX9/14_You_Are_Not_Alone.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0NzkyODNf/14%201993_You%20Are%20Not%20Alone.mp3" data-type="audio/mpeg" />
-</li>
-
-<li data-artist="USA For Africa" data-title="Bonus: 1985 We are The World" data-album="" data-info="" data-image="https://image.ibb.co/f0LP5U/06_We_Are_The_World_USA_for_Africa.jpg" data-duration="">
-<div class="amazingaudioplayer-source" data-src="https://od.lk/s/NF8xODU0Nzg4Mjhf/06%201985_We%20Are%20The%20World%20%28USA%20for%20Africa%29.mp3" data-type="audio/mpeg" />
-</li>
-
-</ul>
+    <div class="info-complementaria">
+        <p>🎤 <strong>Michael Jackson</strong> - El Rey del Pop</p>
+        <div class="separator"></div>
+        <p>📀 Todos los temas #1 en la lista de <strong>Billboard Hot 100</strong> | Época dorada 1972 - 1995</p>
+        <p>🏆 Con más de 13 números uno en su carrera como solista, incluyendo éxitos inolvidables como <em>Billie Jean</em>, <em>Beat It</em> y <em>Black or White</em>.</p>
+        <p>🎧 <a href="http://www.radioandromeda.tk/" target="_blank">Radio Andromeda</a> - El lugar de las leyendas | Disfruta la música que marcó generaciones</p>
+        <div class="separator"></div>
+        <p style="font-size:0.7rem; opacity:0.7;">✨ Cuando seleccionas una canción, la lista continúa en orden contínuo. En el modo aleatorio reproduce toda la lista aleatoriamente y de forma continua e infinita ✨</p>
+    </div>
+ 
+   
+    <div class="excel-footer">
+        <div> 🔗 <a href="https://www.billboard.com/artist/michael-jackson/chart-history/hsi/" target="_blank">Fuente: Billboard</a></div>
+        <div class="status">🎧 Radio Andromeda, el Lugar de Las Leyendas 🎛️ </div>
+    </div>
 </div>
 
-<!-- End of body section HTML codes -->
 
+<!-- NUEVA SECCIÓN EXTERNA (fuera del contenedor de la tabla) -->
+
+<div class="seccion-externa">
+    <h3>✨ Información adicional ✨</h3>
+    <p>🎶 <strong>Michael Jackson</strong> es reconocido como uno de los artistas más influyentes de todos los tiempos. Sus contribuciones a la música, la danza y la moda, junto con una vida pública que generó gran atención mediática, lo convirtieron en una figura global durante más de cuatro décadas.</p>
+    <div class="separator"></div>
+    <div class="badge-list">
+        <span class="badge">🏆 13 Grammy Awards</span>
+        <span class="badge">🌍 39 Récord Guinness</span>
+        <span class="badge">🎬 Thriller (1982)</span>
+        <span class="badge">💿 750M discos vendidos</span>
+    </div>
+    <p>📻 <strong>Radio Andrómeda</strong> - Un espacio para los amantes de la buena música. Explora más artistas y éxitos que marcaron historia.</p>
+    <p>🔗 <a href="http://www.radioandromeda.tk/" target="_blank">Visita nuestro sitio web</a> | <a href="https://www.billboard.com/artist/michael-jackson/chart-history/hsi/" target="_blank">Billboard Chart History</a></p>
+    <div class="separator"></div>
+    <p style="font-size:0.7rem; opacity:0.7;">🎧 Disfruta la lista de reproducción | Descarga tus favoritas</p>
 <br>
 <center>
-<div  align="justify" style="border: 0px solid #000000; padding:0px; width:98%;" >
-Michael Jackson es el numero 5 en el record historico de ser el artista que ha logrado mas sencillos no.1 en la Billboard (14 numeros 1), Los Beatles tienen el primer lugar, <a href="https://rllom.github.io/radioandromeda/topend/thebeatles.html"> lograron 20 numeros 1</a>, aqui puedes ver los 5 primeros lugares: <a id="example5" href="https://i.postimg.cc/zBKNVL4H/masno-1.png" title="Top 5 de Mayor No.1"><b>AQUI</b></a>. <a href="https://es.wikipedia.org/wiki/Anexo:Artistas_que_alcanzaron_el_n%C3%BAmero_uno_en_el_Billboard_Hot_100" target="_blank"> Fuente  </a>
-</div>
-
-<br>
-<center>
-<div>
-<A HREF="http://www.radioandromeda.tk">
-Www.RadioAndromeda.tK</a> - <a href="https://www.facebook.com/radioandromeda2" target="_blank">FacebooK</a>
-</div>
-<br>
-
-<iframe id="ifrm" src="sublinks.html"></iframe>
+<iframe id="ifrm" src="https://rllom.github.io/radioandromeda/topend/sublinks.html" scrolling="yes"></iframe>
 </center>
 
+
 </div>
+
+<!-- REPRODUCTOR MODAL CON LOGO EN CABECERA -->
+<div id="playerModal" class="player-overlay">
+    <div class="player-card">
+        <div class="player-logo">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhUhMf3Ynq3BoQYsQQWrWSa9XBt54cftztygzGEBDKueqw-UxtOv46_GlFvqy4LBW42BdbWIARB5ko2yS6u2L1XykGaKEu2W-4_dj_VoevHkr7nzNBFsxLQaDMr0jlu9hXoWAkVbKSKIFVWeyytO8wnNS5lbR8mHiEFCzBQVzkf4QK_WIIgvExjU4X-yvYF=s1000" alt="Radio Andromeda">
+        </div>
+        <div class="cover-art" id="modalCover"><div class="cover-placeholder">🎧</div></div>
+        <div class="song-info">
+            <h3 id="modalSongTitle">Canción</h3>
+            <p id="modalArtist">Artista</p>
+        </div>
+        <div class="custom-player-controls">
+            <div class="control-buttons">
+                <button class="ctrl-btn" id="prevBtn" title="Anterior">⏮️</button>
+                <button class="ctrl-btn play-pause-btn" id="playPauseBtn">▶️</button>
+                <button class="ctrl-btn" id="nextBtn" title="Siguiente">⏭️</button>
+            </div>
+            <div class="progress-container">
+                <span class="time-current" id="currentTimeDisplay">0:00</span>
+                <div class="progress-bar-bg" id="progressBarBg">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="time-duration" id="durationDisplay">0:00</span>
+            </div>
+            <div class="volume-control">
+                <span class="volume-icon">🔊</span>
+                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.7">
+            </div>
+        </div>
+        <button class="close-player" id="closePlayerBtn">✖</button>
+    </div>
+</div>
+
+<audio id="audioPlayer" class="native-audio" preload="metadata"></audio>
+<div id="randomToast" class="random-toast">🎲 Modo Aleatorio</div>
+
+<script>
+    // CATÁLOGO DE CANCIONES (con sus respectivas URLs de audio para descarga)
+    const songsCatalog = [
+{ id:1, title:"Ben (1972)", artist:"Michael Jackson", cover:"https://i.ibb.co/fMpFPz4/01-Ben.jpg", audio:"https://od.lk/s/NF8xODU0NzkzMDZf/01%201972_Ben.mp3"},
+{ id:2, title:"Don't Stop 'Til You Get Enough (1979)", artist:"Michael Jackson", cover:"https://i.ibb.co/dM9VrpL/02-Dont-Stop-Till-You-Get-Enough.jpg", audio:"https://od.lk/s/NF8xODU0NzkzNDdf/02%201979_Dont%20Stop%20Till%20You%20Get%20Enough.mp3"},
+{ id:3, title:"Rock With You (1980)", artist:"Michael Jackson", cover:"https://i.ibb.co/ypkdhmK/03-Rock-With-Yo.jpg", audio:"https://od.lk/s/NF8xODU0Nzg2ODdf/03%201979_Rock%20With%20Yo.mp3"},
+{ id:4, title:"Billie Jean (1983)", artist:"Michael Jackson", cover:"https://i.ibb.co/FJg6rYc/04-Billy-Jean.jpg", audio:"https://od.lk/s/NF8xODU0Nzg3NDFf/04%201983_Billy%20Jean.mp3"},
+{ id:5, title:"Beat It (1983)", artist:"Michael Jackson", cover:"https://i.ibb.co/37hYRLt/05-Beat-It.jpg", audio:"https://od.lk/s/NF8xODU0Nzg3NTdf/05%2019783_Beat%20It.mp3"},
+{ id:6, title:"Say Say Say (1983)", artist:"Michael Jackson & Paul McCartney", cover:"https://i.ibb.co/5WZtY7mD/06-Michael-Jackson-y-Paul-Mc-Cartney-Say-Say-Say.jpg", audio:"https://od.lk/d/NF8zMjUxODk5ODJf/06%201983_Michael%20Jackson%20y%20Paul%20McCartney%20-%20Say%20Say%20Say.mp3"},
+{ id:7, title:"I Just Can't Stop Loving You (1987)", artist:"Michael Jackson", cover:"https://i.ibb.co/6BMRD67/06-I-Just-Can-t-Stop-Loving-You.jpg", audio:"https://od.lk/s/NF8xODU0Nzg4Nzlf/06%201987_I%20Just%20Can%27t%20Stop%20Loving%20You-feat._Siedah%20Garrett.mp3"},
+{ id:8, title:"Bad (1987)", artist:"Michael Jackson", cover:"https://i.ibb.co/Zf6x8YG/07-Bad.jpg", audio:"https://od.lk/s/NF8xODU0Nzg5MjFf/07%201987_Bad.mp3"},
+{ id:9, title:"The Way You Make Me Feel", artist:"Michael Jackson", cover:"https://i.ibb.co/MD8gcjG/08-The-Way-You-Make-Me-Feel.jpg", audio:"https://od.lk/s/NF8xODU0Nzg5NjRf/08%201988_The%20Way%20You%20Make%20Me%20Feel.mp3"},
+{ id:10, title:"Man In The Mirror (1988)", artist:"Michael Jackson", cover:"https://i.ibb.co/ygx0t4x/09-Man-In-The-Mirror.jpg", audio:"https://od.lk/s/NF8xODU0NzkwMThf/09%201988_Man%20In%20The%20Mirror.mp3"},
+{ id:11, title:"Dirty Diana (1988)", artist:"Michael Jackson", cover:"https://i.ibb.co/wynKLLR/10-Dirty-Diana.jpg", audio:"https://od.lk/s/NF8xODU0NzkwNjFf/10%201988_Dirty%20Diana.mp3"},
+{ id:12, title:"Black Or White (1991)", artist:"Michael Jackson", cover:"https://i.ibb.co/5R4Mp2q/11-Black-or-White.jpg", audio:"https://od.lk/s/NF8xODU0NzkwOTlf/11%201991_Black%20or%20White.mp3"},
+{ id:13, title:"You Are Not Alone (1995)", artist:"Michael Jackson", cover:"https://i.ibb.co/jLJ7D1D/14-You-Are-Not-Alone.jpg", audio:"https://od.lk/s/NF8xODU0NzkyODNf/14%201993_You%20Are%20Not%20Alone.mp3"},
+{ id:14, title:"Bonus Track - Will You Be There (No.7 en 1993)", artist:"Michael Jackson", cover:"https://i.ibb.co/HXzPRnD/13-Will-You-Be-There.jpg", audio:"https://od.lk/s/NF8xODU0NzkyODNf/14%201993_You%20Are%20Not%20Alone.mp3"},
+{ id:15, title:"Bonus Track - Heal The World (No.27 en 1992)", artist:"Michael Jackson", cover:"https://i.ibb.co/G3HXWL1/12-Heal-The-World.jpg", audio:"https://od.lk/s/NF8xODU0NzkxNThf/12%201992_Heal%20The%20World.mp3"},
+{ id:16, title:"Bonus Track - We Are The World USAforAfrica (No.1 en 1985)", artist:"Michael Jackson", cover:"https://i.ibb.co/yy9n1pp/06-We-Are-The-World-USA-for-Africa.jpg", audio:"https://od.lk/s/NF8xODU0Nzg4Mjhf/06%201985_We%20Are%20The%20World%20%28USA%20for%20Africa%29.mp3"} 
+];
+
+
+    // Elementos DOM
+    const tableHeader = document.getElementById('tableHeader');
+    const tbody = document.getElementById('songsTableBody');
+    const modal = document.getElementById('playerModal');
+    const modalCover = document.getElementById('modalCover');
+    const modalSongTitle = document.getElementById('modalSongTitle');
+    const modalArtist = document.getElementById('modalArtist');
+    const audioElem = document.getElementById('audioPlayer');
+    const closeBtn = document.getElementById('closePlayerBtn');
+    const randomBtn = document.getElementById('randomPlayBtn');
+    const toastMsg = document.getElementById('randomToast');
+    const shuffleIndicator = document.getElementById('shuffleIndicator');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressBarBg = document.getElementById('progressBarBg');
+    const currentTimeSpan = document.getElementById('currentTimeDisplay');
+    const durationSpan = document.getElementById('durationDisplay');
+    const volumeSlider = document.getElementById('volumeSlider');
+
+    // Estados
+    let currentShuffleQueue = [];
+    let currentQueueIndex = -1;
+    let isShuffleModeActive = false;
+    let currentSongId = null;
+
+    // Función para descargar la canción usando la imagen GIF
+    function downloadSong(audioUrl, songTitle) {
+        fetch(audioUrl)
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${songTitle} - Michael Jackson.mp3`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                showToast(`⬇️ Descargando: ${songTitle}`, 5000);
+            })
+            .catch(error => {
+                console.error('Error al descargar:', error);
+                showToast(`❌ Error al descargar ${songTitle}`, 4000);
+            });
+    }
+
+    function showToast(msg, duration = 2500) {
+        toastMsg.textContent = msg;
+        toastMsg.style.opacity = "1";
+        setTimeout(() => { if (toastMsg.style.opacity === "1") toastMsg.style.opacity = "0"; }, duration);
+    }
+
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function updateProgress() {
+        if (audioElem.duration && !isNaN(audioElem.duration)) {
+            const percent = (audioElem.currentTime / audioElem.duration) * 100;
+            progressFill.style.width = `${percent}%`;
+            currentTimeSpan.textContent = formatTime(audioElem.currentTime);
+            durationSpan.textContent = formatTime(audioElem.duration);
+        }
+    }
+
+    function setAudioProgress(e) {
+        const rect = progressBarBg.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+        const percent = clickX / width;
+        if (audioElem.duration) {
+            audioElem.currentTime = percent * audioElem.duration;
+        }
+    }
+
+    // Función para reproducir la siguiente canción en orden ordinal (por ID)
+    function playNextSequential() {
+        const currentIndex = songsCatalog.findIndex(s => s.id === currentSongId);
+        const nextIndex = (currentIndex + 1) % songsCatalog.length;
+        const nextSong = songsCatalog[nextIndex];
+        if (nextSong) {
+            openPlayerById(nextSong.id, false);
+            showToast(`⏩ Siguiente: ${nextSong.title}`, 1500);
+        }
+    }
+
+    function openPlayerById(songId, fromQueue = false, newIndex = -1) {
+        const song = songsCatalog.find(s => s.id === songId);
+        if (!song) return;
+        currentSongId = song.id;
+        if (fromQueue && isShuffleModeActive && newIndex !== -1) currentQueueIndex = newIndex;
+
+        modalSongTitle.innerText = song.title;
+        modalArtist.innerText = song.artist;
+        modalCover.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = song.cover;
+        img.onerror = () => { modalCover.innerHTML = `<div class="cover-placeholder">🎨<br>${song.title.charAt(0)}</div>`; };
+        img.onload = () => { modalCover.innerHTML = ''; modalCover.appendChild(img); };
+        modalCover.appendChild(img);
+
+        if (audioElem.src !== song.audio) {
+            audioElem.src = song.audio;
+            audioElem.load();
+        }
+        audioElem.play().catch(e => console.log("autoplay restringido"));
+        
+        // Configurar el evento 'ended' según el modo actual
+        if (isShuffleModeActive) {
+            audioElem.onended = () => handleSongEnd();
+        } else {
+            // MODO NORMAL: al terminar la canción, pasa a la siguiente en orden ordinal
+            audioElem.onended = () => {
+                playNextSequential();
+            };
+        }
+        modal.classList.add('active');
+        highlightRow(song.id);
+        updatePlayPauseIcon();
+    }
+
+    function updatePlayPauseIcon() {
+        if (audioElem.paused) playPauseBtn.textContent = "▶️";
+        else playPauseBtn.textContent = "⏸️";
+    }
+
+    function togglePlayPause() {
+        if (audioElem.paused) audioElem.play();
+        else audioElem.pause();
+        updatePlayPauseIcon();
+    }
+
+    function playNext() {
+        if (isShuffleModeActive && currentShuffleQueue.length) {
+            const nextIndex = currentQueueIndex + 1;
+            if (nextIndex < currentShuffleQueue.length) {
+                const nextId = currentShuffleQueue[nextIndex];
+                openPlayerById(nextId, true, nextIndex);
+                showToast(`⏩ Siguiente (Aleatorio) - ${songsCatalog.find(s=>s.id===nextId)?.title}`, 1500);
+            } else {
+                regenerateShuffleAndContinue();
+            }
+        } else {
+            // Modo normal: siguiente ordinal
+            const currentIndex = songsCatalog.findIndex(s => s.id === currentSongId);
+            const nextSong = songsCatalog[(currentIndex + 1) % songsCatalog.length];
+            if (nextSong) {
+                openPlayerById(nextSong.id, false);
+                showToast(`⏩ Siguiente: ${nextSong.title}`, 1500);
+            }
+        }
+    }
+
+    function playPrevious() {
+        if (isShuffleModeActive && currentShuffleQueue.length) {
+            const prevIndex = currentQueueIndex - 1;
+            if (prevIndex >= 0) {
+                const prevId = currentShuffleQueue[prevIndex];
+                openPlayerById(prevId, true, prevIndex);
+                showToast(`⏪ Anterior (Aleatorio) - ${songsCatalog.find(s=>s.id===prevId)?.title}`, 1500);
+            } else {
+                showToast("🔁 Iniciando", 1500);
+            }
+        } else {
+            // Modo normal: anterior ordinal
+            const currentIndex = songsCatalog.findIndex(s => s.id === currentSongId);
+            const prevIndex = (currentIndex - 1 + songsCatalog.length) % songsCatalog.length;
+            const prevSong = songsCatalog[prevIndex];
+            if (prevSong) {
+                openPlayerById(prevSong.id, false);
+                showToast(`⏪ Anterior: ${prevSong.title}`, 1500);
+            }
+        }
+    }
+
+    function regenerateShuffleAndContinue() {
+        currentShuffleQueue = generateShuffleQueue();
+        currentQueueIndex = 0;
+        const nextId = currentShuffleQueue[0];
+        openPlayerById(nextId, true, 0);
+        showToast(`♾️ Nueva ronda aleatoria`, 2500);
+    }
+
+    function handleSongEnd() {
+        if (!isShuffleModeActive) return;
+        const nextIndex = currentQueueIndex + 1;
+        if (nextIndex < currentShuffleQueue.length) {
+            const nextId = currentShuffleQueue[nextIndex];
+            openPlayerById(nextId, true, nextIndex);
+            showToast(`🔀 Siguiente (Aleatorio) - ${songsCatalog.find(s=>s.id===nextId)?.title}`, 1500);
+        } else {
+            regenerateShuffleAndContinue();
+        }
+    }
+
+    function generateShuffleQueue() {
+        const ids = songsCatalog.map(s => s.id);
+        for (let i = ids.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [ids[i], ids[j]] = [ids[j], ids[i]];
+        }
+        return ids;
+    }
+
+    function startInfiniteShuffle() {
+        currentShuffleQueue = generateShuffleQueue();
+        currentQueueIndex = 0;
+        isShuffleModeActive = true;
+        shuffleIndicator.innerText = '♾️ Reproducción continua aleatoria';
+        const firstId = currentShuffleQueue[0];
+        openPlayerById(firstId, true, 0);
+        showToast(`🎲 ${currentShuffleQueue.length} canciones programadas aleatoriamente ♾️`, 4000);
+    }
+
+    function disableShuffleMode() {
+        isShuffleModeActive = false;
+        shuffleIndicator.innerText = '⚡))) (((⚡';
+        // Restaurar el comportamiento normal: al terminar la canción actual, seguir con la siguiente ordinal
+        if (audioElem && currentSongId) {
+            audioElem.onended = () => {
+                if (!isShuffleModeActive) {
+                    playNextSequential();
+                }
+            };
+        }
+    }
+
+    function closePlayer() {
+        modal.classList.remove('active');
+        audioElem.pause();
+        if (isShuffleModeActive) disableShuffleMode();
+    }
+
+    function highlightRow(songId) {
+        const rows = document.querySelectorAll('.song-row');
+        for (let row of rows) {
+            const id = parseInt(row.getAttribute('data-song-id'));
+            if (id === songId) {
+                row.style.backgroundColor = '#fbffc4';
+                setTimeout(() => row.style.backgroundColor = '', 2500);
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                break;
+            }
+        }
+    }
+
+    // RENDER TABLA con columna de descarga (imagen GIF)
+    function renderTable() {
+        tableHeader.innerHTML = `
+            <tr>
+                <th style="width: 50px;">#</th>
+                <th>🎵 Canción</th>
+                <th>🎤 Artista</th>
+                <th style="width: 20px;">🎼</th>
+            </table>
+        `;
+        
+        tbody.innerHTML = '';
+        songsCatalog.forEach((song, idx) => {
+            const row = tbody.insertRow();
+            row.classList.add('song-row');
+            row.setAttribute('data-song-id', song.id);
+            
+            row.insertCell(0).textContent = idx + 1;
+            row.insertCell(1).textContent = song.title;
+            row.insertCell(2).textContent = song.artist;
+            
+            // Celda de descarga con imagen GIF personalizada
+            const downloadCell = row.insertCell(3);
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'btn-download';
+            const imgIcon = document.createElement('img');
+            imgIcon.src = 'https://rllom.github.io/radioandromeda/images/down.gif';
+            imgIcon.title = 'Descargar';
+            imgIcon.style.width = '16px';
+            imgIcon.style.height = '16px';
+            downloadBtn.appendChild(imgIcon);
+            downloadBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                downloadSong(song.audio, song.title);
+            });
+            downloadCell.appendChild(downloadBtn);
+            
+            // Evento click en la fila para reproducir (evitando el botón)
+            row.addEventListener('click', (e) => {
+                if (e.target === downloadBtn || downloadBtn.contains(e.target)) return;
+                if (isShuffleModeActive) disableShuffleMode();
+                openPlayerById(song.id, false);
+            });
+            row.style.cursor = 'pointer';
+        });
+    }
+
+    // Eventos
+    audioElem.addEventListener('timeupdate', updateProgress);
+    audioElem.addEventListener('loadedmetadata', () => {
+        durationSpan.textContent = formatTime(audioElem.duration);
+        updateProgress();
+    });
+    audioElem.addEventListener('play', () => updatePlayPauseIcon());
+    audioElem.addEventListener('pause', () => updatePlayPauseIcon());
+    volumeSlider.addEventListener('input', (e) => audioElem.volume = e.target.value);
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    nextBtn.addEventListener('click', playNext);
+    prevBtn.addEventListener('click', playPrevious);
+    progressBarBg.addEventListener('click', setAudioProgress);
+    closeBtn.addEventListener('click', closePlayer);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closePlayer(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closePlayer(); });
+    randomBtn.addEventListener('click', () => startInfiniteShuffle());
+
+    renderTable();
+    audioElem.volume = 0.8;
+    volumeSlider.value = 0.8;
+    console.log("🚀 Modo normal: reproducción secuencial | Modo aleatorio: reproducción continua aleatoria | Sección externa agregada");
+</script>
 </body>
 </html>
