@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentos con Moralejas de Vida</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a2a45 0%, #00365C 50%, #001e33 100%);
+            font-family: 'Open Sans', sans-serif;
+            color: #e0f7ff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo i {
+            font-size: 2.8rem;
+            color: #00C0FF;
+            text-shadow: 0 0 15px rgba(0, 192, 255, 0.7);
+        }
+
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 192, 255, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #a0dfff;
+            font-weight: 300;
+        }
+
+        /* Gallery Styles */
+        .gallery-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00C0FF, transparent);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 15px;
+        }
+
+        .cover-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            /* Proporción 3:4 → más alta que ancha */
+            aspect-ratio: 3 / 4;
+            transform: translateY(0);
+        }
+
+        .cover-container:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 192, 255, 0.5);
+            z-index: 10;
+        }
+
+        .cover-container a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cover-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.4s ease;
+            display: block;
+        }
+
+        .cover-container:hover img {
+            filter: brightness(1.15) saturate(1.1);
+        }
+
+        .cover-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            padding: 40px 12px 12px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .cover-container:hover .cover-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cover-overlay span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            color: #8ac6e6;
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 192, 255, 0.2);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #001e33;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00C0FF, #0077b6);
+            border-radius: 10px;
+            border: 2px solid #001e33;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .logo h1 {
+                font-size: 2.4rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+                gap: 18px;
+            }
+
+            .cover-overlay span {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 14px;
+            }
+        }
+
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 40px 20px 30px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(0, 192, 255, 0.2);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00C0FF, transparent);
+}
+
+.footer-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 32px;
+    border-radius: 50px;
+    background: rgba(0, 192, 255, 0.08);
+    border: 1px solid rgba(0, 192, 255, 0.35);
+    color: #8ac6e6;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(0, 192, 255, 0.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.footer-link:hover::after {
+    transform: translateX(100%);
+}
+
+.footer-link i {
+    font-size: 1.4rem;
+    color: #00C0FF;
+    transition: all 0.4s ease;
+    text-shadow: 0 0 10px rgba(0, 192, 255, 0.6);
+}
+
+.footer-link span {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.footer-link small {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #a0dfff;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.footer-link:hover {
+    background: rgba(0, 192, 255, 0.18);
+    border-color: #00C0FF;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow:
+        0 8px 25px rgba(0, 192, 255, 0.35),
+        0 0 30px rgba(0, 192, 255, 0.25),
+        inset 0 0 20px rgba(0, 192, 255, 0.1);
+}
+
+.footer-link:hover i {
+    transform: scale(1.15) rotate(-8deg);
+    color: #4dd8ff;
+    text-shadow: 0 0 20px rgba(0, 192, 255, 1);
+}
+
+.footer-link:hover span {
+    color: #4dd8ff;
+}
+
+/* Responsive footer */
+@media screen and (max-width: 480px) {
+    .footer-link {
+        padding: 14px 22px;
+    }
+    .footer-link span {
+        font-size: 1rem;
+    }
+    .footer-link small {
+        font-size: 0.78rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h1>Cuentos con Moralejas de Vida</h1>
+            </div>
+            <p class="tagline">Historias que dejan huella y enseñan lecciones para la vida</p>
+        </header>
+
+        <section class="gallery-section">
+         <!--   <h2 class="section-title"></h2> -->
+
+            <div class="gallery">
+                <div class="cover-container">
+			<a href="https://stirring-bubblegum-351453.netlify.app" target="_blank" rel="noopener">
+                        <img src="LaCasadela GrietaAbierta.jpg" alt="">
+                        <div class="cover-overlay">
+                            <span>La Casa de la Grieta Abierta</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cover-container">
+		         <a href="https://sweet-caramel-57796c.netlify.app/" target="_blank" rel="noopener">
+                        <img src="ElEscarabajo.jpg" alt="">
+                        <div class="cover-overlay">
+                            <span>El Escarabajo que No Cabía en su Propia Casa</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cover-container">
+                    <a href="" target="_self" rel="noopener">
+                        <img src="proximo.gif" alt="">
+                        <div class="cover-overlay">
+                            <span>Proximamente</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+    <a href="https://www.radioandromeda.tk" target="_self" rel="noopener" class="footer-link">
+        <i class="fas fa-broadcast-tower"></i>
+        <span>Radio Andromeda</span>
+        <small>Diseñada Exclusivamente para tus Oídos!</small>
+    </a>
+</footer>
+    </div>
+</body>
+</html>
